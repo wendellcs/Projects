@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register</title>
+    <!-- Project CSS -->
+    <link rel="stylesheet" href="css/style.css">
+</head>
+<body>
+    <main class="form-container"> 
+        <header id="form-header">
+            <h1 class="form-title"> Register </h1>
+            <div class="title-decoration-left-side"></div>
+            <div class="title-decoration-rigth-side"></div>
+        </header>
+
+        <form class="form" action="#">
+            <div class="top-container">
+                <!-- Name-box -->
+                <div class="name-box">
+                    <label for="first-name">First name: </label>
+                    <input value="" type="text" name="first-name" class="input-first-section first-name" placeholder="Name"> 
+                    <p class="errorAlertMessage"></p>
+                </div>
+                <div class="name-box">
+                    <label for="last-name">Last name: </label>
+                    <input value="" type="text" name="last-name" class="input-first-section last-name" placeholder="Last name (optional)"> 
+                    <p class="errorAlertMessage"></p>
+                </div>
+                <div class="name-box">
+                    <label for="email">E-mail: </label> 
+                    <input value="" type="text" name="email" class="input-first-section email" placeholder="example@example.com">
+                    <p class="errorAlertMessage"></p>
+                </div>
+                <div class="name-box">
+                    <label for="pass">Phone number: </label>
+                    <input value="" type="tel" name="tel" class="input-first-section tel" placeholder="(xx) xxxxx-xxxx  (optional)">
+                    <p class="errorAlertMessage"></p>
+                </div>
+                <div class="name-box">
+                    <label for="pass">Password: </label>
+                    <input value="" type="password" name="pass" class="input-first-section password" placeholder="Password" >
+                    <p class="errorAlertMessage"></p>
+                </div>
+                <div class="name-box">
+                    <label for="cpass">Confirm password: </label>
+                    <input value="" type="password" name="cpass" class="input-first-section confirm-password" placeholder="Confirm password" >
+                    <p class="errorAlertMessage"></p>
+                </div>
+                <!-- End of name-box -->
+            </div>
+            <!-- End of top container -->
+
+            <div class="bottom-container">
+                <div class="gender-input-container">
+                    <h6 class="gender-title">Gender:</h6>
+                    <div class="gender-input-group">
+                        <div>
+                            <input type="radio" name="gender" class="input-gender" value="male" checked>
+                            <label for="none">Male</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="gender" class="input-gender" value="female">
+                            <label for="none">Female</label>
+                        </div>
+                        <div>
+                            <input type="radio" name="gender" class="input-gender" value="others">
+                            <label for="none">Others</label>
+                        </div>
+                    </div>
+                </div>
+                <!-- End of gender-input div -->
+            </div>
+            <!-- End of bottom container -->
+            <input type="submit" class="btn-submit-form">
+        </form>
+    </main>
+    
+    <script src="js/javascript.js"></script>
+</body>
+</html>
