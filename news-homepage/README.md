@@ -20,8 +20,8 @@ This is a solution to the [News homepage challenge on Frontend Mentor](https://w
 
 ### Links
 
-- Solution at GitHub: [Add solution URL here](https://your-solution-url.com)
-- Live Site: [Add live site URL here](https://your-live-site-url.com)
+- Solution at GitHub: [https://github.com/wendellcs/Projects/tree/main/news-homepage](https://github.com/wendellcs/Projects/tree/main/news-homepage)
+- Live Site: [https://wendellcs.github.io/Projects/news-homepage/](https://wendellcs.github.io/Projects/news-homepage/)
 
 ## My process
 
