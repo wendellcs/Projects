@@ -15,25 +15,24 @@ This is a solution to the [Stats preview card component challenge on Frontend Me
 
 ### Screenshot
 
-![project-print](https://user-images.githubusercontent.com/88943437/230260129-51a74b25-3db8-4f14-bdee-80fba2951d39.png)
-![](./screenshot.jpg)
+![project-print](./screenshot.jpg)
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution at GitHub: [https://github.com/wendellcs/Projects/tree/main/stats-preview-card-component](https://github.com/wendellcs/Projects/tree/main/stats-preview-card-component)
+- Live Site: [https://wendellcs.github.io/Projects/stats-preview-card-component/](https://wendellcs.github.io/Projects/stats-preview-card-component/)
 
 ## My process
 
 ### Built with
 
+- HTML5
+- CSS3
 - Semantic HTML5 markup
 - CSS custom properties
 - Flexbox
-- CSS Grid
 
 ## Author
 
-- Website - [Add your name here](https://www.your-site.com)
-- Frontend Mentor - [@yourusername](https://www.frontendmentor.io/profile/yourusername)
-- Twitter - [@yourusername](https://www.twitter.com/yourusername)
+- Website - [WendellCS](https://wendellcs.github.io)
+- Frontend Mentor - [@WendellCS](https://www.frontendmentor.io/profile/WendellCS)
