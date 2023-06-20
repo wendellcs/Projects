@@ -15,7 +15,7 @@ This is a solution to the [Stats preview card component challenge on Frontend Me
 
 ### Screenshot
 
-![project-print](./screenshot.jpg)
+![card-component](https://github.com/wendellcs/Projects/assets/88943437/3c898870-1abb-4913-a9f2-01c1ca6fac21)
 
 ### Links
 
