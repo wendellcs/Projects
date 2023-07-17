@@ -16,7 +16,7 @@ This is a solution to the [Newsletter sign-up form with success message challeng
 
 ### Screenshot
 
-![project-print](./screenshot.jpg)
+![project-print](https://github.com/wendellcs/Projects/assets/88943437/1b82a2db-e841-4ba6-83e0-973e9cf096e4)
 
 
 ### Links
