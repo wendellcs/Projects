@@ -21,8 +21,8 @@ This is a solution to the [Newsletter sign-up form with success message challeng
 
 ### Links
 
-- Solution URL: [Add solution URL here](https://your-solution-url.com)
-- Live Site URL: [Add live site URL here](https://your-live-site-url.com)
+- Solution URL: [https://github.com/wendellcs/Projects/tree/main/newsletter-sign-up-with-success-message-main](https://github.com/wendellcs/Projects/tree/main/newsletter-sign-up-with-success-message-main)
+- Live Site URL: [https://wendellcs.github.io/Projects/newsletter-sign-up-with-success-message-main/](https://wendellcs.github.io/Projects/newsletter-sign-up-with-success-message-main/)
 
 ## My process
 
