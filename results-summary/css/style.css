@@ -1,0 +1,264 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+html {
+    font-size: 62.5%;
+}
+
+body {
+    display: grid;
+    height: 100vh;
+    align-items: center;
+    justify-content: center;
+    font-family: 'Hanken Grotesk', sans-serif;
+}
+
+:root {
+    --button-color: hsl(224, 30%, 27%);
+    --shadow-color: hsl(221, 82%, 93%);
+
+    --reaction-color: hsl(0, 100%, 67%);
+    --memory-color: hsl(39, 100%, 56%);
+    --verbal-color: hsl(166, 100%, 37%);
+    --visual-color: hsl(234, 85%, 45%);
+}
+
+/* General container */
+
+.container {
+    width: 70rem;
+    height: 50rem;
+    border-radius: 2rem;
+    box-shadow: 5px 5px 10px var(--shadow-color);
+}
+
+.container p {
+    font-size: 1.8rem;
+    color: hsl(252, 100%, 67%);
+}
+
+/* Result container */
+
+.result-container {
+    background: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+    width: 50%;
+    float: left;
+    height: 100%;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+#your-result-title {
+    color: hsl(240deg 100% 86%);
+    font-weight: 600;
+    font-size: 2rem;
+    margin: 4rem auto;
+}
+
+.circle {
+    width: 200px;
+    height: 200px;
+    border-radius: 50%;
+    background-image: linear-gradient(to bottom, hsla(256, 72%, 46%, 1), hsla(241, 72%, 46%, 0.070));
+    margin: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+#circle-result-scored {
+    font-family: 'Lato', sans-serif;
+    color: hsl(216deg 100% 99%);
+    font-size: 8rem;
+    font-weight: 700;
+}
+
+#circle-result-total {
+    color: hsl(240deg 100% 86%);
+}
+
+.text-container {
+    width: 80%;
+    margin: 2rem auto;
+    padding: 0 1rem;
+}
+
+.text-container h2 {
+    margin: 2rem 0;
+    font-size: 3.8rem;
+    color: hsl(216deg 100% 99%);
+    font-weight: 600;
+}
+
+.text-container p {
+    font-size: 1.8rem;
+    line-height: 2.2rem;
+    color: hsl(240deg 100% 86%);
+}
+
+/* Summary container */
+
+.summary-container {
+    width: 50%;
+    float: left;
+    height: auto;
+    padding: 30px;
+}
+
+.summary-container h3 {
+    margin: 10px 0;
+    font-size: 2rem;
+    color: var(--button-color);
+}
+
+.summary-lines-container {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.summary {
+    width: 100%;
+    height: 5.3rem;
+    display: flex;
+    align-items: center;
+    margin-top: 2rem;
+    border-radius: 1rem;
+    font-size: 1.8rem;
+    font-weight: bold;
+}
+
+.left-container {
+    display: flex;
+    width: 50%;
+}
+
+.left-container svg,
+.left-container p {
+    margin-left: 1rem;
+}
+
+.rigth-container {
+    display: flex;
+    align-items: center;
+    justify-content: end;
+    width: 50%;
+    font-size: 1.8rem;
+}
+
+.rigth-container p {
+    margin-right: 2rem;
+}
+
+.rigth-container .total-points {
+    color: hsla(224, 30%, 27%, 0.425);
+}
+
+.summary .points {
+    color: var(--button-color);
+}
+
+.reaction {
+    background: hsla(0, 100%, 67%, 0.05);
+}
+
+.reaction p {
+    color: var(--reaction-color);
+}
+
+.memory {
+    background: hsl(39, 100%, 56%, 0.05);
+}
+
+.memory p {
+    color: var(--memory-color);
+}
+
+.verbal {
+    background: hsl(166, 100%, 37%, 0.05);
+}
+
+.verbal p {
+    color: var(--verbal-color);
+}
+
+.visual {
+    background: hsl(234, 85%, 45%, 0.05);
+}
+
+.visual p {
+    color: var(--visual-color);
+}
+
+
+/* Button continue */
+
+.btn-continue {
+    background: var(--button-color);
+    border: none;
+    width: 100%;
+    height: 5.3rem;
+    margin-top: 4.5rem;
+    border-radius: 5rem;
+    font-size: 1.8rem;
+    color: #fff;
+    cursor: pointer;
+}
+
+.btn-continue:hover {
+    background: linear-gradient(to bottom, hsl(252, 100%, 67%), hsl(241, 81%, 54%));
+}
+
+/* Footer */
+
+footer {
+    text-align: center;
+    margin-top: 2rem;
+}
+
+/* Responsive */
+
+@media (max-width: 710px) {
+    body {
+        display: block;
+    }
+
+    .container {
+        width: 100%;
+        height: 100vh;
+        border-radius: 0;
+    }
+
+    .result-container {
+        width: 100%;
+        margin-top: 0;
+        border-radius: 0 0 40px 40px;
+        height: 47rem;
+    }
+
+    .text-container {
+        padding: 0;
+    }
+
+    .summary-container {
+        width: 100%;
+        padding: 0 30px;
+        margin-top: 20px;
+    }
+
+    .summary {
+        margin: 1rem 0;
+    }
+
+    .btn-continue {
+        margin-top: 2rem;
+    }
+
+    footer {
+        margin: 0.5rem;
+    }
+}
