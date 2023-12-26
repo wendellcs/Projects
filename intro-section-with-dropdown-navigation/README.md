@@ -29,8 +29,8 @@ Users should be able to:
 
 ### Links
 
-- Solution URL: [https://github.com/wendellcs/wendellcs.github.io/tree/main/projects/intro-section-with-dropdown-navigation](https://github.com/wendellcs/wendellcs.github.io/tree/main/projects/intro-section-with-dropdown-navigation)
-- Live Site URL: [https://wendellcs.github.io/projects/intro-section-with-dropdown-navigation/index.html](https://wendellcs.github.io/projects/intro-section-with-dropdown-navigation/index.html)
+- Solution URL: [https://github.com/wendellcs/Projects/tree/main/intro-section-with-dropdown-navigation](https://github.com/wendellcs/Projects/tree/main/intro-section-with-dropdown-navigation)
+- Live Site URL: [https://wendellcs.github.io/Projects/intro-section-with-dropdown-navigation/](https://wendellcs.github.io/Projects/intro-section-with-dropdown-navigation/)
 
 ## My process
 
