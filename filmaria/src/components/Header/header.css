@@ -1,0 +1,30 @@
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    width: 100%;
+    height: 70px;
+    background: #000;
+}
+
+.logo {
+    text-decoration: none;
+    font-size: 30px;
+    cursor: pointer;
+    color: #fff;
+    font-weight: bold;
+}
+
+.favoritos {
+    cursor: pointer;
+    background: #fff;
+    padding: 5px 15px;
+    text-decoration: none;
+    color: #000;
+    border-radius: 5px;
+    transition: .4s;
+}
+
+.favoritos:hover {
+    background: #ffffffd3;
+}
