@@ -1,0 +1,102 @@
+@use 'variables'
+
+.container-start
+    max-width: 450px
+    width: 80%
+    display: flex
+    justify-content: center
+    flex-direction: column
+    text-align: center
+    margin-top: 100px
+
+    .btn.start-game
+        color: variables.$font-dark-color
+        margin: 0 auto
+        border: none
+        width: 200px
+        height: 45px
+        font-size: 18px
+        letter-spacing: 2px
+        border-radius: 20px
+        transition: .5s
+
+        &:hover
+            background: transparent
+            border: 1px solid variables.$primary-color
+            color: variables.$primary-color
+            box-shadow: 0 0 15px variables.$primary-color
+
+    h1
+        color: variables.$primary-color
+        font-size: 38px
+        letter-spacing: 5px
+        font-family: 'Rubik Doodle Shadow', sans-serif
+
+    &-line
+        width: 50%
+        height: 2px
+        background: variables.$secondary-color
+        margin: 10px auto 50px auto
+
+    &-howtoplay
+        display: block
+
+        h2
+            font-size: 28px
+            font-family: 'Rubik', sans-serif
+            letter-spacing: 2px
+
+        ul
+            display: flex
+            margin: 50px 0
+            flex-direction: column
+            gap: 20px
+
+            li
+                list-style: none
+
+                p
+                    font-size: 18px
+                    line-height: 30px
+
+        &.hidden
+            display: none
+
+    &-icon
+        margin: 30px auto 30px auto
+        height: 50px
+        display: flex
+        justify-content: center
+
+        &-btnHtp
+            display: flex
+            flex-direction: row
+            align-content: center
+            flex-wrap: wrap
+            padding: 5px 5px 0 5px
+            gap: 10px
+            margin: 0 auto
+            cursor: pointer
+            transition: .3s
+            border: 1px solid transparent
+
+            &:hover
+                border-bottom: 1px solid variables.$primary-color
+            p
+                font-size: 14px
+                margin-top: 5px
+
+            &-circle
+
+                display: flex
+                width: 30px
+                height: 30px
+                border: 1px solid variables.$primary-color
+                flex-wrap: wrap
+                align-content: center
+                justify-content: center
+                border-radius: 50%
+                transition: .3s
+
+                &.hidden
+                    display: none

@@ -1,0 +1,186 @@
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+}
+
+body {
+  background: rgba(7, 7, 7, 0.7960784314);
+  font-size: 1.8rem;
+  color: #F5F5F5;
+  font-family: "Montserrat", sans-serif;
+}
+
+main {
+  display: relative;
+}
+
+button {
+  cursor: pointer;
+}
+
+input {
+  outline: none;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+.container-start {
+  max-width: 450px;
+  width: 80%;
+  display: flex;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+  margin-top: 100px;
+}
+.container-start .btn.start-game {
+  color: #363618;
+  margin: 0 auto;
+  border: none;
+  width: 200px;
+  height: 45px;
+  font-size: 18px;
+  letter-spacing: 2px;
+  border-radius: 20px;
+  transition: 0.5s;
+}
+.container-start .btn.start-game:hover {
+  background: transparent;
+  border: 1px solid #FFD470;
+  color: #FFD470;
+  box-shadow: 0 0 15px #FFD470;
+}
+.container-start h1 {
+  color: #FFD470;
+  font-size: 38px;
+  letter-spacing: 5px;
+  font-family: "Rubik Doodle Shadow", sans-serif;
+}
+.container-start-line {
+  width: 50%;
+  height: 2px;
+  background: #F5F5F5;
+  margin: 10px auto 50px auto;
+}
+.container-start-howtoplay {
+  display: block;
+}
+.container-start-howtoplay h2 {
+  font-size: 28px;
+  font-family: "Rubik", sans-serif;
+  letter-spacing: 2px;
+}
+.container-start-howtoplay ul {
+  display: flex;
+  margin: 50px 0;
+  flex-direction: column;
+  gap: 20px;
+}
+.container-start-howtoplay ul li {
+  list-style: none;
+}
+.container-start-howtoplay ul li p {
+  font-size: 18px;
+  line-height: 30px;
+}
+.container-start-howtoplay.hidden {
+  display: none;
+}
+.container-start-icon {
+  margin: 30px auto 30px auto;
+  height: 50px;
+  display: flex;
+  justify-content: center;
+}
+.container-start-icon-btnHtp {
+  display: flex;
+  flex-direction: row;
+  align-content: center;
+  flex-wrap: wrap;
+  padding: 5px 5px 0 5px;
+  gap: 10px;
+  margin: 0 auto;
+  cursor: pointer;
+  transition: 0.3s;
+  border: 1px solid transparent;
+}
+.container-start-icon-btnHtp:hover {
+  border-bottom: 1px solid #FFD470;
+}
+.container-start-icon-btnHtp p {
+  font-size: 14px;
+  margin-top: 5px;
+}
+.container-start-icon-btnHtp-circle {
+  display: flex;
+  width: 30px;
+  height: 30px;
+  border: 1px solid #FFD470;
+  flex-wrap: wrap;
+  align-content: center;
+  justify-content: center;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.container-start-icon-btnHtp-circle.hidden {
+  display: none;
+}
+
+.btn {
+  width: 110px;
+  height: 45px;
+  background: #FFD470;
+  border: 2px solid #F5F5F5;
+  border-radius: 10px;
+  color: #fff;
+  font-weight: 800;
+  font-size: 18px;
+  transition: 0.4s;
+}
+.btn.half {
+  border-left: none;
+  width: 80px;
+  border-radius: 0 20px 20px 0;
+}
+.btn:hover {
+  background: #F5F5F5;
+}
+
+.container-credits {
+  margin-top: 20px;
+}
+.container-credits-links {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+}
+.container-credits-links a {
+  margin-top: 10px;
+  color: #000;
+}
+.container-credits-links a .icon {
+  font-size: 30px;
+  transition: 0.3s;
+}
+.container-credits-links a .icon:hover {
+  transform: scale(1.2);
+}
+.container-credits-links a:last-of-type .icon {
+  color: #4894d1;
+}
+
+.container {
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+/*# sourceMappingURL=style.css.map */

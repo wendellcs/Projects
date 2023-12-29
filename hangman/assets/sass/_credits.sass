@@ -1,0 +1,23 @@
+@use 'variables'
+
+.container-credits
+    margin-top: 20px
+    &-links
+        display: flex
+        justify-content: center
+        gap: 20px
+
+        a
+            margin-top: 10px
+            color: #000
+
+            .icon
+                font-size: 30px
+                transition: .3s
+
+                &:hover
+                    transform: scale(1.2)
+
+            &:last-of-type
+                .icon
+                    color: #4894d1
