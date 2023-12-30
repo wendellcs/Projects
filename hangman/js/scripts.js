@@ -1,5 +1,7 @@
 'use strict';
 
+// Game Menu
+
 const containerHowToPlay = document.querySelector('.container-start-howtoplay')
 const textHowToPlay = document.querySelector('.htp-text')
 const btnHowToPlay = document.querySelector('.container-start-icon-btnHtp')
@@ -18,13 +20,33 @@ function verifyContainerStatus(element) {
     }
 }
 
+
+// Game
+
+
+const creditsContainer = document.querySelector('.container-credits')
+const menuContainer = document.querySelector('.container-start')
+const btnStartGame = document.querySelector('.btn.start-game')
+btnStartGame.addEventListener('click', () => {
+    toggleElementVisibility(menuContainer)
+    toggleElementVisibility(creditsContainer)
+
+    startGame()
+})
+
+
+function startGame() {
+
+}
+
+// General Functions
+
 function toggleElementVisibility(element) {
     if (!element.classList.contains('hidden')) {
         element.classList.add('hidden')
     } else {
         element.classList.remove('hidden')
     }
-
 }
 
 // const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];

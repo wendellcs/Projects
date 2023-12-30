@@ -10,8 +10,14 @@
     text-align: center
     margin-top: 100px
 
+    &.hidden
+        display: none
+
     .btn.start-game
         color: variables.$font-dark-color
+        background: variables.$primary-color
+        font-size: 18px
+        font-weight: bolder
         margin: 0 auto
         border: none
         width: 200px
@@ -28,7 +34,6 @@
             box-shadow: 0 0 15px variables.$primary-color
 
     h1
-        @include utilities.title-animation
         color: variables.$primary-color
         font-size: 38px
         letter-spacing: 5px
