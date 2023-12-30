@@ -1,42 +1,4 @@
-/*
-Exercício: Jogo da Forca
-Crie um jogo da forca em que o computador escolhe uma palavra aleatória de uma lista predefinida de palavras e o jogador tenta adivinhar a palavra, uma letra por vez. O jogo deve funcionar da seguinte forma:
-
-Preparação do Jogo:
-
-Crie uma lista de palavras predefinidas.
-Escolha aleatoriamente uma palavra da lista para ser a palavra secreta.
-Interface do Usuário:
-
-Mostre ao jogador a quantidade de espaços vazios correspondentes ao número de letras na palavra secreta. Por exemplo, se a palavra secreta for "javascript", você pode exibir "_ _ _ _ _ _ _ _ _" para indicar que há 10 letras na palavra.
-Entrada do Usuário:
-
-Permita que o jogador insira uma letra por vez.
-Verificação da Letra:
-
-Verifique se a letra inserida pelo jogador está na palavra secreta. Se estiver, substitua o espaço vazio correspondente à posição da letra na palavra. Se não estiver, informe ao jogador que a letra não está na palavra e mantenha um contador de tentativas incorretas.
-Fim do Jogo:
-
-Continue o jogo até que o jogador adivinhe a palavra inteira ou exceda um número máximo de tentativas incorretas (por exemplo, 6 tentativas, que representam as partes do corpo de um enforcado).
-Mensagens ao Usuário:
-
-Forneça mensagens ao jogador indicando se eles acertaram uma letra, se a palavra foi adivinhada ou se eles perderam o jogo.
-Reinicialização do Jogo:
-
-Após o jogo terminar (seja por vitória ou derrota), permita que o jogador decida se deseja jogar novamente.
-
-
-Fazer contador de vidas
-    A cada vida perdida, cair um dos corações. (Procurar um icone de coração que nem o do
-        minecraft)
-
-Caso o jogador já tenha inserido uma letra, armazenar e mostrar ela em uma div.
-*/
-
 'use strict';
-
-
-// How to play 
 
 const containerHowToPlay = document.querySelector('.container-start-howtoplay')
 const textHowToPlay = document.querySelector('.htp-text')
@@ -64,8 +26,6 @@ function toggleElementVisibility(element) {
     }
 
 }
-
-
 
 // const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
 
@@ -132,10 +92,4 @@ function toggleElementVisibility(element) {
 //         return retorno
 //     })
 //     display.textContent = displayedWord
-// }
-
-
-// Change the visibility of the elements
-// function toggleElementVisibility(element) {
-//     element.classList.toggle('hidden')
 // }

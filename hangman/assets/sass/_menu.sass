@@ -1,4 +1,5 @@
 @use 'variables'
+@use 'utilities'
 
 .container-start
     max-width: 450px
@@ -27,6 +28,7 @@
             box-shadow: 0 0 15px variables.$primary-color
 
     h1
+        @include utilities.title-animation
         color: variables.$primary-color
         font-size: 38px
         letter-spacing: 5px
