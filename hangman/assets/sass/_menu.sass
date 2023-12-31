@@ -2,12 +2,10 @@
 @use 'utilities'
 
 .container-start
+    @include utilities.center-elements
     max-width: 450px
     width: 80%
-    display: flex
-    justify-content: center
     flex-direction: column
-    text-align: center
     margin-top: 100px
 
     &.hidden
@@ -34,10 +32,7 @@
             box-shadow: 0 0 15px variables.$primary-color
 
     h1
-        color: variables.$primary-color
-        font-size: 38px
-        letter-spacing: 5px
-        font-family: 'Rubik Doodle Shadow', sans-serif
+        @include utilities.title-style
 
     &-line
         width: 50%
@@ -55,8 +50,8 @@
 
         ul
             display: flex
-            margin: 50px 0
             flex-direction: column
+            margin: 50px 0
             gap: 20px
 
             li
@@ -70,10 +65,9 @@
             display: none
 
     &-icon
+        @include utilities.center-elements
         margin: 30px auto 30px auto
         height: 50px
-        display: flex
-        justify-content: center
 
         &-btnHtp
             display: flex
@@ -94,14 +88,11 @@
                 margin-top: 5px
 
             &-circle
-
-                display: flex
+                @include utilities.center-elements
                 width: 30px
                 height: 30px
                 border: 1px solid variables.$primary-color
                 flex-wrap: wrap
-                align-content: center
-                justify-content: center
                 border-radius: 50%
                 transition: .3s
 

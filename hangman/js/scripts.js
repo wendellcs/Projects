@@ -1,5 +1,7 @@
 'use strict';
 
+const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
+
 // Game Menu
 
 const containerHowToPlay = document.querySelector('.container-start-howtoplay')
@@ -23,23 +25,37 @@ function verifyContainerStatus(element) {
 
 // Game
 
-
+const gameContainer = document.querySelector('.container-game')
 const creditsContainer = document.querySelector('.container-credits')
 const menuContainer = document.querySelector('.container-start')
 const btnStartGame = document.querySelector('.btn.start-game')
-btnStartGame.addEventListener('click', () => {
-    toggleElementVisibility(menuContainer)
-    toggleElementVisibility(creditsContainer)
-
-    startGame()
-})
+btnStartGame.addEventListener('click', startGame)
 
 
 function startGame() {
+    const randomNumber = generateRandomNumber()
+    createWordCircles(randomWords[randomNumber - 1])
 
+    toggleElementVisibility(menuContainer)
+    toggleElementVisibility(gameContainer)
 }
 
+
 // General Functions
+
+const display = document.querySelector('.word-display')
+
+function createWordCircles(word) {
+    for (let i = 0; i < word.length; i++) {
+        const circle = document.createElement('div')
+        circle.className = 'circle'
+        display.appendChild(circle)
+    }
+}
+
+function updateCircleWord() {
+
+}
 
 function toggleElementVisibility(element) {
     if (!element.classList.contains('hidden')) {
@@ -49,7 +65,10 @@ function toggleElementVisibility(element) {
     }
 }
 
-// const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
+function generateRandomNumber() {
+    return Math.round(Math.random() * randomWords.length)
+}
+
 
 // const form = document.querySelector('.form')
 // form.addEventListener('submit', (e) => {

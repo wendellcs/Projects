@@ -19,7 +19,7 @@
     <main>
 
         <div class="container">
-            <div class="container-start">
+            <div class="container-start" style="display: none;">
                 <h1>Hangman</h1>
                 <div class="container-start-line"></div>
 
@@ -63,8 +63,8 @@
                     </ul>
                 </div>
             </div>
-            <div class="container-credits">
-                <div class="container-credits-links">
+            <div class="container-credits" style="display: none;">
+                <div class=" container-credits-links">
                     <a href="https://wendellcs.github.io" target="_blank">
                         <ion-icon class="icon" name="code-slash-outline"></ion-icon>
                     </a>
@@ -77,7 +77,76 @@
                 </div>
             </div>
             <div class="container-game">
+                <div class="container-game-upper">
+                    <h1>Hangman</h1>
+                    <hr />
 
+                    <div class="container-game-upper-word">
+                        <h2>Word</h2>
+                        <div class="word-display">
+                        </div>
+                    </div>
+                </div>
+                <div class="container-game-hangman">
+                    <div class="hangman-pole">
+                        <div class="vertical"></div>
+                        <div class="horizontal"></div>
+                        <div class="sup"></div>
+                        <div class="block"></div>
+                        <div class="rope"></div>
+                    </div>
+                    <div class="hangman-body"></div>
+                </div>
+                <div class="container-game-keyboard">
+                    <table class="table-vowels">
+                        <tr>
+                            <td>
+                                <button class="keyboard-letter">A</button>
+                            </td>
+                            <td>
+                                <button class="keyboard-letter">E</button>
+                            </td>
+                            <td>
+                                <button class="keyboard-letter">I</button>
+                            </td>
+                            <td>
+                                <button class="keyboard-letter">O</button>
+                            </td>
+                            <td>
+                                <button class="keyboard-letter">U</button>
+                            </td>
+                        </tr>
+                    </table>
+                    <table class="table-letters">
+                        <tr>
+                            <td><button class="keyboard-letter">Q</button></td>
+                            <td><button class="keyboard-letter">W</button></td>
+                            <td><button class="keyboard-letter">R</button></td>
+                            <td><button class="keyboard-letter">T</button></td>
+                            <td><button class="keyboard-letter">Y</button></td>
+                            <td><button class="keyboard-letter">P</button></td>
+                            <td><button class="keyboard-letter">S</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="keyboard-letter">D</button></td>
+                            <td><button class="keyboard-letter">F</button></td>
+                            <td><button class="keyboard-letter">G</button></td>
+                            <td><button class="keyboard-letter">H</button></td>
+                            <td><button class="keyboard-letter">J</button></td>
+                            <td><button class="keyboard-letter">K</button></td>
+                            <td><button class="keyboard-letter">L</button></td>
+                        </tr>
+                        <tr>
+                            <td><button class="keyboard-letter clicked">Z</button></td>
+                            <td><button class="keyboard-letter">X</button></td>
+                            <td><button class="keyboard-letter">C</button></td>
+                            <td><button class="keyboard-letter">V</button></td>
+                            <td><button class="keyboard-letter">B</button></td>
+                            <td><button class="keyboard-letter">N</button></td>
+                            <td><button class="keyboard-letter">M</button></td>
+                        </tr>
+                    </table>
+                </div>
             </div>
         </div>
     </main>

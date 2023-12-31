@@ -1,0 +1,132 @@
+@use 'variables'
+@use 'utilities'
+
+.container-game
+    display: block
+    width: 100%
+    max-width: 500px
+    text-align: center
+
+    &.hidden
+        display: none
+
+    &-upper
+        margin-top: 50px
+        width: 100%
+
+        h1
+            @include utilities.title-style
+
+        hr
+            margin: 20px 0
+
+        &-word
+            font-family: 'Rubik', sans-serif
+            letter-spacing: 2px
+
+            .word-display
+                @include utilities.center-elements
+                margin: 20px 0
+                gap: 10px
+
+                .circle
+                    @include utilities.center-elements
+                    font-size: 20px
+                    font-weight: bold
+                    width: 32px
+                    height: 32px
+                    background: #fff
+                    font-family: 'arial', sans-serif
+                    border-radius: 50%
+                    color: #000
+
+    &-hangman
+        border: 5px solid variables.$primary-color
+        box-shadow: 0 0 15px variables.$primary-color
+        border-radius: 15px
+        margin: 0 auto
+        width: 80%
+        max-width: 500px
+        height: 400px
+        background: #cecece
+        position: relative
+
+        .hangman-pole
+            .vertical, .horizontal,.block, .rope, .sup
+                position: absolute
+                border: 1px solid #442e23
+                background: #6d4836
+
+            .vertical
+                bottom: 0
+                left: 60px
+                width: 15px
+                height: 320px
+
+            .horizontal
+                border-radius: 5px
+                top: -20px
+                width: 15px
+                height: 185px
+                left: 135px
+                transform: rotate(90deg)
+
+            .sup
+                width: 80px
+                height: 17px
+                bottom: 0
+                left: 28px
+                border-radius: 5px 5px 0 0
+
+            .block
+                width: 25px
+                height: 10px
+                left: 200px
+                border-top: none
+                top: 80px
+
+            .rope
+                left: 210px
+                top: 90px
+                width: 5px
+                height: 50px
+                background: #a7765d
+
+    &-keyboard
+        margin-top: 30px
+        .table-vowels, .table-letters
+            width: 70%
+            margin: 20px auto
+
+            tr
+                display: flex
+                justify-content: space-between
+                margin-bottom: 10px
+
+                .keyboard-letter
+                    min-width: 40px
+                    height: 40px
+                    background: #0000009f
+                    border: 1px solid variables.$primary-color
+                    border-radius: 10px
+                    color: variables.$primary-color
+                    font-weight: bold
+                    font-size: 18px
+                    transition: .3s
+
+                    &.clicked
+                        background: none
+                        color: #c95757
+                        border-color: #c95757
+
+                        &:hover
+                            transform: none
+                            cursor: default
+
+                    &:hover
+                        background: transparent
+                        transform: scale(1.1)
+
+        .table-vowels
+            width: 50%
+            .keyboard-letter
