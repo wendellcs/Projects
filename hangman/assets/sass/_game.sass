@@ -46,8 +46,8 @@
         border-radius: 15px
         margin: 0 auto
         width: 80%
-        max-width: 500px
-        height: 400px
+        max-width: 450px
+        height: 320px
         background: #cecece
         position: relative
 
@@ -61,11 +61,11 @@
                 bottom: 0
                 left: 60px
                 width: 15px
-                height: 320px
+                height: 270px
 
             .horizontal
                 border-radius: 5px
-                top: -20px
+                top: -50px
                 width: 15px
                 height: 185px
                 left: 135px
@@ -83,29 +83,27 @@
                 height: 10px
                 left: 200px
                 border-top: none
-                top: 80px
+                top: 50px
 
             .rope
                 left: 210px
-                top: 90px
+                top: 60px
                 width: 5px
                 height: 50px
                 background: #a7765d
 
     &-keyboard
-        margin-top: 30px
-        .table-vowels, .table-letters
-            width: 70%
-            margin: 20px auto
+        margin-top: 25px
+        @include utilities.center-elements
+        flex-direction: column
 
+        .table-vowels, .table-letters
             tr
-                display: flex
-                justify-content: space-between
-                margin-bottom: 10px
+                display: grid
 
                 .keyboard-letter
-                    min-width: 40px
-                    height: 40px
+                    min-width: 50px
+                    min-height: 50px
                     background: #0000009f
                     border: 1px solid variables.$primary-color
                     border-radius: 10px
@@ -115,18 +113,22 @@
                     transition: .3s
 
                     &.clicked
-                        background: none
-                        color: #c95757
-                        border-color: #c95757
-
-                        &:hover
-                            transform: none
-                            cursor: default
+                        @include utilities.drop-animation
 
                     &:hover
                         background: transparent
                         transform: scale(1.1)
 
+        .table-letters
+            width: 80%
+            margin-top: 20px
+            tr
+                gap: 2px
+                grid-template-columns: repeat(7, 14%)
+                margin-bottom: 10px
+
         .table-vowels
-            width: 50%
-            .keyboard-letter
+            width: 55%
+            tr
+                gap: 2px
+                grid-template-columns: repeat(5 , 20%)

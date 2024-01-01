@@ -38,6 +38,32 @@ input {
   flex-direction: column;
 }
 
+@keyframes drop-animation {
+  0% {
+    transform: translate3d(15px, -20px, 50px) rotate(15deg);
+  }
+  15% {
+    transform: translate3d(25px, -30px, 80px) rotate(45deg);
+  }
+  30% {
+    transform: translate3d(40px, -45px, 10px) rotate(60deg);
+  }
+  45% {
+    transform: translate3d(60px, -20px, 20px) rotate(80deg);
+  }
+  60% {
+    transform: translate3d(80px, 0px, 30px) rotate(100deg);
+  }
+  75% {
+    transform: translate3d(100px, 200px, 40px) rotate(130deg);
+  }
+  90% {
+    transform: translate3d(150px, 500px, 50px) rotate(145deg);
+  }
+  100% {
+    transform: translate3d(200px, 700px, 60px) rotate(180deg);
+  }
+}
 .container-start {
   display: flex;
   align-items: center;
@@ -226,8 +252,8 @@ input {
   border-radius: 15px;
   margin: 0 auto;
   width: 80%;
-  max-width: 500px;
-  height: 400px;
+  max-width: 450px;
+  height: 320px;
   background: #cecece;
   position: relative;
 }
@@ -240,11 +266,11 @@ input {
   bottom: 0;
   left: 60px;
   width: 15px;
-  height: 320px;
+  height: 270px;
 }
 .container-game-hangman .hangman-pole .horizontal {
   border-radius: 5px;
-  top: -20px;
+  top: -50px;
   width: 15px;
   height: 185px;
   left: 135px;
@@ -262,30 +288,28 @@ input {
   height: 10px;
   left: 200px;
   border-top: none;
-  top: 80px;
+  top: 50px;
 }
 .container-game-hangman .hangman-pole .rope {
   left: 210px;
-  top: 90px;
+  top: 60px;
   width: 5px;
   height: 50px;
   background: #a7765d;
 }
 .container-game-keyboard {
-  margin-top: 30px;
-}
-.container-game-keyboard .table-vowels, .container-game-keyboard .table-letters {
-  width: 70%;
-  margin: 20px auto;
+  margin-top: 25px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
 }
 .container-game-keyboard .table-vowels tr, .container-game-keyboard .table-letters tr {
-  display: flex;
-  justify-content: space-between;
-  margin-bottom: 10px;
+  display: grid;
 }
 .container-game-keyboard .table-vowels tr .keyboard-letter, .container-game-keyboard .table-letters tr .keyboard-letter {
-  min-width: 40px;
-  height: 40px;
+  min-width: 50px;
+  min-height: 50px;
   background: rgba(0, 0, 0, 0.6235294118);
   border: 1px solid #FFD470;
   border-radius: 10px;
@@ -295,20 +319,27 @@ input {
   transition: 0.3s;
 }
 .container-game-keyboard .table-vowels tr .keyboard-letter.clicked, .container-game-keyboard .table-letters tr .keyboard-letter.clicked {
-  background: none;
-  color: #c95757;
-  border-color: #c95757;
-}
-.container-game-keyboard .table-vowels tr .keyboard-letter.clicked:hover, .container-game-keyboard .table-letters tr .keyboard-letter.clicked:hover {
-  transform: none;
-  cursor: default;
+  animation: drop-animation 0.3s linear;
 }
 .container-game-keyboard .table-vowels tr .keyboard-letter:hover, .container-game-keyboard .table-letters tr .keyboard-letter:hover {
   background: transparent;
   transform: scale(1.1);
 }
+.container-game-keyboard .table-letters {
+  width: 80%;
+  margin-top: 20px;
+}
+.container-game-keyboard .table-letters tr {
+  gap: 2px;
+  grid-template-columns: repeat(7, 14%);
+  margin-bottom: 10px;
+}
 .container-game-keyboard .table-vowels {
-  width: 50%;
+  width: 55%;
+}
+.container-game-keyboard .table-vowels tr {
+  gap: 2px;
+  grid-template-columns: repeat(5, 20%);
 }
 
 /*# sourceMappingURL=style.css.map */

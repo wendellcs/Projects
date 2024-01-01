@@ -14,13 +14,6 @@ btnHowToPlay.addEventListener('click', (e) => {
     verifyContainerStatus(containerHowToPlay)
 })
 
-function verifyContainerStatus(element) {
-    if (!element.classList.contains('hidden')) {
-        textHowToPlay.textContent = 'Go Back'
-    } else {
-        textHowToPlay.textContent = "Don't know how to play?"
-    }
-}
 
 
 // Game
@@ -31,21 +24,44 @@ const menuContainer = document.querySelector('.container-start')
 const btnStartGame = document.querySelector('.btn.start-game')
 btnStartGame.addEventListener('click', startGame)
 
+const keyboard = document.querySelectorAll('.keyboard-letter')
+keyboard.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('clicked')) return
+        mainFunction(e.target, e.target.textContent)
+    })
+})
+
+function getRandomWord() {
+    const randomNumber = generateRandomNumber()
+    return randomWords[randomNumber - 1]
+}
+const word = getRandomWord()
+console.log(word)
 
 function startGame() {
-    const randomNumber = generateRandomNumber()
-    createWordCircles(randomWords[randomNumber - 1])
-
     toggleElementVisibility(menuContainer)
     toggleElementVisibility(gameContainer)
+
+    createWordCircles(word)
 }
 
 
 // General Functions
 
+function generateRandomNumber() {
+    return Math.round(Math.random() * randomWords.length)
+}
+
+function mainFunction(button, value) {
+    updateCircle(value)
+    animationController(button)
+}
+
 const display = document.querySelector('.word-display')
 
-function createWordCircles(word) {
+createWordCircles()
+function createWordCircles() {
     for (let i = 0; i < word.length; i++) {
         const circle = document.createElement('div')
         circle.className = 'circle'
@@ -53,8 +69,55 @@ function createWordCircles(word) {
     }
 }
 
-function updateCircleWord() {
+const circles = document.querySelectorAll('.circle')
+function updateCircle(letter) {
+    for (let i = 0; i < word.length; i++) {
+        if (word[i] == letter.toLowerCase()) {
+            circles[i].innerHTML = letter
+        }
+    }
+    setTimeout(() => {
+        verifyGameOver()
+    }, 100)
+}
 
+function verifyGameOver() {
+    for (let i = 0; i < word.length; i++) {
+        if (circles[i].textContent == '') return console.log('Há espaços vazios')
+    }
+
+    gameOver()
+}
+
+function gameOver() {
+    alert('Game over')
+}
+
+
+// Effects functions
+
+
+const animations = ['drop-animation', "drop-animation-left"]
+
+
+function animationController(element) {
+    if (!element.classList.contains('clicked')) {
+        element.classList.add('clicked')
+    } else {
+        element.classList.remove('clicked')
+    }
+    setTimeout(() => {
+        const parent = element.parentElement
+        parent.removeChild(element)
+    }, 200);
+}
+
+function verifyContainerStatus(element) {
+    if (!element.classList.contains('hidden')) {
+        textHowToPlay.textContent = 'Go Back'
+    } else {
+        textHowToPlay.textContent = "Don't know how to play?"
+    }
 }
 
 function toggleElementVisibility(element) {
@@ -64,73 +127,3 @@ function toggleElementVisibility(element) {
         element.classList.remove('hidden')
     }
 }
-
-function generateRandomNumber() {
-    return Math.round(Math.random() * randomWords.length)
-}
-
-
-// const form = document.querySelector('.form')
-// form.addEventListener('submit', (e) => {
-//     e.preventDefault()
-// })
-
-// const userInput = document.querySelector('.form-input')
-// const display = document.querySelector('.container-top-display')
-// const divGame = document.querySelector('.container-game')
-// divGame.classList.add('hidden')
-
-
-// // Start Game
-// let randomWord;
-// const btnStartGame = document.querySelector('.btn.start')
-// btnStartGame.addEventListener('click', () => {
-// })
-// randomWord = getRandomWord()
-// renderFirstWord(randomWord)
-// toggleElementVisibility(divGame)
-// toggleElementVisibility(btnStartGame)
-
-// Check User Answer
-// const btnSend = document.querySelector('.btn.send')
-// btnSend.addEventListener('click', () => {
-//     const userInputValue = userInput.value
-//     const displayValue = display.textContent
-
-//     let newString = ''
-//     for (let i = 0; i < randomWord.length; i++) {
-//         if (displayValue[i] !== '-') {
-//             newString += displayValue[i];
-//         } else if (randomWord[i] === userInputValue) {
-//             newString += userInputValue;
-//         } else {
-//             newString += '-';
-//         }
-//     }
-//     display.textContent = newString
-
-//     verifyEndGame(newString)
-// })
-
-
-
-// Generate a random word and return it
-// function getRandomWord() {
-//     const random = Math.round(Math.random() * randomWords.length)
-//     const randomWord = randomWords[random]
-
-//     return randomWord
-// }
-
-// Render the hidden word in the page
-// function renderFirstWord(randomWord) {
-//     console.log(randomWord)
-//     const displayedWord = randomWord.replace(randomWord, function () {
-//         let retorno = ''
-//         for (let i = 0; i < randomWord.length; i++) {
-//             retorno += '-'
-//         }
-//         return retorno
-//     })
-//     display.textContent = displayedWord
-// }
