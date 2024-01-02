@@ -14,6 +14,9 @@
 @mixin drop-animation
     animation: drop-animation .3s linear
 
+@mixin shiny-animation
+    animation: shiny 1.8s linear infinite
+
 @keyframes drop-animation
     0%
         transform: translate3d(15px, -20px, 50px) rotate(15deg)
@@ -38,3 +41,15 @@
 
     100%
         transform: translate3d(200px, 700px, 60px) rotate(180deg)
+
+@keyframes shiny
+    0%
+        box-shadow: 0 0 8px variables.$primary-color
+    25%
+        box-shadow: 0 0 15px variables.$primary-color
+    50%
+        box-shadow: 0 0 30px variables.$primary-color
+    75%
+        box-shadow: 0 0 15px variables.$primary-color
+    100%
+        box-shadow: 0 0 8px variables.$primary-color

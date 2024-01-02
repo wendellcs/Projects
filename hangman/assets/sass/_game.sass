@@ -6,6 +6,7 @@
     width: 100%
     max-width: 500px
     text-align: center
+    position: relative
 
     &.hidden
         display: none
@@ -20,7 +21,19 @@
         hr
             margin: 20px 0
 
+        .view-level
+            position: absolute
+            top: 65px
+            right: 10px
+            font-family: 'arial', sans-serif
+            font-size: 20px
+
+            #level
+                font-size: 20px
+                font-family: 'arial', sans-serif
+
         &-word
+
             font-family: 'Rubik', sans-serif
             letter-spacing: 2px
 
@@ -114,6 +127,10 @@
 
                     &.clicked
                         @include utilities.drop-animation
+
+                        &.hidden
+                            animation: none
+                            display: none
 
                     &:hover
                         background: transparent

@@ -1,4 +1,5 @@
 @use 'variables'
+@use 'utilities'
 
 *
     padding: 0
@@ -15,6 +16,12 @@ body
     color: variables.$secondary-color
     font-family: 'Montserrat', sans-serif
 
+h1
+    @include utilities.title-style
+
+li
+    list-style: none
+
 main
     display: relative
 
@@ -28,7 +35,5 @@ input
 
 .container
     width: 100%
-    display: flex
-    justify-content: center
-    align-items: center
+    @include utilities.center-elements
     flex-direction: column

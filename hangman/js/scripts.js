@@ -2,65 +2,48 @@
 
 const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
 
-// Game Menu
-
+// Containers
 const containerHowToPlay = document.querySelector('.container-start-howtoplay')
+const gameContainer = document.querySelector('.container-game')
+const creditsContainer = document.querySelector('.container-credits')
+const menuContainer = document.querySelector('.container-start')
+// HTPs
 const textHowToPlay = document.querySelector('.htp-text')
 const btnHowToPlay = document.querySelector('.container-start-icon-btnHtp')
 const iconHowToPlay = document.querySelector('.container-start-icon-btnHtp-circle')
+// Other
+const btnStartGame = document.querySelector('.btn.start-game')
+const keyboard = document.querySelectorAll('.keyboard-letter')
+const display = document.querySelector('.word-display')
+
+keyboard.forEach(btn => {
+    btn.addEventListener('click', (e) => {
+        if (e.target.classList.contains('clicked')) return
+        updateCircle(e.target.textContent)
+        animationController(e.target)
+    })
+})
+
 btnHowToPlay.addEventListener('click', (e) => {
     toggleElementVisibility(containerHowToPlay)
     toggleElementVisibility(iconHowToPlay)
     verifyContainerStatus(containerHowToPlay)
 })
 
-
-
-// Game
-
-const gameContainer = document.querySelector('.container-game')
-const creditsContainer = document.querySelector('.container-credits')
-const menuContainer = document.querySelector('.container-start')
-const btnStartGame = document.querySelector('.btn.start-game')
-btnStartGame.addEventListener('click', startGame)
-
-const keyboard = document.querySelectorAll('.keyboard-letter')
-keyboard.forEach(btn => {
-    btn.addEventListener('click', (e) => {
-        if (e.target.classList.contains('clicked')) return
-        mainFunction(e.target, e.target.textContent)
-    })
-})
-
-function getRandomWord() {
-    const randomNumber = generateRandomNumber()
-    return randomWords[randomNumber - 1]
-}
-const word = getRandomWord()
-console.log(word)
-
-function startGame() {
+btnStartGame.addEventListener('click', () => {
     toggleElementVisibility(menuContainer)
     toggleElementVisibility(gameContainer)
 
-    createWordCircles(word)
+    getRandomWord()
+    createWordCircles()
+})
+
+let word;
+function getRandomWord() {
+    const randomNumber = Math.round(Math.random() * randomWords.length)
+    return word = randomWords[randomNumber - 1]
 }
 
-
-// General Functions
-
-function generateRandomNumber() {
-    return Math.round(Math.random() * randomWords.length)
-}
-
-function mainFunction(button, value) {
-    updateCircle(value)
-    animationController(button)
-}
-
-const display = document.querySelector('.word-display')
-
-createWordCircles()
 function createWordCircles() {
     for (let i = 0; i < word.length; i++) {
         const circle = document.createElement('div')
@@ -69,11 +52,12 @@ function createWordCircles() {
     }
 }
 
-const circles = document.querySelectorAll('.circle')
 function updateCircle(letter) {
+    const circles = document.querySelectorAll('.circle')
     for (let i = 0; i < word.length; i++) {
         if (word[i] == letter.toLowerCase()) {
             circles[i].innerHTML = letter
+
         }
     }
     setTimeout(() => {
@@ -82,15 +66,45 @@ function updateCircle(letter) {
 }
 
 function verifyGameOver() {
+    const circles = document.querySelectorAll('.circle')
     for (let i = 0; i < word.length; i++) {
-        if (circles[i].textContent == '') return console.log('Há espaços vazios')
+        if (circles[i].textContent == '') return
     }
 
-    gameOver()
+    nextLevel()
 }
 
-function gameOver() {
-    alert('Game over')
+function nextLevel() {
+    updateLevel()
+    getRandomWord()
+    removeOldWordCircles()
+    createWordCircles()
+    resetKeyboard()
+}
+
+const displayLevel = document.getElementById('level')
+let level = 1
+function updateLevel() {
+    if (level > 10) {
+        gameOver()
+    } else {
+        displayLevel.textContent = `${level + 1} `
+    }
+}
+
+function resetKeyboard() {
+    keyboard.forEach(button => {
+        button.classList.remove('clicked')
+        button.classList.remove('hidden')
+    })
+}
+
+function removeOldWordCircles() {
+    const circles = document.querySelectorAll('.circle')
+    for (let i = 0; i < circles.length; i++) {
+        display.removeChild(circles[i])
+    }
+
 }
 
 
@@ -107,8 +121,7 @@ function animationController(element) {
         element.classList.remove('clicked')
     }
     setTimeout(() => {
-        const parent = element.parentElement
-        parent.removeChild(element)
+        element.classList.add('hidden')
     }, 200);
 }
 
@@ -124,6 +137,7 @@ function toggleElementVisibility(element) {
     if (!element.classList.contains('hidden')) {
         element.classList.add('hidden')
     } else {
+
         element.classList.remove('hidden')
     }
 }
