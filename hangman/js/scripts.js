@@ -2,6 +2,11 @@
 
 const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
 
+// Resetar o hangman a cada round
+// Destacar mais o nivel que a pessoa ta
+// Criar palavras em inglês e portugues e deixar o usuario escolher
+
+
 // Containers
 const containerHowToPlay = document.querySelector('.container-start-howtoplay')
 const gameContainer = document.querySelector('.container-game')
