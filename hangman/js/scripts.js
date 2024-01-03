@@ -54,16 +54,59 @@ function createWordCircles() {
 
 function updateCircle(letter) {
     const circles = document.querySelectorAll('.circle')
+    let exists = false
     for (let i = 0; i < word.length; i++) {
         if (word[i] == letter.toLowerCase()) {
             circles[i].innerHTML = letter
-
+            exists = true
         }
     }
+    if (!exists) drawHangman()
+
     setTimeout(() => {
         verifyGameOver()
     }, 100)
 }
+
+const hangmanBodyParts = ['head', 'body', 'left-arm', 'right-arm', 'left-leg', 'right-leg']
+
+
+let wrongAnswer = 0
+function drawHangman() {
+    console.log(wrongAnswer)
+    switch (wrongAnswer) {
+        case 0:
+            removeElementClass(document.querySelector('.container-head'), 'hidden')
+            removeElementClass(document.querySelector('.hangman-rope'), 'hidden')
+            break
+        case 1:
+            removeElementClass(document.querySelector('.body'), 'hidden')
+            break
+        case 2:
+            removeElementClass(document.querySelector('.left-arm'), 'hidden')
+            break
+        case 3:
+            removeElementClass(document.querySelector('.right-arm'), 'hidden')
+            break
+        case 4:
+            removeElementClass(document.querySelector('.left-leg'), 'hidden')
+            removeElementClass(document.querySelector('.left-foot'), 'hidden')
+            break
+        case 5:
+            removeElementClass(document.querySelector('.right-leg'), 'hidden')
+            removeElementClass(document.querySelector('.right-foot'), 'hidden')
+            break
+        default:
+            addElementClass(document.querySelectorAll('.eye'), 'dead')
+            addElementClass(document.querySelectorAll('.mouth'), 'dead')
+            console.log('fim')
+            break
+
+    }
+    wrongAnswer++
+}
+
+
 
 function verifyGameOver() {
     const circles = document.querySelectorAll('.circle')
@@ -141,3 +184,13 @@ function toggleElementVisibility(element) {
         element.classList.remove('hidden')
     }
 }
+
+function addElementClass(element, _class) {
+    if (typeof element === 'object') {
+        element.forEach(e => e.classList.add(_class))
+    } else {
+        element.classList.add(_class)
+    }
+}
+
+function removeElementClass(element, _class) { element.classList.remove(_class) }

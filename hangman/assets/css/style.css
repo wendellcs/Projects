@@ -277,57 +277,6 @@ input {
   border-radius: 50%;
   color: #000;
 }
-.container-game-hangman {
-  border: 5px solid #FFD470;
-  box-shadow: 0 0 15px #FFD470;
-  border-radius: 15px;
-  margin: 0 auto;
-  width: 80%;
-  max-width: 450px;
-  height: 320px;
-  background: #cecece;
-  position: relative;
-}
-.container-game-hangman .hangman-pole .vertical, .container-game-hangman .hangman-pole .horizontal, .container-game-hangman .hangman-pole .block, .container-game-hangman .hangman-pole .rope, .container-game-hangman .hangman-pole .sup {
-  position: absolute;
-  border: 1px solid #442e23;
-  background: #6d4836;
-}
-.container-game-hangman .hangman-pole .vertical {
-  bottom: 0;
-  left: 60px;
-  width: 15px;
-  height: 270px;
-}
-.container-game-hangman .hangman-pole .horizontal {
-  border-radius: 5px;
-  top: -50px;
-  width: 15px;
-  height: 185px;
-  left: 135px;
-  transform: rotate(90deg);
-}
-.container-game-hangman .hangman-pole .sup {
-  width: 80px;
-  height: 17px;
-  bottom: 0;
-  left: 28px;
-  border-radius: 5px 5px 0 0;
-}
-.container-game-hangman .hangman-pole .block {
-  width: 25px;
-  height: 10px;
-  left: 200px;
-  border-top: none;
-  top: 50px;
-}
-.container-game-hangman .hangman-pole .rope {
-  left: 210px;
-  top: 60px;
-  width: 5px;
-  height: 50px;
-  background: #a7765d;
-}
 .container-game-keyboard {
   margin-top: 25px;
   display: flex;
@@ -406,6 +355,272 @@ input {
 .container-gameOver-buttons .btn.leave {
   background: transparent;
   color: #FFD470;
+}
+
+.container-game-hangman {
+  border: 5px solid #FFD470;
+  box-shadow: 0 0 15px #FFD470;
+  border-radius: 15px;
+  margin: 0 auto;
+  width: 80%;
+  max-width: 450px;
+  height: 320px;
+  background: #cecece;
+  position: relative;
+}
+.container-game-hangman .hangman-pole .vertical, .container-game-hangman .hangman-pole .horizontal, .container-game-hangman .hangman-pole .block, .container-game-hangman .hangman-pole .rope, .container-game-hangman .hangman-pole .sup {
+  position: absolute;
+  border: 1px solid #442e23;
+  background: #6d4836;
+}
+.container-game-hangman .hangman-pole .vertical {
+  bottom: 0;
+  left: 60px;
+  width: 15px;
+  height: 270px;
+}
+.container-game-hangman .hangman-pole .horizontal {
+  border-radius: 5px;
+  top: -50px;
+  width: 15px;
+  height: 185px;
+  left: 135px;
+  transform: rotate(90deg);
+}
+.container-game-hangman .hangman-pole .sup {
+  width: 80px;
+  height: 17px;
+  bottom: 0;
+  left: 28px;
+  border-radius: 5px 5px 0 0;
+}
+.container-game-hangman .hangman-pole .block {
+  width: 25px;
+  height: 10px;
+  left: 200px;
+  border-top: none;
+  top: 50px;
+}
+.container-game-hangman .hangman-pole .rope {
+  left: 210px;
+  top: 60px;
+  width: 5px;
+  height: 40px;
+  background: #a7765d;
+}
+.container-game-hangman .hangman-body .container-head {
+  background: rgba(0, 0, 0, 0.0823529412);
+  position: absolute;
+  width: 50px;
+  height: 50px;
+  border: 5px solid #000;
+  top: 98px;
+  left: 188px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+  flex-direction: column;
+}
+.container-game-hangman .hangman-body .container-head.hidden {
+  display: none;
+}
+.container-game-hangman .hangman-body .container-head-eyes {
+  margin-top: 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+.container-game-hangman .hangman-body .container-head-eyes .eye {
+  width: 10px;
+  height: 10px;
+  border: 2px solid #000;
+  background: #fff;
+  border-radius: 50%;
+}
+.container-game-hangman .hangman-body .container-head-eyes .eye.dead {
+  background: #000;
+  border: none;
+  border-radius: 0;
+  width: 12px;
+  height: 3px;
+  position: relative;
+  transform: rotate(-45deg);
+}
+.container-game-hangman .hangman-body .container-head-eyes .eye.dead:after {
+  content: "";
+  position: absolute;
+  width: 12px;
+  background: #000;
+  top: 0;
+  left: 0;
+  height: 3px;
+  transform: rotate(-90deg);
+}
+.container-game-hangman .hangman-body .container-head .mouth {
+  width: 20px;
+  height: 10px;
+  border-top: 2px solid #000;
+  border-radius: 40%;
+}
+.container-game-hangman .hangman-body .container-head .mouth.dead {
+  display: none;
+}
+.container-game-hangman .hangman-body .hangman-rope {
+  position: absolute;
+  width: 15px;
+  height: 8px;
+  z-index: 11;
+  background: #a7765d;
+  top: 146px;
+  left: 206px;
+  border: 1px solid #000;
+  border-radius: 50%;
+}
+.container-game-hangman .hangman-body .hangman-rope.hidden {
+  display: none;
+}
+.container-game-hangman .hangman-body .body {
+  position: absolute;
+  height: 70px;
+  width: 20px;
+  border-radius: 50px 50px 30px 30px;
+  background: rgba(190, 56, 56, 0.9921568627);
+  top: 150px;
+  left: 203px;
+  display: flex;
+  justify-content: center;
+  z-index: 1;
+}
+.container-game-hangman .hangman-body .body.hidden {
+  display: none;
+}
+.container-game-hangman .hangman-body .body .collar {
+  z-index: 10;
+  position: absolute;
+  width: 10px;
+  height: 8px;
+  background: #000;
+  border-radius: 0 0 10px 10px;
+}
+.container-game-hangman .hangman-body .left-arm, .container-game-hangman .hangman-body .right-arm, .container-game-hangman .hangman-body .left-leg, .container-game-hangman .hangman-body .right-leg {
+  position: absolute;
+  background: #000;
+  border-radius: 50px;
+}
+.container-game-hangman .hangman-body .left-arm.hidden, .container-game-hangman .hangman-body .right-arm.hidden, .container-game-hangman .hangman-body .left-leg.hidden, .container-game-hangman .hangman-body .right-leg.hidden {
+  display: none;
+}
+.container-game-hangman .hangman-body .left-arm, .container-game-hangman .hangman-body .right-arm {
+  width: 8px;
+  height: 50px;
+  top: 150px;
+}
+.container-game-hangman .hangman-body .left-arm .shirt-sleeve, .container-game-hangman .hangman-body .right-arm .shirt-sleeve {
+  position: absolute;
+  background: rgba(190, 56, 56, 0.9921568627);
+  width: 12px;
+  height: 20px;
+}
+.container-game-hangman .hangman-body .left-arm .shirt-sleeve .line, .container-game-hangman .hangman-body .right-arm .shirt-sleeve .line {
+  position: absolute;
+  width: 12px;
+  height: 3px;
+  background: #fff;
+  bottom: -1px;
+  border-radius: 0 0 10px 10px;
+}
+.container-game-hangman .hangman-body .left-arm {
+  left: 189px;
+  transform: rotate(30deg);
+}
+.container-game-hangman .hangman-body .left-arm .shirt-sleeve {
+  top: -2px;
+  left: -3px;
+  border-radius: 10px 0 0 0;
+}
+.container-game-hangman .hangman-body .right-arm {
+  left: 229px;
+  transform: rotate(-30deg);
+}
+.container-game-hangman .hangman-body .right-arm .shirt-sleeve {
+  top: -2px;
+  left: -1px;
+  border-radius: 0 10px 0 0;
+}
+.container-game-hangman .hangman-body .left-leg, .container-game-hangman .hangman-body .right-leg {
+  width: 12px;
+  height: 65px;
+  top: 210px;
+  background: #051222;
+}
+.container-game-hangman .hangman-body .left-leg {
+  left: 198px;
+  transform: rotate(10deg);
+}
+.container-game-hangman .hangman-body .right-leg {
+  left: 216px;
+  transform: rotate(-10deg);
+}
+.container-game-hangman .hangman-body .right-foot, .container-game-hangman .hangman-body .left-foot {
+  position: absolute;
+  background: #502323;
+  width: 25px;
+  height: 10px;
+  bottom: 35px;
+}
+.container-game-hangman .hangman-body .right-foot .shoelace, .container-game-hangman .hangman-body .left-foot .shoelace {
+  width: 2px;
+  height: 5px;
+  background: #fff;
+  position: relative;
+}
+.container-game-hangman .hangman-body .right-foot .sole, .container-game-hangman .hangman-body .left-foot .sole {
+  margin-top: 2px;
+  width: 25px;
+  height: 3px;
+  background: #cf7878;
+  border-radius: 0 0 50px 20px;
+}
+.container-game-hangman .hangman-body .right-foot {
+  left: 220px;
+  border-radius: 5px 10px 0 5px;
+  transform: rotate(-10deg);
+}
+.container-game-hangman .hangman-body .right-foot.hidden {
+  display: none;
+}
+.container-game-hangman .hangman-body .right-foot .shoelace {
+  margin-left: 7px;
+}
+.container-game-hangman .hangman-body .right-foot .shoelace:after {
+  content: "";
+  margin-left: 3px;
+  width: 2px;
+  height: 5px;
+  background: #fff;
+  position: absolute;
+}
+.container-game-hangman .hangman-body .left-foot {
+  left: 181px;
+  border-radius: 10px 5px 5px 0;
+  transform: rotate(10deg);
+}
+.container-game-hangman .hangman-body .left-foot.hidden {
+  display: none;
+}
+.container-game-hangman .hangman-body .left-foot .shoelace {
+  margin-left: 11px;
+}
+.container-game-hangman .hangman-body .left-foot .shoelace:after {
+  content: "";
+  margin-left: 3px;
+  width: 2px;
+  height: 5px;
+  background: #fff;
+  position: absolute;
 }
 
 /*# sourceMappingURL=style.css.map */
