@@ -116,7 +116,7 @@ function drawHangman() {
         default:
             addElementClass(document.querySelectorAll('.eye'), 'dead')
             addElementClass(document.querySelectorAll('.mouth'), 'dead')
-            console.log('fim')
+            gameOver(false)
             break
 
     }
@@ -154,10 +154,25 @@ function nextLevel() {
 const displayLevel = document.getElementById('level')
 let level = 1
 function updateLevel() {
-    if (level > 10) {
-        gameOver()
+    if (level > 1) {
+        gameOver(true)
     } else {
         displayLevel.textContent = `${level + 1} `
+    }
+    level++
+}
+
+const gameOverContainer = document.querySelector('.container-gameOver')
+function gameOver(state) {
+    addElementClass(gameContainer, 'hidden')
+    hideHangman()
+    removeElementClass(gameOverContainer, 'hidden')
+    if (state) {
+        gameOverContainer.querySelector('.game-over-message').textContent = 'Victory!!'
+        gameOverContainer.querySelector('.game-over-score').textContent = `10 / 10`
+    } else {
+        gameOverContainer.querySelector('.game-over-message').textContent = 'Not this time...'
+        gameOverContainer.querySelector('#level').textContent = level
     }
 }
 
@@ -210,7 +225,7 @@ function toggleElementVisibility(element) {
 }
 
 function addElementClass(element, _class) {
-    if (typeof element === 'object') {
+    if (element.length) {
         element.forEach(e => e.classList.add(_class))
     } else {
         element.classList.add(_class)
