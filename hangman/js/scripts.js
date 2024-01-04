@@ -1,6 +1,6 @@
 'use strict';
 
-const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
+const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maca", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
 
 // Destacar mais o nivel que a pessoa ta
 // Criar palavras em inglês e portugues e deixar o usuario escolher
@@ -24,6 +24,7 @@ keyboard.forEach(btn => {
         if (e.target.classList.contains('clicked')) return
         updateCircle(e.target.textContent)
         animationController(e.target)
+        playSound(4)
     })
 })
 
@@ -116,7 +117,8 @@ function drawHangman() {
         default:
             addElementClass(document.querySelectorAll('.eye'), 'dead')
             addElementClass(document.querySelectorAll('.mouth'), 'dead')
-            gameOver(false)
+            setTimeout(() => { gameOver(false) }, 1000)
+
             break
 
     }
@@ -195,6 +197,62 @@ function removeOldWordCircles() {
 // Effects functions
 
 
+const audios = document.querySelectorAll('.audio')
+let soundsEnabled = true
+function playSound(index) {
+    if (soundsEnabled) {
+        const audio = audios[index]
+        if (!audio.paused) {
+            audio.currentTime = 0
+        } else {
+            audio.play()
+        }
+    } else {
+        return
+    }
+}
+
+const volumeController = document.querySelector('.volume-controller')
+volumeController.addEventListener('onChange', () => {
+    console.log(volumeController.value)
+})
+
+const btnPlaySounds = document.querySelector('.sound')
+const btnMute = document.querySelector('.sound-muted')
+const containerOptions = document.querySelector('.container-options')
+const btnCloseOptions = document.querySelector('.close-options')
+const btnOptions = document.querySelector('.btn-options')
+const containerVolume = document.querySelector('.container-volume')
+
+btnCloseOptions.addEventListener('click', () => {
+    addElementClass(containerOptions, 'hidden')
+    removeElementClass(btnOptions, 'hidden')
+
+})
+
+btnOptions.addEventListener('click', () => {
+    addElementClass(btnOptions, 'hidden')
+    removeElementClass(containerOptions, 'hidden')
+})
+
+
+btnPlaySounds.addEventListener('click', () => {
+    removeElementClass(btnMute, 'hidden')
+    addElementClass(btnPlaySounds, 'hidden')
+    if (btnPlaySounds.classList.contains('hidden')) {
+        addElementClass(containerVolume, 'hidden')
+    }
+    return soundsEnabled = !soundsEnabled
+})
+
+btnMute.addEventListener('click', () => {
+    removeElementClass(btnPlaySounds, 'hidden')
+    addElementClass(btnMute, 'hidden')
+    if (!btnPlaySounds.classList.contains('hidden')) {
+        removeElementClass(containerVolume, 'hidden')
+    }
+    return soundsEnabled = !soundsEnabled
+})
 
 function animationController(element) {
     if (!element.classList.contains('clicked')) {

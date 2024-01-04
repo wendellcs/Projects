@@ -76,6 +76,21 @@
                 </div>
             </div>
             <div class="container-game hidden">
+                <div class="container-game-settings">
+                    <ion-icon name="settings-outline" class="btn-options"></ion-icon>
+                    <div class="container-options hidden">
+                        <ion-icon name="close-outline" class="close-options"></ion-icon>
+                        <div class="container-options-sounds">
+                            <ion-icon name="volume-high-outline" class="sound"></ion-icon>
+                            <ion-icon name="volume-mute-outline" class="sound-muted hidden"></ion-icon>
+                        </div>
+                        <div class="container-volume">
+                            <label for="volume">Volume:</label>
+                            <input type="range" id="volume" class="volume-controller" name="volume" min="0" max="100"
+                                value="50">
+                        </div>
+                    </div>
+                </div>
                 <div class="container-game-upper">
                     <h1>Hangman</h1>
                     <p class="view-level"><span id="level">1 </span>/ 10</p>
@@ -203,6 +218,12 @@
                 </div>
             </div>
         </div>
+
+        <audio src="./assets/sounds/correctAnswer.wav" class="audio"></audio>
+        <audio src="./assets/sounds/lose.wav" class="audio"></audio>
+        <audio src="./assets/sounds/nextLevel.mp3" class="audio"></audio>
+        <audio src="./assets/sounds/victory.wav" class="audio"></audio>
+        <audio src="./assets/sounds/click.mp3" class="audio"></audio>
     </main>
 
     <script src="js/scripts.js"></script>

@@ -229,6 +229,89 @@ input {
 .container-game.hidden {
   display: none;
 }
+.container-game-settings {
+  font-size: 35px;
+  position: absolute;
+  right: 10px;
+  top: 12px;
+}
+.container-game-settings .btn-options {
+  cursor: pointer;
+  transition: 0.3s;
+}
+.container-game-settings .btn-options:hover {
+  transform: scale(1.2);
+}
+.container-game-settings .btn-options.hidden {
+  display: none;
+}
+.container-game-settings .container-options {
+  display: flex;
+  flex-direction: column;
+  width: 200px;
+  background: rgba(0, 0, 0, 0.8274509804);
+  padding: 20px 10px;
+  border-radius: 15px;
+  z-index: 10;
+  position: absolute;
+  right: 0;
+  top: 10px;
+}
+.container-game-settings .container-options.hidden {
+  display: none;
+}
+.container-game-settings .container-options .close-options {
+  position: absolute;
+  right: 10px;
+  top: 10px;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: 0.3s;
+  border-radius: 50%;
+}
+.container-game-settings .container-options .close-options:hover {
+  border-color: #fff;
+}
+.container-game-settings .container-options-sounds {
+  font-size: 30px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+.container-game-settings .container-options-sounds .sound, .container-game-settings .container-options-sounds .sound-muted {
+  padding: 5px;
+  border-radius: 50%;
+  border: 1px solid #fff;
+  cursor: pointer;
+  transition: 0.3s;
+}
+.container-game-settings .container-options-sounds .sound:hover, .container-game-settings .container-options-sounds .sound-muted:hover {
+  transform: scale(1.1);
+}
+.container-game-settings .container-options-sounds .sound.hidden {
+  display: none;
+}
+.container-game-settings .container-options-sounds .sound-muted.hidden {
+  display: none;
+}
+.container-game-settings .container-options .container-volume {
+  margin-top: 10px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  width: 100%;
+}
+.container-game-settings .container-options .container-volume.hidden {
+  display: none;
+}
+.container-game-settings .container-options .container-volume label {
+  font-size: 16px;
+}
+.container-game-settings .container-options .container-volume .volume-controller {
+  margin: 0 auto;
+  width: 160px;
+  cursor: pointer;
+}
 .container-game-upper {
   margin-top: 50px;
   width: 100%;
