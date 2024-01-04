@@ -2,10 +2,8 @@
 
 const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maça", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
 
-// Resetar o hangman a cada round
 // Destacar mais o nivel que a pessoa ta
 // Criar palavras em inglês e portugues e deixar o usuario escolher
-
 
 // Containers
 const containerHowToPlay = document.querySelector('.container-start-howtoplay')
@@ -73,7 +71,21 @@ function updateCircle(letter) {
     }, 100)
 }
 
-const hangmanBodyParts = ['head', 'body', 'left-arm', 'right-arm', 'left-leg', 'right-leg']
+// Hangman 
+
+const head = document.querySelector('.container-head')
+const rope = document.querySelector('.hangman-rope')
+
+const body = document.querySelector('.body')
+
+const rigthArm = document.querySelector('.right-arm')
+const leftArm = document.querySelector('.left-arm')
+
+const leftLeg = document.querySelector('.left-leg')
+const leftFoot = document.querySelector('.left-foot')
+
+const rigthLeg = document.querySelector('.right-leg')
+const rightFoot = document.querySelector('.right-foot')
 
 
 let wrongAnswer = 0
@@ -81,25 +93,25 @@ function drawHangman() {
     console.log(wrongAnswer)
     switch (wrongAnswer) {
         case 0:
-            removeElementClass(document.querySelector('.container-head'), 'hidden')
-            removeElementClass(document.querySelector('.hangman-rope'), 'hidden')
+            removeElementClass(head, 'hidden')
+            removeElementClass(rope, 'hidden')
             break
         case 1:
-            removeElementClass(document.querySelector('.body'), 'hidden')
+            removeElementClass(body, 'hidden')
             break
         case 2:
-            removeElementClass(document.querySelector('.left-arm'), 'hidden')
+            removeElementClass(rigthArm, 'hidden')
             break
         case 3:
-            removeElementClass(document.querySelector('.right-arm'), 'hidden')
+            removeElementClass(leftArm, 'hidden')
             break
         case 4:
-            removeElementClass(document.querySelector('.left-leg'), 'hidden')
-            removeElementClass(document.querySelector('.left-foot'), 'hidden')
+            removeElementClass(leftLeg, 'hidden')
+            removeElementClass(leftFoot, 'hidden')
             break
         case 5:
-            removeElementClass(document.querySelector('.right-leg'), 'hidden')
-            removeElementClass(document.querySelector('.right-foot'), 'hidden')
+            removeElementClass(rigthLeg, 'hidden')
+            removeElementClass(rightFoot, 'hidden')
             break
         default:
             addElementClass(document.querySelectorAll('.eye'), 'dead')
@@ -111,7 +123,14 @@ function drawHangman() {
     wrongAnswer++
 }
 
-
+const hangman = document.querySelectorAll('.hangman-body > div')
+function hideHangman() {
+    hangman.forEach(part => {
+        if (!part.classList.contains('hidden')) {
+            part.classList.add('hidden')
+        }
+    })
+}
 
 function verifyGameOver() {
     const circles = document.querySelectorAll('.circle')
@@ -123,11 +142,13 @@ function verifyGameOver() {
 }
 
 function nextLevel() {
+    hideHangman()
     updateLevel()
     getRandomWord()
     removeOldWordCircles()
     createWordCircles()
     resetKeyboard()
+    return wrongAnswer = 0
 }
 
 const displayLevel = document.getElementById('level')
@@ -158,8 +179,6 @@ function removeOldWordCircles() {
 
 // Effects functions
 
-
-const animations = ['drop-animation', "drop-animation-left"]
 
 
 function animationController(element) {
