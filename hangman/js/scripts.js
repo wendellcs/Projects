@@ -6,7 +6,6 @@ const fruits = []
 fruits.push(portuguese, english)
 
 // Destacar mais o nivel que a pessoa ta
-// Criar palavras em inglês e portugues e deixar o usuario escolher
 
 // Containers
 const containerHowToPlay = document.querySelector('.container-start-howtoplay')
@@ -15,7 +14,6 @@ const creditsContainer = document.querySelector('.container-credits')
 const menuContainer = document.querySelector('.container-start')
 const gameOverContainer = document.querySelector('.container-gameOver')
 // HTPs
-const textHowToPlay = document.querySelector('.htp-text')
 const btnHowToPlay = document.querySelector('.container-start-icon-btnHtp')
 const iconHowToPlay = document.querySelector('.container-start-icon-btnHtp-circle')
 // Buttons
@@ -37,14 +35,14 @@ keyboard.forEach(btn => {
 })
 
 btnHowToPlay.addEventListener('click', (e) => {
-    if (containerHowToPlay.classList.contains('hidden')) {
-        removeElementClass(containerHowToPlay, 'hidden')
-        textHowToPlay.textContent = 'Go Back'
-    } else {
-        addElementClass(containerHowToPlay, 'hidden')
-        textHowToPlay.textContent = "Don't know how to play?"
-    }
+    containerHowToPlay.classList.contains('hidden') ? removeElementClass(containerHowToPlay, 'hidden') : addElementClass(containerHowToPlay, 'hidden')
     iconHowToPlay.classList.contains('hidden') ? removeElementClass(iconHowToPlay, 'hidden') : addElementClass(iconHowToPlay, 'hidden')
+    if (getSelectedTranslation() == 'pt') {
+        translateElements('pt')
+    } else {
+        translateElements('en')
+    }
+
 })
 
 btnStartGame.addEventListener('click', () => {
@@ -69,8 +67,12 @@ function normalizeWords(str) {
 
 let word;
 function getRandomWord() {
-    const randomNumber = Math.round(Math.random() * fruits.length)
-    return word = normalizeWords(fruits[randomNumber - 1])
+    const randomNumber = Math.round(Math.random() * fruits[0].length)
+    if (getSelectedTranslation() == 'pt') {
+        return word = normalizeWords(fruits[0][randomNumber - 1])
+    } else {
+        return word = normalizeWords(fruits[1][randomNumber - 1])
+    }
 }
 
 function createWordCircles() {
@@ -119,10 +121,18 @@ function gameOver(state) {
     hideHangman()
     removeElementClass(gameOverContainer, 'hidden')
     if (state) {
-        gameOverContainer.querySelector('.game-over-message').textContent = 'Victory!!'
+        if (getSelectedTranslation() == 'en') {
+            gameOverContainer.querySelector('.game-over-message').textContent = 'Victory!!'
+        } else {
+            gameOverContainer.querySelector('.game-over-message').textContent = 'Vitória!!'
+        }
         gameOverContainer.querySelector('.game-over-score').textContent = `10 / 10`
     } else {
-        gameOverContainer.querySelector('.game-over-message').textContent = 'Not this time...'
+        if (getSelectedTranslation() == 'en') {
+            gameOverContainer.querySelector('.game-over-message').textContent = 'Not this time...'
+        } else {
+            gameOverContainer.querySelector('.game-over-message').textContent = 'Mais sorte na próxima...'
+        }
         gameOverContainer.querySelector('#level').textContent = level
     }
 }
@@ -339,21 +349,108 @@ function removeElementClass(element, _class) {
 // Translate
 
 
+function getSelectedTranslation() {
+    const selected = document.querySelector('.selected')
+    if (selected.classList.contains('portuguese')) {
+        return 'pt'
+    } else {
+        return 'en'
+    }
+}
+
 const btnPortuguese = document.querySelector('.portuguese')
 const btnEnglish = document.querySelector('.english')
+const textHowToPlay = document.querySelector('.htp-text')
 
 btnPortuguese.addEventListener('click', () => {
-    translateElements('portuguese')
+    translateElements('pt')
     addElementClass(btnPortuguese, 'selected')
     removeElementClass(btnEnglish, 'selected')
 })
 
 btnEnglish.addEventListener('click', () => {
-    translateElements('english')
+    translateElements('en')
     addElementClass(btnEnglish, 'selected')
     removeElementClass(btnPortuguese, 'selected')
 })
 
-function translateElements() {
 
+function translateElements(_language) {
+    if (_language == 'pt') {
+        if (containerHowToPlay.classList.contains('hidden')) {
+            textHowToPlay.textContent = 'Não sabe como jogar?'
+        } else {
+            textHowToPlay.textContent = 'Voltar'
+        }
+        btnPlayAgain.textContent = 'Jogar de novo'
+        btnLeave.textContent = 'Sair'
+        btnStartGame.textContent = 'Começar'
+        translateHowToPlay('pt')
+    } else {
+        if (containerHowToPlay.classList.contains('hidden')) {
+            textHowToPlay.textContent = "Don't know how to play?"
+        } else {
+            textHowToPlay.textContent = "Go back"
+        }
+        btnPlayAgain.textContent = 'Play Again'
+        btnLeave.textContent = 'Leave'
+        btnStartGame.textContent = 'Start'
+        translateHowToPlay('en')
+    }
+}
+
+function translateHowToPlay(_language) {
+    if (_language == 'pt') {
+        containerHowToPlay.innerHTML = ''
+        containerHowToPlay.innerHTML = `
+            <h2>Como jogar</h2>
+            <ul>
+                <li>
+                    <p>(1) - Você pode chutar uma letra de cada vez. </p>
+                </li>
+                <li>
+                    <p>
+                        (2) - Se a letra escolhida estiver na palavra, a letra irá aparecer no espaço correspondente.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        (3) - Se a letra escolhida não estiver na palavra, uma parte do boneco será desenhada.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        (4) - Você pode continuar tentando até que acerte a palavra ou até que o boneco esteja completamente desenhado.
+                    </p>
+                </li>
+            </ul>
+    `
+    } else {
+        containerHowToPlay.innerHTML = ''
+        containerHowToPlay.innerHTML = `
+            <h2>How to play</h2>
+            <ul>
+                <li>
+                    <p>(1) - You can guess one letter at a time. </p>
+                </li>
+                <li>
+                    <p>
+                        (2) - If a guessed letter is in the word, the letter will fill the corresponding
+                        blanks spaces.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        (3) - If a guessed letter is not in the word, a part of the hangman will be drawn.
+                    </p>
+                </li>
+                <li>
+                    <p>
+                        (4) - You can continue guessing until you either correctly guess the word or the
+                        hangman isfully drawn.
+                    </p>
+                </li>
+            </ul>
+        `
+    }
 }
