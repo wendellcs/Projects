@@ -218,6 +218,25 @@ input {
 .container-start-icon-btnHtp-circle.hidden {
   display: none;
 }
+.container-start-laguages {
+  display: flex;
+  gap: 15px;
+}
+.container-start-laguages .portuguese, .container-start-laguages .english {
+  background: none;
+  border: none;
+  filter: grayscale(1);
+  transition: 0.2s;
+}
+.container-start-laguages .portuguese:hover, .container-start-laguages .english:hover {
+  transform: scale(1.1);
+}
+.container-start-laguages .portuguese.selected, .container-start-laguages .english.selected {
+  filter: grayscale(0);
+}
+.container-start-laguages .portuguese.selected:hover, .container-start-laguages .english.selected:hover {
+  transform: none;
+}
 
 .container-game {
   display: block;

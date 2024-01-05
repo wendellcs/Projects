@@ -1,6 +1,9 @@
 'use strict';
 
-const randomWords = ["abacaxi", "banana", "laranja", "morango", "uva", "kiwi", "melancia", "limao", "pera", "maca", "abacate", "manga", "pessego", "cereja", "framboesa", "blueberry", "abóbora", "cenoura", "batata", "brocolis", "espinafre", "alface", "tomate", "pepino", "abobrinha", "beterraba", "couve", "repolho", "cebola"];
+const portuguese = ["Maçã", "Banana", "Laranja", "Morango", "Uva", "Pera", "Abacaxi", "Melancia", "Mamão", "Cereja", "Kiwi", "Pêssego", "Abacate", "Manga", "Limão", "Coco", "Goiaba", "Framboesa", "Pitanga", "Ameixa", "Maracujá", "Caju", "Figo", "Açaí", "Melão", "Pêssego", "Tangerina"];
+const english = ["Apple", "Banana", "Orange", "Strawberry", "Grape", "Pear", "Pineapple", "Watermelon", "Papaya", "Cherry", "Kiwi", "Peach", "Avocado", "Mango", "Lemon", "Coconut", "Guava", "Raspberry", "Surinam Cherry", "Plum", "Passion Fruit", "Cashew", "Fig", "Açaí", "Melon", "Peach", "Tangerine"];
+const fruits = []
+fruits.push(portuguese, english)
 
 // Destacar mais o nivel que a pessoa ta
 // Criar palavras em inglês e portugues e deixar o usuario escolher
@@ -10,14 +13,19 @@ const containerHowToPlay = document.querySelector('.container-start-howtoplay')
 const gameContainer = document.querySelector('.container-game')
 const creditsContainer = document.querySelector('.container-credits')
 const menuContainer = document.querySelector('.container-start')
+const gameOverContainer = document.querySelector('.container-gameOver')
 // HTPs
 const textHowToPlay = document.querySelector('.htp-text')
 const btnHowToPlay = document.querySelector('.container-start-icon-btnHtp')
 const iconHowToPlay = document.querySelector('.container-start-icon-btnHtp-circle')
-// Other
+// Buttons
 const btnStartGame = document.querySelector('.btn.start-game')
+const btnLeave = document.querySelector('.btn.leave')
+const btnPlayAgain = document.querySelector('.btn.play-again')
+// Other
 const keyboard = document.querySelectorAll('.keyboard-letter')
 const display = document.querySelector('.word-display')
+const displayLevel = document.getElementById('level')
 
 keyboard.forEach(btn => {
     btn.addEventListener('click', (e) => {
@@ -29,23 +37,40 @@ keyboard.forEach(btn => {
 })
 
 btnHowToPlay.addEventListener('click', (e) => {
-    toggleElementVisibility(containerHowToPlay)
-    toggleElementVisibility(iconHowToPlay)
-    verifyContainerStatus(containerHowToPlay)
+    if (containerHowToPlay.classList.contains('hidden')) {
+        removeElementClass(containerHowToPlay, 'hidden')
+        textHowToPlay.textContent = 'Go Back'
+    } else {
+        addElementClass(containerHowToPlay, 'hidden')
+        textHowToPlay.textContent = "Don't know how to play?"
+    }
+    iconHowToPlay.classList.contains('hidden') ? removeElementClass(iconHowToPlay, 'hidden') : addElementClass(iconHowToPlay, 'hidden')
 })
 
 btnStartGame.addEventListener('click', () => {
-    toggleElementVisibility(menuContainer)
-    toggleElementVisibility(gameContainer)
-
-    getRandomWord()
-    createWordCircles()
+    addElementClass(menuContainer, 'hidden')
+    removeElementClass(gameContainer, 'hidden')
+    reset()
 })
+
+btnLeave.addEventListener('click', () => {
+    addElementClass(gameOverContainer, 'hidden')
+    removeElementClass(menuContainer, 'hidden')
+})
+
+btnPlayAgain.addEventListener('click', () => restartGame())
+
+
+// Main functions
+
+function normalizeWords(str) {
+    return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
+}
 
 let word;
 function getRandomWord() {
-    const randomNumber = Math.round(Math.random() * randomWords.length)
-    return word = randomWords[randomNumber - 1]
+    const randomNumber = Math.round(Math.random() * fruits.length)
+    return word = normalizeWords(fruits[randomNumber - 1])
 }
 
 function createWordCircles() {
@@ -72,7 +97,74 @@ function updateCircle(letter) {
     }, 100)
 }
 
+function reset() {
+    getRandomWord()
+    hideHangman()
+    removeOldWordCircles()
+    createWordCircles()
+    resetKeyboard()
+}
+
+function verifyGameOver() {
+    const circles = document.querySelectorAll('.circle')
+    for (let i = 0; i < word.length; i++) {
+        if (circles[i].textContent == '') return
+    }
+
+    nextLevel()
+}
+
+function gameOver(state) {
+    addElementClass(gameContainer, 'hidden')
+    hideHangman()
+    removeElementClass(gameOverContainer, 'hidden')
+    if (state) {
+        gameOverContainer.querySelector('.game-over-message').textContent = 'Victory!!'
+        gameOverContainer.querySelector('.game-over-score').textContent = `10 / 10`
+    } else {
+        gameOverContainer.querySelector('.game-over-message').textContent = 'Not this time...'
+        gameOverContainer.querySelector('#level').textContent = level
+    }
+}
+
+function nextLevel() {
+    updateLevel()
+    reset()
+}
+
+let level = 1
+function updateLevel() {
+    level > 10 ? gameOver(true) : displayLevel.textContent = `${level + 1} `
+    return level++
+}
+
+function restartGame() {
+    reset()
+    addElementClass(gameOverContainer, 'hidden')
+    removeElementClass(gameContainer, 'hidden')
+    removeElementClass(eyes, 'dead')
+    removeElementClass(mouth, 'dead')
+    displayLevel.textContent = '1 '
+    return level = 1
+}
+
+function resetKeyboard() {
+    keyboard.forEach(button => {
+        button.classList.remove('clicked')
+        button.classList.remove('hidden')
+    })
+}
+
+function removeOldWordCircles() {
+    const circles = document.querySelectorAll('.circle')
+    for (let i = 0; i < circles.length; i++) {
+        display.removeChild(circles[i])
+    }
+}
+
+
 // Hangman 
+
 
 const head = document.querySelector('.container-head')
 const rope = document.querySelector('.hangman-rope')
@@ -88,10 +180,13 @@ const leftFoot = document.querySelector('.left-foot')
 const rigthLeg = document.querySelector('.right-leg')
 const rightFoot = document.querySelector('.right-foot')
 
+const eyes = document.querySelectorAll('.eye')
+const mouth = document.querySelector('.mouth')
+
+const hangman = document.querySelectorAll('.hangman-body > div')
 
 let wrongAnswer = 0
 function drawHangman() {
-    console.log(wrongAnswer)
     switch (wrongAnswer) {
         case 0:
             removeElementClass(head, 'hidden')
@@ -115,89 +210,40 @@ function drawHangman() {
             removeElementClass(rightFoot, 'hidden')
             break
         default:
-            addElementClass(document.querySelectorAll('.eye'), 'dead')
-            addElementClass(document.querySelectorAll('.mouth'), 'dead')
+            addElementClass(eyes, 'dead')
+            addElementClass(mouth, 'dead')
             setTimeout(() => { gameOver(false) }, 1000)
 
             break
-
     }
     wrongAnswer++
 }
 
-const hangman = document.querySelectorAll('.hangman-body > div')
 function hideHangman() {
     hangman.forEach(part => {
         if (!part.classList.contains('hidden')) {
             part.classList.add('hidden')
         }
     })
-}
-
-function verifyGameOver() {
-    const circles = document.querySelectorAll('.circle')
-    for (let i = 0; i < word.length; i++) {
-        if (circles[i].textContent == '') return
-    }
-
-    nextLevel()
-}
-
-function nextLevel() {
-    hideHangman()
-    updateLevel()
-    getRandomWord()
-    removeOldWordCircles()
-    createWordCircles()
-    resetKeyboard()
     return wrongAnswer = 0
 }
 
-const displayLevel = document.getElementById('level')
-let level = 1
-function updateLevel() {
-    if (level > 10) {
-        gameOver(true)
-    } else {
-        displayLevel.textContent = `${level + 1} `
-    }
-    level++
-}
 
-const gameOverContainer = document.querySelector('.container-gameOver')
-function gameOver(state) {
-    addElementClass(gameContainer, 'hidden')
-    hideHangman()
-    removeElementClass(gameOverContainer, 'hidden')
-    if (state) {
-        gameOverContainer.querySelector('.game-over-message').textContent = 'Victory!!'
-        gameOverContainer.querySelector('.game-over-score').textContent = `10 / 10`
-    } else {
-        gameOverContainer.querySelector('.game-over-message').textContent = 'Not this time...'
-        gameOverContainer.querySelector('#level').textContent = level
-    }
-}
-
-function resetKeyboard() {
-    keyboard.forEach(button => {
-        button.classList.remove('clicked')
-        button.classList.remove('hidden')
-    })
-}
-
-function removeOldWordCircles() {
-    const circles = document.querySelectorAll('.circle')
-    for (let i = 0; i < circles.length; i++) {
-        display.removeChild(circles[i])
-    }
-
-}
+// Sound Effects
 
 
-// Effects functions
-
-
+// Containers
+const containerOptions = document.querySelector('.container-options')
+const containerVolume = document.querySelector('.container-volume')
+// Buttons
+const btnCloseOptions = document.querySelector('.close-options')
+const btnPlaySounds = document.querySelector('.sound')
+const btnMute = document.querySelector('.sound-muted')
+const btnOptions = document.querySelector('.btn-options')
+// Other
 const audios = document.querySelectorAll('.audio')
+const volumeController = document.querySelector('.volume-controller')
+
 let soundsEnabled = true
 function playSound(index) {
     if (soundsEnabled) {
@@ -212,17 +258,9 @@ function playSound(index) {
     }
 }
 
-const volumeController = document.querySelector('.volume-controller')
 volumeController.addEventListener('onChange', () => {
     console.log(volumeController.value)
 })
-
-const btnPlaySounds = document.querySelector('.sound')
-const btnMute = document.querySelector('.sound-muted')
-const containerOptions = document.querySelector('.container-options')
-const btnCloseOptions = document.querySelector('.close-options')
-const btnOptions = document.querySelector('.btn-options')
-const containerVolume = document.querySelector('.container-volume')
 
 btnCloseOptions.addEventListener('click', () => {
     addElementClass(containerOptions, 'hidden')
@@ -254,6 +292,10 @@ btnMute.addEventListener('click', () => {
     return soundsEnabled = !soundsEnabled
 })
 
+
+// Animations
+
+
 function animationController(element) {
     if (!element.classList.contains('clicked')) {
         element.classList.add('clicked')
@@ -265,13 +307,8 @@ function animationController(element) {
     }, 200);
 }
 
-function verifyContainerStatus(element) {
-    if (!element.classList.contains('hidden')) {
-        textHowToPlay.textContent = 'Go Back'
-    } else {
-        textHowToPlay.textContent = "Don't know how to play?"
-    }
-}
+
+// Style
 
 function toggleElementVisibility(element) {
     if (!element.classList.contains('hidden')) {
@@ -290,4 +327,33 @@ function addElementClass(element, _class) {
     }
 }
 
-function removeElementClass(element, _class) { element.classList.remove(_class) }
+function removeElementClass(element, _class) {
+    if (element.length) {
+        element.forEach(e => e.classList.remove(_class))
+    } else {
+        element.classList.remove(_class)
+    }
+}
+
+
+// Translate
+
+
+const btnPortuguese = document.querySelector('.portuguese')
+const btnEnglish = document.querySelector('.english')
+
+btnPortuguese.addEventListener('click', () => {
+    translateElements('portuguese')
+    addElementClass(btnPortuguese, 'selected')
+    removeElementClass(btnEnglish, 'selected')
+})
+
+btnEnglish.addEventListener('click', () => {
+    translateElements('english')
+    addElementClass(btnEnglish, 'selected')
+    removeElementClass(btnPortuguese, 'selected')
+})
+
+function translateElements() {
+
+}

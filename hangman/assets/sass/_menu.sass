@@ -72,3 +72,21 @@
 
                 &.hidden
                     display: none
+
+    &-laguages
+        display: flex
+        gap: 15px
+        .portuguese, .english
+            background: none
+            border: none
+            filter: grayscale(1)
+            transition: .2s
+
+            &:hover
+                transform: scale(1.1)
+
+            &.selected
+                filter: grayscale(0)
+
+                &:hover
+                    transform: none
