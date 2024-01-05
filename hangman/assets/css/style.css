@@ -436,6 +436,7 @@ input {
   display: flex;
   align-items: center;
   justify-content: center;
+  text-align: center;
   animation: shiny 1.8s linear infinite;
   flex-direction: column;
   gap: 20px;

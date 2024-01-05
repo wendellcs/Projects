@@ -54,6 +54,7 @@ btnStartGame.addEventListener('click', () => {
 btnLeave.addEventListener('click', () => {
     addElementClass(gameOverContainer, 'hidden')
     removeElementClass(menuContainer, 'hidden')
+    reset()
 })
 
 btnPlayAgain.addEventListener('click', () => restartGame())
@@ -105,6 +106,8 @@ function reset() {
     removeOldWordCircles()
     createWordCircles()
     resetKeyboard()
+    removeElementClass(eyes, 'dead')
+    removeElementClass(mouth, 'dead')
 }
 
 function verifyGameOver() {
@@ -152,8 +155,6 @@ function restartGame() {
     reset()
     addElementClass(gameOverContainer, 'hidden')
     removeElementClass(gameContainer, 'hidden')
-    removeElementClass(eyes, 'dead')
-    removeElementClass(mouth, 'dead')
     displayLevel.textContent = '1 '
     return level = 1
 }
@@ -235,6 +236,8 @@ function hideHangman() {
             part.classList.add('hidden')
         }
     })
+
+
     return wrongAnswer = 0
 }
 
