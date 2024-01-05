@@ -2,8 +2,8 @@
 
 const portuguese = ["Maçã", "Banana", "Laranja", "Morango", "Uva", "Pera", "Abacaxi", "Melancia", "Mamão", "Cereja", "Kiwi", "Pêssego", "Abacate", "Manga", "Limão", "Coco", "Goiaba", "Framboesa", "Pitanga", "Ameixa", "Maracujá", "Caju", "Figo", "Açaí", "Melão", "Pêssego", "Tangerina"];
 const english = ["Apple", "Banana", "Orange", "Strawberry", "Grape", "Pear", "Pineapple", "Watermelon", "Papaya", "Cherry", "Kiwi", "Peach", "Avocado", "Mango", "Lemon", "Coconut", "Guava", "Raspberry", "Surinam Cherry", "Plum", "Passion Fruit", "Cashew", "Fig", "Açaí", "Melon", "Peach", "Tangerine"];
-const fruits = []
-fruits.push(portuguese, english)
+const fruits = [portuguese, english]
+const answered = []
 
 // Destacar mais o nivel que a pessoa ta
 
@@ -52,6 +52,7 @@ btnStartGame.addEventListener('click', () => {
 })
 
 btnLeave.addEventListener('click', () => {
+    answered.splice(0, answered.length)
     addElementClass(gameOverContainer, 'hidden')
     removeElementClass(menuContainer, 'hidden')
     reset()
@@ -62,17 +63,30 @@ btnPlayAgain.addEventListener('click', () => restartGame())
 
 // Main functions
 
+
+let word;
+function verifyAvaliableWords() {
+    const randomWord = getRandomWord()
+
+    if (answered.indexOf(randomWord) == -1) {
+        answered.push(randomWord)
+        return word = randomWord
+    } else {
+        return verifyAvaliableWords()
+    }
+}
+
+
 function normalizeWords(str) {
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
 }
 
-let word;
 function getRandomWord() {
     const randomNumber = Math.round(Math.random() * fruits[0].length)
     if (getSelectedTranslation() == 'pt') {
-        return word = normalizeWords(fruits[0][randomNumber - 1])
+        return normalizeWords(fruits[0][randomNumber - 1])
     } else {
-        return word = normalizeWords(fruits[1][randomNumber - 1])
+        return normalizeWords(fruits[1][randomNumber - 1])
     }
 }
 
@@ -101,7 +115,7 @@ function updateCircle(letter) {
 }
 
 function reset() {
-    getRandomWord()
+    verifyAvaliableWords()
     hideHangman()
     removeOldWordCircles()
     createWordCircles()
@@ -147,11 +161,12 @@ function nextLevel() {
 
 let level = 1
 function updateLevel() {
-    level > 10 ? gameOver(true) : displayLevel.textContent = `${level + 1} `
+    level >= 10 ? gameOver(true) : displayLevel.textContent = `${level + 1} `
     return level++
 }
 
 function restartGame() {
+    answered.splice(0, answered.length)
     reset()
     addElementClass(gameOverContainer, 'hidden')
     removeElementClass(gameContainer, 'hidden')
@@ -257,10 +272,20 @@ const btnOptions = document.querySelector('.btn-options')
 const audios = document.querySelectorAll('.audio')
 const volumeController = document.querySelector('.volume-controller')
 
+volumeController.addEventListener('input', () => {
+    volumeLevel(volumeController.value)
+})
+
+let _volume = 0.2
+function volumeLevel(level) {
+    return _volume = (level / 100)
+}
+
 let soundsEnabled = true
 function playSound(index) {
     if (soundsEnabled) {
         const audio = audios[index]
+        audio.volume = _volume
         if (!audio.paused) {
             audio.currentTime = 0
         } else {
@@ -271,8 +296,10 @@ function playSound(index) {
     }
 }
 
-volumeController.addEventListener('onChange', () => {
-    console.log(volumeController.value)
+btnOptions.addEventListener('click', (event) => {
+    event.stopPropagation()
+    addElementClass(btnOptions, 'hidden')
+    removeElementClass(containerOptions, 'hidden')
 })
 
 btnCloseOptions.addEventListener('click', () => {
@@ -280,12 +307,6 @@ btnCloseOptions.addEventListener('click', () => {
     removeElementClass(btnOptions, 'hidden')
 
 })
-
-btnOptions.addEventListener('click', () => {
-    addElementClass(btnOptions, 'hidden')
-    removeElementClass(containerOptions, 'hidden')
-})
-
 
 btnPlaySounds.addEventListener('click', () => {
     removeElementClass(btnMute, 'hidden')
