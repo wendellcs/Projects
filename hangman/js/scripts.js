@@ -107,7 +107,11 @@ function updateCircle(letter) {
             exists = true
         }
     }
-    if (!exists) drawHangman()
+    if (!exists) {
+        drawHangman()
+    } else {
+        playSound(0, exists)
+    }
 
     setTimeout(() => {
         verifyGameOver()
@@ -139,15 +143,19 @@ function gameOver(state) {
     removeElementClass(gameOverContainer, 'hidden')
     if (state) {
         if (getSelectedTranslation() == 'en') {
+            playSound(3)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Victory!!'
         } else {
+            playSound(3)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Vitória!!'
         }
         gameOverContainer.querySelector('.game-over-score').textContent = `10 / 10`
     } else {
         if (getSelectedTranslation() == 'en') {
+            playSound(1)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Not this time...'
         } else {
+            playSound(1)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Mais sorte na próxima...'
         }
         gameOverContainer.querySelector('#level').textContent = level
@@ -155,13 +163,20 @@ function gameOver(state) {
 }
 
 function nextLevel() {
-    updateLevel()
-    reset()
+    playSound(2)
+    setTimeout(() => {
+        updateLevel()
+        reset()
+    }, 500)
 }
 
 let level = 1
 function updateLevel() {
-    level >= 10 ? gameOver(true) : displayLevel.textContent = `${level + 1} `
+    if ((level + 1) > 3) {
+        gameOver(true)
+    } else {
+        displayLevel.textContent = `${level + 1} `
+    }
     return level++
 }
 
@@ -238,7 +253,9 @@ function drawHangman() {
         default:
             addElementClass(eyes, 'dead')
             addElementClass(mouth, 'dead')
-            setTimeout(() => { gameOver(false) }, 1000)
+            setTimeout(() => {
+                gameOver(false)
+            }, 1000)
 
             break
     }
@@ -282,14 +299,14 @@ function volumeLevel(level) {
 }
 
 let soundsEnabled = true
-function playSound(index) {
+function playSound(index, exists) {
     if (soundsEnabled) {
         const audio = audios[index]
         audio.volume = _volume
         if (!audio.paused) {
-            audio.currentTime = 0
+            return audio.currentTime = 0
         } else {
-            audio.play()
+            return audio.play()
         }
     } else {
         return
@@ -305,7 +322,6 @@ btnOptions.addEventListener('click', (event) => {
 btnCloseOptions.addEventListener('click', () => {
     addElementClass(containerOptions, 'hidden')
     removeElementClass(btnOptions, 'hidden')
-
 })
 
 btnPlaySounds.addEventListener('click', () => {
@@ -348,7 +364,6 @@ function toggleElementVisibility(element) {
     if (!element.classList.contains('hidden')) {
         element.classList.add('hidden')
     } else {
-
         element.classList.remove('hidden')
     }
 }
@@ -448,7 +463,7 @@ function translateHowToPlay(_language) {
                     </p>
                 </li>
             </ul>
-    `
+        `
     } else {
         containerHowToPlay.innerHTML = ''
         containerHowToPlay.innerHTML = `
