@@ -138,6 +138,7 @@ function verifyGameOver() {
 }
 
 function gameOver(state) {
+    const displayLastWord = document.querySelector('.last-word')
     addElementClass(gameContainer, 'hidden')
     hideHangman()
     removeElementClass(gameOverContainer, 'hidden')
@@ -154,9 +155,11 @@ function gameOver(state) {
         if (getSelectedTranslation() == 'en') {
             playSound(1)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Not this time...'
+            displayLastWord.textContent = `The word was: ${word}`
         } else {
             playSound(1)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Mais sorte na próxima...'
+            displayLastWord.textContent = `A palavra era: ${word}`
         }
         gameOverContainer.querySelector('#level').textContent = level
     }
