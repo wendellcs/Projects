@@ -172,7 +172,7 @@ function nextLevel() {
 
 let level = 1
 function updateLevel() {
-    if ((level + 1) > 3) {
+    if ((level + 1) > 10) {
         gameOver(true)
     } else {
         displayLevel.textContent = `${level + 1} `
@@ -268,8 +268,6 @@ function hideHangman() {
             part.classList.add('hidden')
         }
     })
-
-
     return wrongAnswer = 0
 }
 
@@ -359,6 +357,7 @@ function animationController(element) {
 
 
 // Style
+
 
 function toggleElementVisibility(element) {
     if (!element.classList.contains('hidden')) {
