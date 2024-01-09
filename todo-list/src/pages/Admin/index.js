@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { db, auth } from '../../firebaseConnection'
-import { addDoc, collection, onSnapshot, query, orderBy, where, doc, deleteDoc } from 'firebase/firestore'
+import { addDoc, collection, onSnapshot, query, orderBy, where, doc, deleteDoc, updateDoc } from 'firebase/firestore'
 import { signOut } from 'firebase/auth'
 import './admin.css'
 
@@ -8,6 +8,7 @@ import './admin.css'
 export default function Admin() {
     const [taskInput, setTaskInput] = useState('')
     const [user, setUser] = useState({})
+    const [edit, setEdit] = useState({})
 
     const [taskList, setTaskList] = useState([])
 
@@ -46,19 +47,24 @@ export default function Admin() {
         if (!taskInput) {
             alert('Insira uma tarefa')
             return;
-        } else {
-            await addDoc(collection(db, 'Tarefas'), {
-                tarefa: taskInput,
-                created: new Date(),
-                userUid: user?.uid
-            })
-                .then(() => {
-                    console.log('Tarefa registrada')
-                    setTaskInput('')
-                }).catch(err => {
-                    console.log('Erro ao registrar: ' + err)
-                })
         }
+
+        if (edit?.id) {
+            handleUpdateTask()
+            return
+        }
+
+        await addDoc(collection(db, 'Tarefas'), {
+            tarefa: taskInput,
+            created: new Date(),
+            userUid: user?.uid
+        })
+            .then(() => {
+                console.log('Tarefa registrada')
+                setTaskInput('')
+            }).catch(err => {
+                console.log('Erro ao registrar: ' + err)
+            })
     }
 
     async function handleLogout() {
@@ -68,6 +74,26 @@ export default function Admin() {
     async function deleteTask(id) {
         const docRef = doc(db, 'Tarefas', id)
         await deleteDoc(docRef)
+    }
+
+    function editTask(item) {
+        setTaskInput(item.task)
+        setEdit(item)
+    }
+
+    async function handleUpdateTask() {
+        const docRef = doc(db, 'Tarefas', edit?.id)
+        await updateDoc(docRef, {
+            tarefa: taskInput
+        }).then(() => {
+            console.log('Task updated')
+            setTaskInput('')
+            setEdit({})
+        }).catch(() => {
+            console.log('Something went wrong')
+            setTaskInput('')
+            setEdit({})
+        })
     }
 
     return (
@@ -83,7 +109,11 @@ export default function Admin() {
             <form onSubmit={handleRegister} className='form'>
                 <input type='text' placeholder='Digite sua tarefa...' value={taskInput} onChange={(e) => { setTaskInput(e.target.value) }} />
 
-                <button className='btn-register' type='submit'>Adicionar tarefa</button>
+                {Object.keys(edit).length > 0 ? (
+                    <button className='btn-register' type='submit'>Atualizar tarefa</button>
+                ) : (
+                    <button className='btn-register' type='submit'>Adicionar tarefa</button>
+                )}
             </form>
 
             <div className='list'>
@@ -92,7 +122,7 @@ export default function Admin() {
                         <div className='task-container' key={task.id}>
                             <p>{task.task}</p>
                             <div>
-                                <button className='btn-edit'>Editar</button>
+                                <button className='btn-edit' onClick={() => { editTask(task) }}>Editar</button>
                                 <button className='btn-concluir' onClick={() => deleteTask(task.id)}>Concluir</button>
                             </div>
                         </div>
