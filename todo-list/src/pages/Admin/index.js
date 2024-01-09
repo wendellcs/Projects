@@ -1,6 +1,8 @@
 import { useState, useEffect } from 'react'
 import { db, auth } from '../../firebaseConnection'
 import { addDoc, collection, onSnapshot, query, orderBy, where, doc, deleteDoc, updateDoc } from 'firebase/firestore'
+import { toast } from 'react-toastify'
+import 'react-toastify/dist/ReactToastify.css'
 import { signOut } from 'firebase/auth'
 import './admin.css'
 
@@ -45,11 +47,12 @@ export default function Admin() {
         e.preventDefault()
 
         if (!taskInput) {
-            alert('Insira uma tarefa')
+            toast.error("Insira uma tarefa!")
             return;
         }
 
         if (edit?.id) {
+            toast.success("Tarefa atualizada")
             handleUpdateTask()
             return
         }
@@ -60,10 +63,10 @@ export default function Admin() {
             userUid: user?.uid
         })
             .then(() => {
-                console.log('Tarefa registrada')
+                toast.success("Tarefa adicionada com sucesso!")
                 setTaskInput('')
             }).catch(err => {
-                console.log('Erro ao registrar: ' + err)
+                toast.error("Algo deu errado...")
             })
     }
 
@@ -72,6 +75,7 @@ export default function Admin() {
     }
 
     async function deleteTask(id) {
+        toast.success("Tarefa concluída!")
         const docRef = doc(db, 'Tarefas', id)
         await deleteDoc(docRef)
     }

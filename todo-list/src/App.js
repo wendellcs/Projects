@@ -1,10 +1,14 @@
 import { BrowserRouter } from 'react-router-dom'
+import { ToastContainer } from 'react-toastify'
 import RoutesApp from "./routes";
 function App() {
   return (
-    <BrowserRouter>
-      <RoutesApp />
-    </BrowserRouter>
+    <div>
+      <ToastContainer autoClose={'3000'} />
+      <BrowserRouter>
+        <RoutesApp />
+      </BrowserRouter>
+    </div>
   );
 }
 
