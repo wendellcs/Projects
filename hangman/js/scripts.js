@@ -21,7 +21,7 @@ const btnStartGame = document.querySelector('.btn.start-game')
 const btnLeave = document.querySelector('.btn.leave')
 const btnPlayAgain = document.querySelector('.btn.play-again')
 // Other
-const keyboard = document.querySelectorAll('.keyboard-letter')
+const keyboard = document.querySelectorAll('.btn.keyboard')
 const display = document.querySelector('.word-display')
 const displayLevel = document.getElementById('level')
 

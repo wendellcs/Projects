@@ -1,5 +1,13 @@
 @use 'variables'
 
+@mixin mobile
+    @media(max-width: 375px)
+        @content
+
+@mixin mobile-hangman
+    @media(max-width: 330px)
+        @content
+
 @mixin title-style
     color: variables.$primary-color
     font-size: 38px

@@ -14,6 +14,7 @@
         position: relative
 
         .hangman-pole
+
             .vertical, .horizontal,.block, .rope, .sup
                 position: absolute
                 border: 1px solid #442e23
@@ -25,6 +26,9 @@
                 width: 15px
                 height: 270px
 
+                @include utilities.mobile-hangman
+                    left: 30px
+
             .horizontal
                 border-radius: 5px
                 top: -50px
@@ -33,12 +37,18 @@
                 left: 135px
                 transform: rotate(90deg)
 
+                @include utilities.mobile-hangman
+                    left: 105px
+
             .sup
                 width: 80px
                 height: 17px
                 bottom: 0
                 left: 28px
                 border-radius: 5px 5px 0 0
+
+                @include utilities.mobile-hangman
+                    left: 2px
 
             .block
                 width: 25px
@@ -47,12 +57,18 @@
                 border-top: none
                 top: 50px
 
+                @include utilities.mobile-hangman
+                    left: 170px
+
             .rope
                 left: 210px
                 top: 60px
                 width: 5px
                 height: 40px
                 background: #a7765d
+
+                @include utilities.mobile-hangman
+                    left: 180px
 
         .hangman-body
             .container-head
@@ -67,6 +83,9 @@
                 @include utilities.center-elements
                 gap: 5px
                 flex-direction: column
+
+                @include utilities.mobile-hangman
+                    left: 158px
 
                 &.hidden
                     display: none
@@ -111,8 +130,6 @@
                     &.dead
                         display: none
 
-                    // Fazer animação para ele ficar piscando
-
             .hangman-rope
                 position: absolute
                 width: 15px
@@ -124,6 +141,9 @@
                 border: 1px solid #000
                 border-radius: 50%
 
+                @include utilities.mobile-hangman
+                    left: 176px
+
                 &.hidden
                     display: none
 
@@ -131,7 +151,6 @@
                 position: absolute
                 height: 70px
                 width: 20px
-                // border: 5px solid #000
                 border-radius: 50px 50px 30px 30px
                 background: #be3838fd
                 top: 150px
@@ -139,6 +158,9 @@
                 display: flex
                 justify-content: center
                 z-index: 1
+
+                @include utilities.mobile-hangman
+                    left: 173px
 
                 &.hidden
                     display: none
@@ -182,6 +204,9 @@
                 left: 189px
                 transform: rotate(30deg)
 
+                @include utilities.mobile-hangman
+                    left: 159px
+
                 .shirt-sleeve
                     top: -2px
                     left: -3px
@@ -190,6 +215,9 @@
             .right-arm
                 left: 229px
                 transform: rotate(-30deg)
+
+                @include utilities.mobile-hangman
+                    left: 199px
 
                 .shirt-sleeve
                     top: -2px
@@ -206,9 +234,15 @@
                 left: 198px
                 transform: rotate(10deg)
 
+                @include utilities.mobile-hangman
+                    left: 168px
+
             .right-leg
                 left: 216px
                 transform: rotate(-10deg)
+
+                @include utilities.mobile-hangman
+                    left: 186px
 
             .right-foot, .left-foot
                 position: absolute
@@ -235,6 +269,9 @@
                 border-radius: 5px 10px 0 5px
                 transform: rotate(-10deg)
 
+                @include utilities.mobile-hangman
+                    left: 190px
+
                 &.hidden
                     display: none
 
@@ -253,6 +290,9 @@
                 left: 181px
                 border-radius: 10px 5px 5px 0
                 transform: rotate(10deg)
+
+                @include utilities.mobile-hangman
+                    left: 151px
 
                 &.hidden
                     display: none

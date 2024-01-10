@@ -17,6 +17,10 @@
         right: 10px
         top: 12px
 
+        @include utilities.mobile
+            right: 10px
+            top: 5px
+
         .btn-options
             cursor: pointer
             transition: .3s
@@ -103,12 +107,20 @@
         hr
             margin: 20px 0
 
+        h1, hr
+            @include utilities.mobile
+                display: none
+
         .view-level
             position: absolute
             top: 65px
             right: 10px
             font-family: 'arial', sans-serif
             font-size: 20px
+
+            @include utilities.mobile
+                top: 10px
+                right: calc(50% - 25.25px)
 
             #level
                 font-size: 20px
@@ -119,10 +131,19 @@
             font-family: 'Rubik', sans-serif
             letter-spacing: 2px
 
+            h2
+                @include utilities.mobile
+                    display: none
+
             .word-display
+                padding: 0 10px
                 @include utilities.center-elements
                 margin: 20px 0
                 gap: 10px
+
+                @include utilities.mobile
+                    display: flex
+                    flex-wrap: wrap
 
                 .circle
                     @include utilities.center-elements
@@ -136,46 +157,34 @@
                     color: #000
 
     &-keyboard
-        margin-top: 25px
+        width: 100%
+        margin: 25px auto
         @include utilities.center-elements
         flex-direction: column
 
-        .table-vowels, .table-letters
-            tr
-                display: grid
+        @include utilities.mobile
+            margin: 10px 0
 
-                .keyboard-letter
-                    min-width: 50px
-                    min-height: 50px
-                    background: #0000009f
-                    border: 1px solid variables.$primary-color
-                    border-radius: 10px
-                    color: variables.$primary-color
-                    font-weight: bold
-                    font-size: 18px
-                    transition: .3s
-
-                    &.clicked
-                        @include utilities.drop-animation
-
-                        &.hidden
-                            animation: none
-                            display: none
-
-                    &:hover
-                        background: transparent
-                        transform: scale(1.1)
-
-        .table-letters
-            width: 80%
+        .container-letters
+            width: 100%
             margin-top: 20px
-            tr
-                gap: 2px
-                grid-template-columns: repeat(7, 14%)
-                margin-bottom: 10px
+            display: grid
+            gap: 15px 5px
+            grid-template-columns: repeat(7, 13%)
+            grid-template-rows: repeat(3 , 50px)
+
+            @include utilities.mobile
+                display: flex
+                flex-wrap: wrap
+                justify-content: space-between
+                padding: 0 5px
+                margin-top: 10px
 
         .table-vowels
             width: 55%
+
+            @include utilities.mobile
+                width: 60%
             tr
                 gap: 2px
                 grid-template-columns: repeat(5 , 20%)
