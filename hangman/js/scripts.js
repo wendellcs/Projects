@@ -48,6 +48,7 @@ btnHowToPlay.addEventListener('click', (e) => {
 btnStartGame.addEventListener('click', () => {
     addElementClass(menuContainer, 'hidden')
     removeElementClass(gameContainer, 'hidden')
+    addElementClass(creditsContainer, 'hidden')
     reset()
 })
 
@@ -56,6 +57,9 @@ btnLeave.addEventListener('click', () => {
     addElementClass(gameOverContainer, 'hidden')
     removeElementClass(menuContainer, 'hidden')
     reset()
+    if (creditsContainer.classList.contains('hidden')) {
+        removeElementClass(creditsContainer, 'hidden')
+    }
 })
 
 btnPlayAgain.addEventListener('click', () => restartGame())
@@ -124,6 +128,7 @@ function reset() {
     removeOldWordCircles()
     createWordCircles()
     resetKeyboard()
+    addElementClass(creditsContainer, 'hidden')
     removeElementClass(eyes, 'dead')
     removeElementClass(mouth, 'dead')
 }
@@ -139,6 +144,7 @@ function verifyGameOver() {
 
 function gameOver(state) {
     const displayLastWord = document.querySelector('.last-word')
+    removeElementClass(creditsContainer, 'hidden')
     addElementClass(gameContainer, 'hidden')
     hideHangman()
     removeElementClass(gameOverContainer, 'hidden')

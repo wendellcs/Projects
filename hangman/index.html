@@ -17,7 +17,6 @@
 
 <body>
     <main>
-
         <div class="container">
             <div class="container-start">
                 <h1>Hangman</h1>
@@ -65,19 +64,6 @@
                             alt="United States Flag"></button>
                 </div>
 
-            </div>
-            <div class="container-credits" style="display: none;">
-                <div class=" container-credits-links">
-                    <a href="https://wendellcs.github.io" target="_blank">
-                        <ion-icon class="icon" name="code-slash-outline"></ion-icon>
-                    </a>
-                    <a href="https://github.com/wendellcs" target="_blank">
-                        <ion-icon class="icon" name="logo-github"></ion-icon>
-                    </a>
-                    <a href="https://linkedin.com/in/wendellcsilva" target="_blank">
-                        <ion-icon class="icon" name="logo-linkedin"></ion-icon>
-                    </a>
-                </div>
             </div>
             <div class="container-game hidden">
                 <div class="container-game-settings">
@@ -224,14 +210,28 @@
             </div>
         </div>
 
-        <audio src="./assets/sounds/correctAnswer.wav" class="audio"></audio>
-        <audio src="./assets/sounds/lose.wav" class="audio"></audio>
-        <audio src="./assets/sounds/nextLevel.mp3" class="audio"></audio>
-        <audio src="./assets/sounds/victory.wav" class="audio"></audio>
-        <audio src="./assets/sounds/click.mp3" class="audio"></audio>
-
+        <footer id="footer">
+            <div class="container-credits">
+                <div class=" container-credits-links">
+                    <a href="https://wendellcs.github.io" target="_blank">
+                        <ion-icon class="icon" name="code-slash-outline"></ion-icon>
+                    </a>
+                    <a href="https://github.com/wendellcs" target="_blank">
+                        <ion-icon class="icon" name="logo-github"></ion-icon>
+                    </a>
+                    <a href="https://linkedin.com/in/wendellcsilva" target="_blank">
+                        <ion-icon class="icon" name="logo-linkedin"></ion-icon>
+                    </a>
+                </div>
+            </div>
+        </footer>
     </main>
 
+    <audio src="./assets/sounds/correctAnswer.wav" class="audio"></audio>
+    <audio src="./assets/sounds/lose.wav" class="audio"></audio>
+    <audio src="./assets/sounds/nextLevel.mp3" class="audio"></audio>
+    <audio src="./assets/sounds/victory.wav" class="audio"></audio>
+    <audio src="./assets/sounds/click.mp3" class="audio"></audio>
     <script src="js/scripts.js"></script>
     <!-- Ion Icons -->
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>

@@ -92,30 +92,30 @@ input {
   flex-direction: column;
 }
 
-.container-credits {
-  margin-top: 20px;
+#footer .container-credits {
   display: block;
+  margin-top: 50px;
 }
-.container-credits.hidden {
+#footer .container-credits.hidden {
   display: none;
 }
-.container-credits-links {
+#footer .container-credits-links {
   display: flex;
   justify-content: center;
   gap: 20px;
 }
-.container-credits-links a {
+#footer .container-credits-links a {
   margin-top: 10px;
   color: #000;
 }
-.container-credits-links a .icon {
+#footer .container-credits-links a .icon {
   font-size: 30px;
   transition: 0.3s;
 }
-.container-credits-links a .icon:hover {
+#footer .container-credits-links a .icon:hover {
   transform: scale(1.2);
 }
-.container-credits-links a:last-of-type .icon {
+#footer .container-credits-links a:last-of-type .icon {
   color: #4894d1;
 }
 
