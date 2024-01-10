@@ -1,7 +1,7 @@
 'use strict';
 
 const portuguese = ["Maçã", "Banana", "Laranja", "Morango", "Uva", "Pera", "Abacaxi", "Melancia", "Mamão", "Cereja", "Kiwi", "Pêssego", "Abacate", "Manga", "Limão", "Coco", "Goiaba", "Framboesa", "Pitanga", "Ameixa", "Maracujá", "Caju", "Figo", "Açaí", "Melão", "Pêssego", "Tangerina"];
-const english = ["Apple", "Banana", "Orange", "Strawberry", "Grape", "Pear", "Pineapple", "Watermelon", "Papaya", "Cherry", "Kiwi", "Peach", "Avocado", "Mango", "Lemon", "Coconut", "Guava", "Raspberry", "Surinam Cherry", "Plum", "Passion Fruit", "Cashew", "Fig", "Açaí", "Melon", "Peach", "Tangerine"];
+const english = ["Apple", "Banana", "Orange", "Strawberry", "Grape", "Pear", "Pineapple", "Watermelon", "Papaya", "Cherry", "Kiwi", "Peach", "Avocado", "Mango", "Lemon", "Coconut", "Guava", "Raspberry", "SurinamCherry", "Plum", "PassionFruit", "Cashew", "Fig", "Açaí", "Melon", "Peach", "Tangerine"];
 const fruits = [portuguese, english]
 const answered = []
 
@@ -82,11 +82,14 @@ function verifyAvaliableWords() {
 
 
 function normalizeWords(str) {
+    console.log(str)
+    console.log(str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
 }
 
 function getRandomWord() {
-    const randomNumber = Math.round(Math.random() * fruits[0].length)
+    let randomNumber = Math.round(Math.random() * fruits[0].length)
+    if (randomNumber == 0) randomNumber++
     if (getSelectedTranslation() == 'pt') {
         return normalizeWords(fruits[0][randomNumber - 1])
     } else {
@@ -152,9 +155,11 @@ function gameOver(state) {
         if (getSelectedTranslation() == 'en') {
             playSound(3)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Victory!!'
+            displayLastWord.textContent = ''
         } else {
             playSound(3)
             gameOverContainer.querySelector('.game-over-message').textContent = 'Vitória!!'
+            displayLastWord.textContent = ''
         }
         gameOverContainer.querySelector('.game-over-score').textContent = `10 / 10`
     } else {
@@ -181,7 +186,7 @@ function nextLevel() {
 
 let level = 1
 function updateLevel() {
-    if ((level + 1) > 10) {
+    if ((level + 1) > 1) {
         gameOver(true)
     } else {
         displayLevel.textContent = `${level + 1} `
