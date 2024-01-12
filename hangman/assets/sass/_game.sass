@@ -35,7 +35,7 @@
             display: flex
             flex-direction: column
             width: 200px
-            background: #000000d3
+            background: variables.$bg-dark
             padding: 20px 10px
             border-radius: 15px
             z-index: 10
@@ -56,7 +56,7 @@
                 border-radius: 50%
 
                 &:hover
-                    border-color: #fff
+                    border-color: variables.$white
 
             &-sounds
                 font-size: 30px
@@ -65,7 +65,7 @@
                 .sound, .sound-muted
                     padding: 5px
                     border-radius: 50%
-                    border: 1px solid #fff
+                    border: 1px solid variables.$white
                     cursor: pointer
                     transition: .3s
                     &:hover
@@ -151,10 +151,10 @@
                     font-weight: bold
                     width: 32px
                     height: 32px
-                    background: #fff
+                    background: variables.$white
                     font-family: 'arial', sans-serif
                     border-radius: 50%
-                    color: #000
+                    color: variables.$black
 
     &-keyboard
         width: 100%

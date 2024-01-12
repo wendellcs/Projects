@@ -72,11 +72,11 @@
 
         .hangman-body
             .container-head
-                background: #00000015
+                background: variables.$bg-dark
                 position: absolute
                 width: 50px
                 height: 50px
-                border: 5px solid #000
+                border: 5px solid variables.$black
                 top: 98px
                 left: 188px
                 border-radius: 50%
@@ -98,12 +98,12 @@
                     .eye
                         width: 10px
                         height: 10px
-                        border: 2px solid #000
-                        background: #fff
+                        border: 2px solid variables.$black
+                        background: variables.$white
                         border-radius: 50%
 
                         &.dead
-                            background: #000
+                            background: variables.$black
                             border: none
                             border-radius: 0
                             width: 12px
@@ -115,7 +115,7 @@
                                 content: ''
                                 position: absolute
                                 width: 12px
-                                background: #000
+                                background: variables.$black
                                 top: 0
                                 left: 0
                                 height: 3px
@@ -124,7 +124,7 @@
                 .mouth
                     width: 20px
                     height: 10px
-                    border-top: 2px solid #000
+                    border-top: 2px solid variables.$black
                     border-radius: 40%
 
                     &.dead
@@ -138,7 +138,7 @@
                 background: #a7765d
                 top: 146px
                 left: 206px
-                border: 1px solid #000
+                border: 1px solid variables.$black
                 border-radius: 50%
 
                 @include utilities.mobile-hangman
@@ -170,12 +170,12 @@
                     position: absolute
                     width: 10px
                     height: 8px
-                    background: #000
+                    background: variables.$black
                     border-radius: 0 0 10px 10px
 
             .left-arm , .right-arm , .left-leg , .right-leg
                 position: absolute
-                background: #000
+                background: variables.$black
                 border-radius: 50px
 
                 &.hidden
@@ -196,7 +196,7 @@
                         position: absolute
                         width: 12px
                         height: 3px
-                        background: #fff
+                        background: variables.$white
                         bottom: -1px
                         border-radius: 0 0 10px 10px
 
@@ -283,7 +283,7 @@
                         margin-left: 3px
                         width: 2px
                         height: 5px
-                        background: #fff
+                        background: variables.$white
                         position: absolute
 
             .left-foot
@@ -305,5 +305,5 @@
                         margin-left: 3px
                         width: 2px
                         height: 5px
-                        background: #fff
+                        background: variables.$white
                         position: absolute
