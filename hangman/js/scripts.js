@@ -82,8 +82,6 @@ function verifyAvaliableWords() {
 
 
 function normalizeWords(str) {
-    console.log(str)
-    console.log(str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase())
     return str.normalize("NFD").replace(/[\u0300-\u036f]/g, "").toLowerCase()
 }
 
