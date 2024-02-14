@@ -11,9 +11,11 @@
 <body>
     <header id="header">
         <h1>Nome da Empresa</h1>
+        <button class="menu-control">
+            <ion-icon name="chevron-back-outline" class="icon"></ion-icon>
+            <ion-icon name="chevron-forward-outline" class="icon hidden"></ion-icon>
+        </button>
         <div class="container">
-            <ion-icon name="chevron-back-outline"></ion-icon>
-            <ion-icon name="chevron-forward-outline"></ion-icon>
             <div class="search-area">
                 <form action="#">
                     <ion-icon name="search-outline"></ion-icon>
@@ -38,12 +40,22 @@
                     </ul>
                 </nav>
             </div>
+            <div class="container-user">
+
+                <div class="container-user-infos">
+                    <div class="avatar">
+                        <img src="assets/image/User-avatar.svg.png" alt="User image">
+                    </div>
+                    <div class="user-data">
+                        <p class="name">Full Name</p>
+                        <p class="email">example@example.com</p>
+                    </div>
+                    <ion-icon class="logout" name="log-out-outline"></ion-icon>
+                </div>
+            </div>
             <div class="settings">
                 <ion-icon name="settings-outline"></ion-icon>
                 <ion-icon name="help-circle-outline"></ion-icon>
-            </div>
-            <div class="user">
-                <ion-icon name="log-out-outline"></ion-icon>
             </div>
         </div>
     </header>

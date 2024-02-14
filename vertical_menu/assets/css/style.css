@@ -10,10 +10,15 @@ html {
 
 body {
   height: 100%;
+  font-family: "Arial";
 }
 
 a {
   text-decoration: none;
+}
+
+ion-icon {
+  cursor: pointer;
 }
 
 #header {
@@ -22,10 +27,31 @@ a {
   background: #e2dfdf;
   height: 100%;
 }
+#header .menu-control {
+  float: right;
+  transform: translateX(18px);
+  border: none;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+#header .menu-control:hover {
+  background: #397aa0;
+  transform: translateX(18px) scale(1.1);
+  color: #fff;
+}
+#header .menu-control .icon {
+  font-size: 25px;
+  padding: 5px 6px;
+  font-weight: bolder;
+}
+#header .menu-control .icon.hidden {
+  display: none;
+}
 #header .container {
   width: 100%;
 }
 #header .container .search-area {
+  margin-top: 50px;
   width: 100%;
   display: flex;
   justify-content: center;
@@ -33,6 +59,7 @@ a {
 }
 #header .container .search-area ion-icon {
   font-size: 20px;
+  cursor: default;
   position: absolute;
   top: 5px;
   left: 16%;
@@ -50,7 +77,7 @@ a {
   outline: none;
 }
 #header .container .menu {
-  margin-top: 50px;
+  margin-top: 80px;
   padding-left: 30px;
 }
 #header .container .menu ul {
@@ -65,6 +92,7 @@ a {
   width: 80%;
   border-bottom: 1px solid transparent;
   padding: 10px 20px;
+  cursor: pointer;
 }
 #header .container .menu ul li:hover {
   border-color: #000;
@@ -74,6 +102,73 @@ a {
 }
 #header .container .menu ul li a {
   font-size: 1.8rem;
+}
+#header .container-user {
+  position: absolute;
+  bottom: 70px;
+  border-top: 1px solid #000;
+  border-bottom: 1px solid #000;
+  width: 100%;
+}
+#header .container-user-infos {
+  display: flex;
+  align-items: center;
+}
+#header .container-user-infos .avatar {
+  margin: 20px 5px;
+  border-radius: 50%;
+  border: 3px solid #000;
+  width: 55px;
+  height: 55px;
+  text-align: center;
+}
+#header .container-user-infos .avatar img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+}
+#header .container-user-infos .user-data {
+  margin-left: 5px;
+}
+#header .container-user-infos .user-data .name, #header .container-user-infos .user-data .email {
+  font-size: 1.5rem;
+  font-weight: bold;
+}
+#header .container-user-infos .user-data .name {
+  margin-bottom: 5px;
+}
+#header .container-user-infos .logout {
+  margin-left: auto;
+  margin-right: 5px;
+  color: #ca1b1b;
+  padding: 5px;
+  transition: 0.3s;
+}
+#header .container-user-infos .logout:hover {
+  color: #ca1b1b;
+}
+#header .container-user ion-icon {
+  font-size: 30px;
+}
+#header .container-user ion-icon:hover {
+  transform: scale(1.2);
+  color: rgba(0, 0, 0, 0.7607843137);
+}
+#header .container .settings {
+  width: 100%;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: absolute;
+  bottom: 18px;
+}
+#header .container .settings ion-icon {
+  font-size: 30px;
+  transition: 0.3s;
+}
+#header .container .settings ion-icon:hover {
+  transform: scale(1.2);
 }
 
 /*# sourceMappingURL=style.css.map */

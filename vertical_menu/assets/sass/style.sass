@@ -6,10 +6,31 @@
     background: #e2dfdf
     height: 100%
 
+    .menu-control
+        float: right
+        transform: translateX(18px)
+        border: none
+        border-radius: 50%
+        transition: .3s
+
+        &:hover
+            background: #397aa0
+            transform: translateX(18px) scale(1.1)
+            color: #fff
+
+        .icon
+            font-size: 25px
+            padding: 5px 6px
+            font-weight: bolder
+
+            &.hidden
+                display: none
+
     .container
         width: 100%
 
         .search-area
+            margin-top: 50px
             width: 100%
             display: flex
             justify-content: center
@@ -17,6 +38,7 @@
 
             ion-icon
                 font-size: 20px
+                cursor: default
                 position: absolute
                 top: 5px
                 left: 16%
@@ -34,7 +56,7 @@
                     outline: none
 
         .menu
-            margin-top: 50px
+            margin-top: 80px
             padding-left: 30px
 
             ul
@@ -49,6 +71,7 @@
                     width: 80%
                     border-bottom: 1px solid transparent
                     padding: 10px 20px
+                    cursor: pointer
 
                     &:hover
                         border-color: #000
@@ -58,3 +81,70 @@
 
                     a
                         font-size: 1.8rem
+
+        &-user
+            position: absolute
+            bottom: 70px
+            border-top: 1px solid #000
+            border-bottom: 1px solid #000
+            width: 100%
+
+            &-infos
+                display: flex
+                align-items: center
+
+                .avatar
+                    margin: 20px 5px
+                    border-radius: 50%
+                    border: 3px solid #000
+                    width: 55px
+                    height: 55px
+                    text-align: center
+
+                    img
+                        width: 50px
+                        height: 50px
+                        border-radius: 50%
+
+                .user-data
+                    margin-left: 5px
+
+                    .name, .email
+                        font-size: 1.5rem
+                        font-weight: bold
+
+                    .name
+                        margin-bottom: 5px
+
+                .logout
+                    margin-left: auto
+                    margin-right: 5px
+                    color: #ca1b1b
+                    padding: 5px
+                    transition: .3s
+
+                    &:hover
+                        color: #ca1b1b
+
+            ion-icon
+                font-size: 30px
+
+                &:hover
+                    transform: scale(1.2)
+                    color: #000000c2
+
+        .settings
+            width: 100%
+            gap: 20px
+            display: flex
+            justify-content: center
+            align-items: center
+            position: absolute
+            bottom: 18px
+
+            ion-icon
+                font-size: 30px
+                transition: .3s
+
+                &:hover
+                    transform: scale(1.2)
