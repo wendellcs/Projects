@@ -26,6 +26,15 @@ ion-icon {
   width: 300px;
   background: #e2dfdf;
   height: 100%;
+  transition: 0.5s;
+}
+#header.close {
+  width: 100px;
+}
+#header .company-name {
+  text-align: center;
+  margin: 20px 0 10px 0;
+  font-size: 2.8rem;
 }
 #header .menu-control {
   float: right;
@@ -40,12 +49,14 @@ ion-icon {
   color: #fff;
 }
 #header .menu-control .icon {
+  display: block;
   font-size: 25px;
   padding: 5px 6px;
   font-weight: bolder;
+  transition: 0.5s;
 }
-#header .menu-control .icon.hidden {
-  display: none;
+#header .menu-control .icon.rotate {
+  transform: rotate(180deg);
 }
 #header .container {
   width: 100%;
