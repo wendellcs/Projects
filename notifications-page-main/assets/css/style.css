@@ -1,0 +1,108 @@
+@font-face {
+  font-family: "PlusJakarta";
+  src: url(".././fonts/PlusJakartaSans-VariableFont_wght.ttf");
+}
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+  height: 100%;
+  font-family: "PlusJakarta";
+}
+
+body {
+  display: grid;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+p {
+  font-size: 1.6rem;
+}
+
+a {
+  text-decoration: none;
+}
+
+span {
+  display: block;
+}
+
+button {
+  cursor: pointer;
+}
+
+textarea {
+  cursor: default;
+  resize: none;
+  overflow: hidden;
+  border-color: #000;
+  color: #000;
+  font-family: "PlusJakarta";
+}
+textarea:focus {
+  outline: none;
+}
+textarea:disabled {
+  background: #fff;
+}
+
+.header {
+  display: flex;
+  align-items: center;
+  width: 100%;
+}
+.header-notifications-count {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 10px;
+  border-radius: 5px;
+  width: 30px;
+  height: 25px;
+  background: hsl(219, 85%, 26%);
+  color: hsl(0, 0%, 100%);
+  font-weight: bold;
+  font-size: 1.6rem;
+}
+.header-button {
+  background: none;
+  border: none;
+  font-size: 1.6rem;
+  color: hsl(219, 12%, 42%);
+  margin-left: auto;
+  transition: 0.3s;
+}
+.header-button:hover {
+  text-decoration: underline;
+  color: hsl(219, 85%, 26%);
+}
+
+.attribution {
+  font-size: 1.2rem;
+  text-align: center;
+  margin-top: 10px;
+}
+.attribution a {
+  color: #00f;
+  text-decoration: underline;
+}
+.attribution a:hover {
+  color: #6464f5;
+}
+
+.container {
+  background: hsl(0, 0%, 100%);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3960784314);
+  height: 76rem;
+  width: 98rem;
+}
+
+/*# sourceMappingURL=style.css.map */

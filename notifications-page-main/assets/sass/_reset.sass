@@ -1,0 +1,43 @@
+@use 'variables'
+
+*
+    padding: 0
+    margin: 0
+    box-sizing: border-box
+
+html
+    font-size: 62.5%
+    height: 100%
+    font-family: variables.$main-font
+
+body
+    display: grid
+    justify-content: center
+    align-items: center
+    height: 100%
+
+p
+    font-size: 1.6rem
+
+a
+    text-decoration: none
+
+span
+    display: block
+
+button
+    cursor: pointer
+
+textarea
+    cursor: default
+    resize: none
+    overflow: hidden
+    border-color: #000
+    color: #000
+    font-family: variables.$main-font
+
+    &:focus
+        outline: none
+
+    &:disabled
+        background: #fff

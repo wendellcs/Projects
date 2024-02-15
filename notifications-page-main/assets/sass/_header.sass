@@ -1,0 +1,30 @@
+@use 'variables'
+@use 'utilities'
+
+.header
+    display: flex
+    align-items: center
+    width: 100%
+
+    &-notifications-count
+        @include utilities.center-elements
+        margin-left: 10px
+        border-radius: 5px
+        width: 30px
+        height: 25px
+        background: variables.$secondary-color
+        color: variables.$white
+        font-weight: bold
+        font-size: 1.6rem
+
+    &-button
+        background: none
+        border: none
+        font-size: 1.6rem
+        color: variables.$name-color
+        margin-left: auto
+        transition: .3s
+
+        &:hover
+            text-decoration: underline
+            color: variables.$secondary-color
