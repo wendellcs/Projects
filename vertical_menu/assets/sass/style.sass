@@ -10,14 +10,24 @@
     transition: .5s
     box-shadow: 0 0px 10px 2px variables.$primary-color
 
+    @include utilities.mobile-small-screen
+        width: 220px
+
     &.close
         width: 80px
+
+        @include utilities.mobile-small-screen
+            width: 50px
 
     .logo-container
         display: flex
         align-items: center
         padding: 30px 5px
         gap: 15px
+
+        @include utilities.mobile
+            justify-content: center
+            padding: 20px 5px
 
         &.small
             padding: 20px 0
@@ -31,9 +41,10 @@
         .logo
             width: 60px
             height: 60px
+            @include utilities.mobile
+                display: none
 
         .company-name
-            text-align: center
             font-size: 2.5rem
             transition: 3s
 
@@ -91,6 +102,9 @@
                     transition: .3s
                     color: variables.$secondary-color
 
+                    @include utilities.mobile-small-screen
+                        margin-left: 3px
+
                     &:hover
                         transform: scale(1.2)
                         color: variables.$primary-color
@@ -137,6 +151,9 @@
         .menu
             margin-top: 80px
             padding-left: 30px
+
+            @include utilities.mobile
+                margin-top: 20px
 
             &.small
                 width: 100%
@@ -196,6 +213,9 @@
                         left: 5px
                         bottom: -5px
 
+                        @include utilities.mobile-small-screen
+                            width: 100%
+
                     &:hover .link ion-icon
                         color: variables.$primary-color
 
@@ -225,7 +245,16 @@
             width: 100%
             height: 200px
 
+            @include utilities.mobile
+                height: 180px
+
             &.small
+                @include utilities.mobile
+                    height: 130px
+
+                .avatar
+                    @include utilities.mobile-small-screen
+                        margin: 10px 0
 
                 .logout
                     margin: 0
@@ -247,11 +276,19 @@
                     height: 55px
                     text-align: center
 
+                    @include utilities.mobile-small-screen
+                        width: 45px
+                        height: 45px
+
                     img
                         width: 50px
                         height: 50px
                         padding: 5px
                         border-radius: 50%
+
+                        @include utilities.mobile-small-screen
+                            width: 40px
+                            height: 40px
 
                 .user-data
                     margin: -10px 0 20px 0

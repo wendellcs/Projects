@@ -100,14 +100,30 @@ ion-icon {
   transition: 0.5s;
   box-shadow: 0 0px 10px 2px #49D48A;
 }
+@media (max-width: 300px) {
+  #header {
+    width: 220px;
+  }
+}
 #header.close {
   width: 80px;
+}
+@media (max-width: 300px) {
+  #header.close {
+    width: 50px;
+  }
 }
 #header .logo-container {
   display: flex;
   align-items: center;
   padding: 30px 5px;
   gap: 15px;
+}
+@media (max-width: 400px) {
+  #header .logo-container {
+    justify-content: center;
+    padding: 20px 5px;
+  }
 }
 #header .logo-container.small {
   padding: 20px 0;
@@ -126,8 +142,12 @@ ion-icon {
   width: 60px;
   height: 60px;
 }
+@media (max-width: 400px) {
+  #header .logo-container .logo {
+    display: none;
+  }
+}
 #header .logo-container .company-name {
-  text-align: center;
   font-size: 2.5rem;
   transition: 3s;
 }
@@ -187,6 +207,11 @@ ion-icon {
   transition: 0.3s;
   color: #49af24;
 }
+@media (max-width: 300px) {
+  #header .container .search-area.small .search-icon {
+    margin-left: 3px;
+  }
+}
 #header .container .search-area.small .search-icon:hover {
   transform: scale(1.2);
   color: #49D48A;
@@ -233,6 +258,11 @@ ion-icon {
 #header .container .menu {
   margin-top: 80px;
   padding-left: 30px;
+}
+@media (max-width: 400px) {
+  #header .container .menu {
+    margin-top: 20px;
+  }
 }
 #header .container .menu.small {
   width: 100%;
@@ -297,6 +327,11 @@ ion-icon {
   left: 5px;
   bottom: -5px;
 }
+@media (max-width: 300px) {
+  #header .container .menu ul li:after {
+    width: 100%;
+  }
+}
 #header .container .menu ul li:hover .link ion-icon {
   color: #49D48A;
 }
@@ -328,6 +363,21 @@ ion-icon {
   width: 100%;
   height: 200px;
 }
+@media (max-width: 400px) {
+  #header .container-user {
+    height: 180px;
+  }
+}
+@media (max-width: 400px) {
+  #header .container-user.small {
+    height: 130px;
+  }
+}
+@media (max-width: 300px) {
+  #header .container-user.small .avatar {
+    margin: 10px 0;
+  }
+}
 #header .container-user.small .logout {
   margin: 0;
 }
@@ -351,11 +401,23 @@ ion-icon {
   height: 55px;
   text-align: center;
 }
+@media (max-width: 300px) {
+  #header .container-user-infos .avatar {
+    width: 45px;
+    height: 45px;
+  }
+}
 #header .container-user-infos .avatar img {
   width: 50px;
   height: 50px;
   padding: 5px;
   border-radius: 50%;
+}
+@media (max-width: 300px) {
+  #header .container-user-infos .avatar img {
+    width: 40px;
+    height: 40px;
+  }
 }
 #header .container-user-infos .user-data {
   margin: -10px 0 20px 0;
