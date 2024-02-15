@@ -4,6 +4,7 @@ const logo = document.querySelector('.logo-container')
 const menu = document.querySelector('.menu')
 const menuControl = document.querySelector('.menu-control')
 const menuIcon = document.querySelector('.icon')
+const input = document.querySelector('input')
 
 // Open and close the menu.
 menuControl.addEventListener('click', toggleElementClass)
@@ -31,4 +32,5 @@ function toggleElementClass() {
     menuIcon.classList.toggle('rotate')
     userContainer.classList.toggle('small')
     settings.classList.toggle('small')
+    input.focus()
 }
