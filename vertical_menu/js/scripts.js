@@ -19,6 +19,7 @@ search.addEventListener('click', () => {
 })
 
 const userContainer = document.querySelector('.container-user')
+const settings = document.querySelector('.settings')
 
 // Toggle elements classes
 function toggleElementClass() {
@@ -29,4 +30,5 @@ function toggleElementClass() {
     search.classList.toggle('small')
     menuIcon.classList.toggle('rotate')
     userContainer.classList.toggle('small')
+    settings.classList.toggle('small')
 }

@@ -1,0 +1,58 @@
+@mixin force-delay-element
+    opacity: 0
+    width: 0
+    position: absolute
+    transition: none !important
+
+@mixin center-elements
+    display: flex
+    justify-content: center
+    align-itens: center
+
+@keyframes link-after-animation
+    from
+        width: 10px
+    to
+        width: 180px
+
+@keyframes link-after-animation-small
+    from
+        width: 0px
+    to
+        width: 100%
+
+@keyframes arrow-animation-close
+    0%
+        transform: translateX(0px)
+    50%
+        transform: translateX(-5px)
+    100%
+        transform: translateX(0px)
+
+@keyframes arrow-animation-open
+    0%
+        transform: translateX(0px) rotate(180deg)
+    50%
+        transform: translateX(5px) rotate(180deg)
+    100%
+        transform: translateX(0px) rotate(180deg)
+
+@keyframes arrow-animation-left
+    0%
+        transform: translateX(0px)
+    90%
+        transform: translateX(0px)
+    95%
+        transform: translateX(-5px)
+    100%
+        transform: translateX(-2px)
+
+@keyframes arrow-animation-rigth
+    0%
+        transform: translateX(0px) rotate(180deg)
+    90%
+        transform: translateX(0px) rotate(180deg)
+    95%
+        transform: translateX(5px) rotate(180deg)
+    100%
+        transform: translateX(2px) rotate(180deg)
