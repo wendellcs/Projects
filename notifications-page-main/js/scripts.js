@@ -7,3 +7,9 @@ notifications.forEach(noti => {
         })
     }
 })
+
+const btnMarkAllAsRead = document.querySelector('.header-button')
+
+btnMarkAllAsRead.addEventListener('click', () => {
+    notifications.forEach(noti => noti.classList.remove('unread'))
+})
