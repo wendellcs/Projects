@@ -1,10 +1,12 @@
 @use 'variables'
 @use 'utilities'
+@use 'container'
 
 .header
     display: flex
     align-items: center
     width: 100%
+    margin-bottom: 30px
 
     &-notifications-count
         @include utilities.center-elements
@@ -21,7 +23,7 @@
         background: none
         border: none
         font-size: 1.6rem
-        color: variables.$name-color
+        color: variables.$light-gray
         margin-left: auto
         transition: .3s
 

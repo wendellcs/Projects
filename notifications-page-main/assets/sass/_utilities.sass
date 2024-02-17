@@ -1,4 +1,15 @@
+@use 'variables'
+
 @mixin center-elements
     display: flex
     align-items: center
     justify-content: center
+
+@mixin after
+    content: ''
+    width: 10px
+    height: 10px
+    border-radius: 50%
+    margin-top: 6px
+    margin-left: 2px
+    background: variables.$primary-color

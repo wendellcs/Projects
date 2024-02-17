@@ -19,6 +19,7 @@ body {
   justify-content: center;
   align-items: center;
   height: 100%;
+  background: hsl(210, 60%, 98%);
 }
 
 p {
@@ -41,8 +42,6 @@ textarea {
   cursor: default;
   resize: none;
   overflow: hidden;
-  border-color: #000;
-  color: #000;
   font-family: "PlusJakarta";
 }
 textarea:focus {
@@ -52,10 +51,20 @@ textarea:disabled {
   background: #fff;
 }
 
+.container {
+  background: hsl(0, 0%, 100%);
+  padding: 30px;
+  border-radius: 10px;
+  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3960784314);
+  height: 76rem;
+  width: 73rem;
+}
+
 .header {
   display: flex;
   align-items: center;
   width: 100%;
+  margin-bottom: 30px;
 }
 .header-notifications-count {
   display: flex;
@@ -96,13 +105,112 @@ textarea:disabled {
   color: #6464f5;
 }
 
-.container {
-  background: hsl(0, 0%, 100%);
-  padding: 30px;
+.body {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+.body .notification {
+  display: flex;
+  width: 100%;
+  background: none;
+  align-items: center;
+  gap: 20px;
+  padding: 10px 15px;
   border-radius: 10px;
-  box-shadow: 0 0 15px rgba(0, 0, 0, 0.3960784314);
-  height: 76rem;
-  width: 98rem;
+}
+.body .notification:nth-child(6) .notification-content-text {
+  display: grid;
+  grid-template-columns: 23% 36% 35%;
+  grid-template-rows: 40%;
+}
+.body .notification:nth-child(6) .notification-content-text::after {
+  display: none;
+}
+.body .notification:nth-child(6) .notification-content-text .last {
+  grid-column: 1/span 2;
+  display: flex;
+}
+.body .notification:nth-child(6) .notification-content-text .last::after {
+  display: none;
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-left: 2px;
+  background: hsl(1, 90%, 64%);
+}
+.body .notification-profile {
+  width: 45px;
+  height: 45px;
+  border-radius: 50%;
+  align-self: start;
+}
+.body .notification-content {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  position: relative;
+}
+.body .notification-content-text {
+  display: flex;
+  gap: 5px;
+  color: hsl(219, 12%, 42%);
+}
+.body .notification-content-text .name {
+  color: hsl(224, 21%, 14%);
+  font-weight: bolder;
+}
+.body .notification-content-text .highlight {
+  font-weight: bolder;
+  color: hsl(219, 14%, 63%);
+}
+.body .notification-content-text .link {
+  font-weight: bolder;
+  color: hsl(219, 85%, 26%);
+}
+.body .notification-content-date {
+  font-size: 1.6rem;
+  color: hsl(219, 12%, 42%);
+}
+.body .notification-content-image {
+  width: 45px;
+  height: 45px;
+  border-radius: 5px;
+  right: 0;
+  position: absolute;
+}
+.body .notification-content-textarea {
+  border-radius: 10px;
+  margin-top: 10px;
+  height: 100px;
+  border: 1px solid hsl(205, 33%, 90%);
+  color: hsl(219, 12%, 42%);
+  font-size: 1.6rem;
+  padding: 15px 0;
+}
+.body .notification.unread {
+  background: hsl(210, 60%, 98%);
+  cursor: pointer;
+}
+.body .notification.unread .notification-content-textarea {
+  background: hsl(210, 60%, 98%);
+}
+.body .notification.unread .notification-content-text::after {
+  content: "";
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  margin-top: 6px;
+  margin-left: 2px;
+  background: hsl(1, 90%, 64%);
+}
+.body .notification.unread:nth-child(6) .last::after {
+  display: block;
+  margin-top: 7px;
+  margin-left: 7px;
 }
 
 /*# sourceMappingURL=style.css.map */
