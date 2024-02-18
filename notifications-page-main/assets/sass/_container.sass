@@ -1,4 +1,5 @@
 @use 'variables'
+@use 'utilities'
 
 .container
     background: variables.$white
@@ -7,3 +8,9 @@
     box-shadow: 0 0 15px #00000065
     height: 76rem
     width: 73rem
+
+    @include utilities.mobile-view
+        width: 100%
+        height: auto
+        border-radius: 0
+        padding: 20px 10px

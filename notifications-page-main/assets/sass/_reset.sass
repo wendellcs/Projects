@@ -1,4 +1,5 @@
 @use 'variables'
+@use 'utilities'
 
 *
     padding: 0
@@ -17,26 +18,19 @@ body
     height: 100%
     background: variables.$bg-color
 
+    @include utilities.mobile-view
+        display: block
+
 p
     font-size: 1.6rem
 
 a
     text-decoration: none
 
-span
-    display: block
-
 button
     cursor: pointer
 
 textarea
-    cursor: default
     resize: none
     overflow: hidden
     font-family: variables.$main-font
-
-    &:focus
-        outline: none
-
-    &:disabled
-        background: #fff

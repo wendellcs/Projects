@@ -9,29 +9,27 @@
 
     .notification
         display: flex
-        width: 100%
         background: none
         align-items: center
         gap: 20px
         padding: 10px 15px
         border-radius: 10px
 
-        &:nth-child(6)
-            .notification-content-text
-                display: grid
-                grid-template-columns: 23% 36% 35%
-                grid-template-rows: 40%
+        @include utilities.mobile-view
+            padding: 10px 5px
+            gap: 10px
 
-                &::after
-                    display: none
+            &:nth-child(5)
+                .notification-content
+                    display: grid
+                    grid-template-columns: 80% 20%
 
-                .last
-                    grid-column: 1 /span 2
-                    display: flex
+                    &-image
+                        margin-top: 0
+                        margin-left: 5px
 
-                    &::after
-                        display: none
-                        @include utilities.after
+                    &-date
+                        grid-area: 2/1
 
         &-profile
             width: 45px
@@ -43,12 +41,9 @@
             width: 100%
             display: flex
             flex-direction: column
-            gap: 5px
-            position: relative
+            gap: 3px
 
             &-text
-                display: flex
-                gap: 5px
                 color: variables.$light-gray
 
                 .name
@@ -64,15 +59,15 @@
                     color: variables.$secondary-color
 
             &-date
-                font-size: 1.6rem
+                font-size: 1.4rem
                 color: variables.$light-gray
 
             &-image
                 width: 45px
                 height: 45px
                 border-radius: 5px
-                right: 0
-                position: absolute
+                margin-left: auto
+                margin-top: -45px
 
             &-textarea
                 border-radius: 10px
@@ -81,7 +76,11 @@
                 border: 1px solid variables.$light-grayish-2
                 color: variables.$light-gray
                 font-size: 1.6rem
-                padding: 15px 0
+                padding: 20px
+
+                @include utilities.mobile-view
+                    padding: 10px
+                    height: 130px
 
         &.unread
             background: variables.$bg-color
@@ -92,11 +91,10 @@
 
             .notification-content-text
                 &::after
-                    @include utilities.after
-
-            &:nth-child(6)
-                .last
-                    &::after
-                        display: block
-                        margin-top: 7px
-                        margin-left: 7px
+                    content: ''
+                    display: inline-block
+                    margin-left: 5px
+                    width: 10px
+                    height: 10px
+                    border-radius: 50%
+                    background: variables.$primary-color
