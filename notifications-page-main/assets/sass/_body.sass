@@ -78,9 +78,13 @@
                 font-size: 1.6rem
                 padding: 20px
 
+                @include utilities.tablet-view
+                    height: 160px
+
                 @include utilities.mobile-view
                     padding: 10px
                     height: 130px
+                    overflow: visible
 
         &.unread
             background: variables.$bg-color

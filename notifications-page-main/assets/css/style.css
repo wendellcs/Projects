@@ -21,7 +21,7 @@ body {
   height: 100%;
   background: hsl(210, 60%, 98%);
 }
-@media (max-width: 375px) {
+@media (max-width: 685px) {
   body {
     display: block;
   }
@@ -53,10 +53,14 @@ textarea {
   height: 76rem;
   width: 73rem;
 }
-@media (max-width: 375px) {
+@media (max-width: 685px) {
   .container {
     width: 100%;
     height: auto;
+  }
+}
+@media (max-width: 375px) {
+  .container {
     border-radius: 0;
     padding: 20px 10px;
   }
@@ -187,10 +191,16 @@ textarea {
   font-size: 1.6rem;
   padding: 20px;
 }
+@media (max-width: 685px) {
+  .body .notification-content-textarea {
+    height: 160px;
+  }
+}
 @media (max-width: 375px) {
   .body .notification-content-textarea {
     padding: 10px;
     height: 130px;
+    overflow: visible;
   }
 }
 .body .notification.unread {
