@@ -31,7 +31,7 @@ Users should be able to:
 ### Links
 
 - Solution URL: [https://github.com/wendellcs/Projects/blob/main/notifications-page-main/README.md](Solution)
-- Live Site URL: [https://wendellcs.github.io/Projects/notifications-page-main/](Live site)
+- Live Site URL: [https://wendellcs.github.io/Projects/notifications-page-main/](Preview)
 
 ## My process
 
