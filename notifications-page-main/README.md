@@ -26,7 +26,7 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![notifications-page](https://github.com/wendellcs/Projects/assets/88943437/dbaeb0a4-74af-4297-b0d0-067768470d43)
 
 ### Links
 
