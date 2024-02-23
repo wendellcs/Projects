@@ -26,12 +26,16 @@ Users should be able to:
 
 ### Screenshot
 
-![](./screenshot.jpg)
+![notifications-page](https://github.com/wendellcs/Projects/assets/88943437/dbaeb0a4-74af-4297-b0d0-067768470d43)
 
 ### Links
 
 - Solution URL: [https://github.com/wendellcs/Projects/blob/main/notifications-page-main/README.md](Solution)
+<<<<<<< HEAD
 - Live Site URL: [https://wendellcs.github.io/Projects/notifications-page-main/](Site)
+=======
+- Live Site URL: [https://wendellcs.github.io/Projects/notifications-page-main/](Preview)
+>>>>>>> cbfbef470ba288b9cf78e15c08e0dcfb30eba051
 
 ## My process
 
