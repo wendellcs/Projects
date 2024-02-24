@@ -77,7 +77,6 @@
             &-textarea
                 border-radius: 10px
                 margin-top: 10px
-                height: 100px
                 border: 1px solid variables.$light-grayish-2
                 color: variables.$light-gray
                 font-size: 1.6rem
@@ -86,13 +85,8 @@
                 &:hover
                     background: variables.$bg-color
 
-                @include utilities.tablet-view
-                    height: 160px
-
                 @include utilities.mobile-view
                     padding: 10px
-                    height: 130px
-                    overflow: visible
 
         &.unread
             background: variables.$bg-color
