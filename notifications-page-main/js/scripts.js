@@ -21,8 +21,8 @@ btnMarkAllAsRead.addEventListener('click', () => {
 
 function updateNotifications() {
     let count = 0
-    notifications.forEach(noti => {
-        if (noti.classList.contains('unread')) count++
-    })
+    for (notification of notifications) {
+        if (notification.classList.contains('unread')) count++
+    }
     notificationsCount.textContent = count
 }

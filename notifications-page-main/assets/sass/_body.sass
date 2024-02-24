@@ -15,7 +15,7 @@
         padding: 10px 15px
         border-radius: 10px
 
-        @include utilities.mobile-view
+        @include utilities.tablet-view
             padding: 10px 5px
             gap: 10px
 
@@ -45,6 +45,11 @@
 
             &-text
                 color: variables.$light-gray
+
+                .name , .highlight
+                    &:hover
+                        cursor: pointer
+                        color: variables.$secondary-color
 
                 .name
                     color: variables.$title-color
@@ -78,6 +83,9 @@
                 font-size: 1.6rem
                 padding: 20px
 
+                &:hover
+                    background: variables.$bg-color
+
                 @include utilities.tablet-view
                     height: 160px
 
@@ -88,7 +96,6 @@
 
         &.unread
             background: variables.$bg-color
-            cursor: pointer
 
             .notification-content-textarea
                 background: variables.$bg-color

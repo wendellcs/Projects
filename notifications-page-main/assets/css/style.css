@@ -97,7 +97,6 @@ textarea {
   transition: 0.3s;
 }
 .header-button:hover {
-  text-decoration: underline;
   color: hsl(219, 85%, 26%);
 }
 
@@ -127,7 +126,7 @@ textarea {
   padding: 10px 15px;
   border-radius: 10px;
 }
-@media (max-width: 375px) {
+@media (max-width: 685px) {
   .body .notification {
     padding: 10px 5px;
     gap: 10px;
@@ -158,6 +157,10 @@ textarea {
 }
 .body .notification-content-text {
   color: hsl(219, 12%, 42%);
+}
+.body .notification-content-text .name:hover, .body .notification-content-text .highlight:hover {
+  cursor: pointer;
+  color: hsl(219, 85%, 26%);
 }
 .body .notification-content-text .name {
   color: hsl(224, 21%, 14%);
@@ -191,6 +194,9 @@ textarea {
   font-size: 1.6rem;
   padding: 20px;
 }
+.body .notification-content-textarea:hover {
+  background: hsl(210, 60%, 98%);
+}
 @media (max-width: 685px) {
   .body .notification-content-textarea {
     height: 160px;
@@ -205,7 +211,6 @@ textarea {
 }
 .body .notification.unread {
   background: hsl(210, 60%, 98%);
-  cursor: pointer;
 }
 .body .notification.unread .notification-content-textarea {
   background: hsl(210, 60%, 98%);
