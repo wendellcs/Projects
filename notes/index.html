@@ -13,24 +13,40 @@
 
     <div class="container">
 
-        <form class="form">
-            <div class="form-box">
-                <label for="word">Insert your word:</label>
-                <input type="text" id="word" class="form-box-word">
-            </div>
+        <div class="container-form">
+            <form id="form">
+                <div class="form-box">
+                    <label for="word">Insert your word:</label>
+                    <input type="text" id="word" class="form-box-word">
+                </div>
 
-            <div class="form-box">
-                <label for="meaning">Insert its meaning:</label>
-                <input type="text" id="meaning" class="form-box-meaning">
-            </div>
+                <div class="form-box">
+                    <label for="meaning">Insert its meaning:</label>
+                    <input type="text" id="meaning" class="form-box-meaning">
+                </div>
 
-            <button type="submit" class="btn formButton">Send</button>
-        </form>
+                <button type="submit" class="btn formButton">Send</button>
+            </form>
+            <p class="qtd-cards">Cards: <span class="qtd"> 0</span></p>
+        </div>
 
-        <p class="qtd-cards">Cards: <span class="qtd"> 0</span></p>
 
 
-        <div class="container-box"></div>
+        <div class="container-box">
+        </div>
+        <div class="container-popup">
+            <form class="popup-form">
+                <div class="popup-form-inputWord">
+                    <label for="popup-word"></label>
+                    <input type="text" id="popup-word">
+                </div>
+                <div class="popup-form-inputMeaning">
+                    <label for="popup-meaning"></label>
+                    <input type="text" id="popup-meaning">
+                </div>
+                <button type="submit" class="btn confirm">Confirm</button>
+            </form>
+        </div>
     </div>
 
 

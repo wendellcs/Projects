@@ -1,14 +1,17 @@
 const sendBtn = document.querySelector('.btn.formButton')
-const form = document.querySelector('.form')
+const form = document.getElementById('form')
 const containerBox = document.querySelector('.container-box')
 const qtd = document.querySelector('.qtd')
 
+const word = document.querySelector('.form-box-word')
+const meaning = document.querySelector('.form-box-meaning')
 form.addEventListener('submit', (e) => { e.preventDefault() })
 
 const boxes = [{
     title: 'Teste',
     text: 'lorem ipsum dolor sit amet, consectet null a ante tell Lorem ipsum dolor'
 }]
+
 
 renderNotes()
 
@@ -20,11 +23,9 @@ class Box {
 }
 
 sendBtn.addEventListener('click', (e) => {
-    const word = document.querySelector('.form-box-word').value
-    const meaning = document.querySelector('.form-box-meaning').value
 
-    if (word && meaning) {
-        const box = new Box(word, meaning)
+    if (word.value && meaning.value) {
+        const box = new Box(word.value, meaning.value)
         boxes.push(box)
 
         renderNotes()
@@ -63,7 +64,7 @@ function createBox(box, index) {
     editBtn.classList.add('btn', 'edit')
 
     const deleteBtn = document.createElement('button')
-    deleteBtn.innerHTML = 'X'
+    deleteBtn.innerHTML = 'Delete'
     deleteBtn.setAttribute('data', index)
     deleteBtn.classList.add('btn', 'delete')
 
@@ -84,8 +85,6 @@ containerBox.addEventListener("click", (e) => {
     if (e.target.classList.contains('delete')) {
         boxes.splice(index, 1)
         containerBox.removeChild(parent)
-
-        console.log('apaga')
     }
 
     if (e.target.classList.contains('edit')) {
