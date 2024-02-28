@@ -1,0 +1,55 @@
+@use 'btn'
+@use 'reset'
+
+.container
+    position: relative
+    .form
+        margin: 0 auto
+        width: 300px
+
+        .form-box
+            display: flex
+            flex-direction: column
+
+    &-box
+        display: flex
+        flex-wrap: wrap
+        width: 500px
+        margin: 20px auto
+        gap: 10px
+
+        .box
+            padding: 5px 10px
+            width: 150px
+            background: #f0f
+            border: 1px solid #000
+            text-align: center
+            word-break: break-all
+            position: relative
+
+            h2
+                margin-top: 10px
+
+            p
+                margin: 15px 0 40px 0
+
+            .buttons-container
+                position: absolute
+                bottom: 0
+                display: flex
+                justify-content: center
+                gap: 10px
+                width: 100%
+                left: 0
+
+    .qtd-cards
+        display: flex
+        align-items: center
+        gap: 5px
+        position: absolute
+        font-size: 2rem
+        top: 10px
+        left: 5px
+
+        .qtd
+            font-size: 3rem

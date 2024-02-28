@@ -1,0 +1,95 @@
+.btn {
+  width: 100%;
+  cursor: pointer;
+}
+.btn.formButton {
+  margin-top: 20px;
+  height: 40px;
+}
+.btn.edit, .btn.delete {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: auto;
+  font-size: 2rem;
+  padding: 5px;
+  border: none;
+  background: none;
+  border-radius: 50%;
+  transition: 0.3s;
+}
+.btn.edit:hover, .btn.delete:hover {
+  transform: scale(1.2);
+}
+
+* {
+  padding: 0;
+  margin: 0;
+  box-sizing: border-box;
+}
+
+html {
+  font-size: 62.5%;
+}
+
+body {
+  font-family: "Arial";
+  font-size: 1.6rem;
+}
+
+.container {
+  position: relative;
+}
+.container .form {
+  margin: 0 auto;
+  width: 300px;
+}
+.container .form .form-box {
+  display: flex;
+  flex-direction: column;
+}
+.container-box {
+  display: flex;
+  flex-wrap: wrap;
+  width: 500px;
+  margin: 20px auto;
+  gap: 10px;
+}
+.container-box .box {
+  padding: 5px 10px;
+  width: 150px;
+  background: #f0f;
+  border: 1px solid #000;
+  text-align: center;
+  word-break: break-all;
+  position: relative;
+}
+.container-box .box h2 {
+  margin-top: 10px;
+}
+.container-box .box p {
+  margin: 15px 0 40px 0;
+}
+.container-box .box .buttons-container {
+  position: absolute;
+  bottom: 0;
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  width: 100%;
+  left: 0;
+}
+.container .qtd-cards {
+  display: flex;
+  align-items: center;
+  gap: 5px;
+  position: absolute;
+  font-size: 2rem;
+  top: 10px;
+  left: 5px;
+}
+.container .qtd-cards .qtd {
+  font-size: 3rem;
+}
+
+/*# sourceMappingURL=style.css.map */
