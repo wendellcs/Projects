@@ -1,0 +1,32 @@
+@use 'variables'
+@use 'utilities'
+@use 'buttons'
+
+.container-popup
+    position: absolute
+    width: 200px
+    padding: 15px 0
+    background: variables.$secondary-bg-color
+    z-index: 5
+    border: 1px solid variables.$bg-color
+    border-radius: 10px
+    @include utilities.center-elements
+    flex-direction: column
+    top: 180px
+    left: 0
+
+    &.hidden
+        display: none
+
+    .popup-form
+        width: 80%
+
+        &-inputWord,&-inputMeaning
+            input
+                width: 100%
+                height: 25px
+                padding-left: 5px
+                font-size: 1.6rem
+
+        &-inputMeaning
+            margin-top: 10px

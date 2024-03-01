@@ -5,15 +5,11 @@ const qtd = document.querySelector('.qtd')
 
 const word = document.querySelector('.form-box-word')
 const meaning = document.querySelector('.form-box-meaning')
+
+const popup = document.querySelector('.container-popup')
 form.addEventListener('submit', (e) => { e.preventDefault() })
 
-const boxes = [{
-    title: 'Teste',
-    text: 'lorem ipsum dolor sit amet, consectet null a ante tell Lorem ipsum dolor'
-}]
-
-
-renderNotes()
+const boxes = []
 
 class Box {
     constructor(title, text) {
@@ -23,7 +19,6 @@ class Box {
 }
 
 sendBtn.addEventListener('click', (e) => {
-
     if (word.value && meaning.value) {
         const box = new Box(word.value, meaning.value)
         boxes.push(box)
@@ -34,12 +29,21 @@ sendBtn.addEventListener('click', (e) => {
     }
 })
 
-function renderNotes() {
+function renderNotes(saved) {
     containerBox.innerHTML = ''
+
+    if (saved) {
+        boxes.push(...saved)
+    }
+
+    console.log(boxes.length)
+
     boxes.forEach((box, index) => {
         containerBox.append(createBox(box, index))
-        qtd.textContent = boxes.length
     })
+
+    qtd.textContent = boxes.length
+    updateAndSaveNotes(boxes)
 }
 
 
@@ -78,6 +82,15 @@ function createBox(box, index) {
     return boxDiv
 }
 
+
+document.addEventListener("click", (e) => {
+    if (popup.parentElement) {
+        if (!popup.contains(e.target) && !e.target.classList.contains('edit')) {
+            popup.parentElement.removeChild(popup)
+        }
+    }
+})
+
 containerBox.addEventListener("click", (e) => {
     const index = e.target.getAttribute("data")
     const parent = e.target.parentElement.parentElement
@@ -85,11 +98,45 @@ containerBox.addEventListener("click", (e) => {
     if (e.target.classList.contains('delete')) {
         boxes.splice(index, 1)
         containerBox.removeChild(parent)
+        renderNotes()
     }
 
     if (e.target.classList.contains('edit')) {
-
+        if (popup.parentElement == parent) {
+            popup.classList.add('hidden')
+            parent.removeChild(popup)
+        } else {
+            popup.classList.remove('hidden')
+            parent.append(popup)
+            popup.querySelector('#popup-word').focus()
+            verifyCardHeight(parent)
+        }
     }
 
-    renderNotes()
 })
+
+
+// Verify the height of the new card and if necessary, generate the popup further from the top
+function verifyCardHeight(parent) {
+    const elementHeigh = parent.offsetHeight
+    if (elementHeigh > 180) {
+        popup.style.top = elementHeigh + 'px'
+    } else {
+        popup.style.top = '180px'
+    }
+}
+
+
+// Preventing default popup-form behavior 
+document.querySelector('.popup-form').addEventListener('submit', (e) => {
+    e.preventDefault()
+})
+
+// Saves all the notes in the user's browser
+function updateAndSaveNotes(list) {
+    localStorage.clear()
+    localStorage.setItem('notes', JSON.stringify(list))
+}
+
+// Get every note which has been saved in the browser
+renderNotes(renderNotes(JSON.parse(localStorage.getItem('notes'))))
