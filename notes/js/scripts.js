@@ -7,6 +7,8 @@ const word = document.querySelector('.form-box-word')
 const meaning = document.querySelector('.form-box-meaning')
 
 const cardPopup = document.querySelector('.container-popup')
+const fieldsPopup = document.querySelector('.container-invalid-data-popup')
+const closePopupBtn = document.querySelector('.close-popup')
 form.addEventListener('submit', (e) => { e.preventDefault() })
 
 const cardList = []
@@ -27,8 +29,12 @@ sendBtn.addEventListener('click', (e) => {
         word.value = ''
         meaning.value = ''
     } else {
-        alert('Preencha todos os campos')
+        fieldsPopup.classList.remove('hidden')
     }
+})
+
+closePopupBtn.addEventListener('click', (e) => {
+    fieldsPopup.classList.add('hidden')
 })
 
 function renderCards(saved) {
@@ -38,8 +44,8 @@ function renderCards(saved) {
         cardList.push(...saved)
     }
 
-    cardList.forEach((box, index) => {
-        containerCards.append(createCard(box, index))
+    cardList.forEach((card, index) => {
+        containerCards.append(createCard(card, index))
     })
 
     qtd.textContent = cardList.length
@@ -163,6 +169,8 @@ confirmBtn.addEventListener('click', (e) => {
         cardList[index].text = newMeaning.value
         parent.querySelector('p').textContent = cardList[index].text
     }
+
+    renderCards()
 
     newWord.value = ''
     newMeaning.value = ''

@@ -30,3 +30,21 @@
 
         &-inputMeaning
             margin-top: 10px
+
+.container-invalid-data-popup
+    position: absolute
+    width: 60%
+    top: 0
+    padding: 15px 0
+    background: variables.$secondary-bg-color
+    border: 1px solid variables.$bg-color
+    border-radius: 10px
+    @include utilities.center-elements
+    flex-direction: column
+    left: 50%
+    right: 50%
+    transform: translate(-50%, 50%)
+    animation: popup-slide 1s linear infinite
+
+    &.hidden
+        display: none

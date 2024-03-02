@@ -2,6 +2,7 @@
 @use 'reset'
 @use 'variables'
 @use 'popup'
+@use 'utilities'
 
 .container
 
@@ -41,11 +42,12 @@
                 border-radius: 10px
 
     &-cards
-        display: flex
         flex-wrap: wrap
-        width: 500px
+        width: 100%
+        max-width: 1000px
         margin: 20px auto
-        gap: 10px
+        gap: 20px
+        @include utilities.center-elements
 
         .card
             padding: 5px 10px

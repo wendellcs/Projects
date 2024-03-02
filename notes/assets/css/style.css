@@ -42,6 +42,19 @@
 .btn.confirm:hover {
   background: #26679c;
 }
+.btn.close-popup {
+  width: 30px;
+  height: 30px;
+  margin-top: 15px;
+  border: 1px solid #33A1FD;
+  border-radius: 50%;
+  background: none;
+  font-weight: bold;
+}
+.btn.close-popup:hover {
+  background: #33A1FD;
+  transform: scale(1.1);
+}
 
 * {
   padding: 0;
@@ -60,6 +73,16 @@ body {
   color: #ebe8e8;
 }
 
+@keyframes slide-popup {
+  from {
+    opacity: 0;
+    transform: translateY(-100px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
 .container-popup {
   position: absolute;
   width: 200px;
@@ -89,6 +112,27 @@ body {
 }
 .container-popup .popup-form-inputMeaning {
   margin-top: 10px;
+}
+
+.container-invalid-data-popup {
+  position: absolute;
+  width: 60%;
+  top: 0;
+  padding: 15px 0;
+  background: #225577;
+  border: 1px solid rgba(2, 17, 27, 0.8980392157);
+  border-radius: 10px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  left: 50%;
+  right: 50%;
+  transform: translate(-50%, 50%);
+  animation: popup-slide 1s linear infinite;
+}
+.container-invalid-data-popup.hidden {
+  display: none;
 }
 
 .container-form {
@@ -127,11 +171,14 @@ body {
   border-radius: 10px;
 }
 .container-cards {
-  display: flex;
   flex-wrap: wrap;
-  width: 500px;
+  width: 100%;
+  max-width: 1000px;
   margin: 20px auto;
-  gap: 10px;
+  gap: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 .container-cards .card {
   padding: 5px 10px;
