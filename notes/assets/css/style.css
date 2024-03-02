@@ -126,14 +126,14 @@ body {
   font-size: 1.5rem;
   border-radius: 10px;
 }
-.container-box {
+.container-cards {
   display: flex;
   flex-wrap: wrap;
   width: 500px;
   margin: 20px auto;
   gap: 10px;
 }
-.container-box .box {
+.container-cards .card {
   padding: 5px 10px;
   width: 200px;
   min-height: 180px;
@@ -145,13 +145,13 @@ body {
   padding: 30px 15px;
   border-radius: 20px;
 }
-.container-box .box h2 {
+.container-cards .card h2 {
   margin-top: 10px;
 }
-.container-box .box p {
+.container-cards .card p {
   margin: 15px 0 40px 0;
 }
-.container-box .box .buttons-container {
+.container-cards .card .buttons-container {
   position: absolute;
   bottom: 10px;
   display: flex;

@@ -1,17 +1,17 @@
 const sendBtn = document.querySelector('.btn.formButton')
 const form = document.getElementById('form')
-const containerBox = document.querySelector('.container-box')
+const containerCards = document.querySelector('.container-cards')
 const qtd = document.querySelector('.qtd')
 
 const word = document.querySelector('.form-box-word')
 const meaning = document.querySelector('.form-box-meaning')
 
-const popup = document.querySelector('.container-popup')
+const cardPopup = document.querySelector('.container-popup')
 form.addEventListener('submit', (e) => { e.preventDefault() })
 
-const boxes = []
+const cardList = []
 
-class Box {
+class Card {
     constructor(title, text) {
         this.title = title
         this.text = text
@@ -20,38 +20,38 @@ class Box {
 
 sendBtn.addEventListener('click', (e) => {
     if (word.value && meaning.value) {
-        const box = new Box(word.value, meaning.value)
-        boxes.push(box)
+        const card = new Card(word.value, meaning.value)
+        cardList.push(card)
 
-        renderNotes()
+        renderCards()
+        word.value = ''
+        meaning.value = ''
     } else {
         alert('Preencha todos os campos')
     }
 })
 
-function renderNotes(saved) {
-    containerBox.innerHTML = ''
+function renderCards(saved) {
+    containerCards.innerHTML = ''
 
     if (saved) {
-        boxes.push(...saved)
+        cardList.push(...saved)
     }
 
-    console.log(boxes.length)
-
-    boxes.forEach((box, index) => {
-        containerBox.append(createBox(box, index))
+    cardList.forEach((box, index) => {
+        containerCards.append(createCard(box, index))
     })
 
-    qtd.textContent = boxes.length
-    updateAndSaveNotes(boxes)
+    qtd.textContent = cardList.length
+    updateAndSaveCards(cardList)
 }
 
 
-function createBox(box, index) {
-    const { title, text } = box
+function createCard(card, index) {
+    const { title, text } = card
 
-    const boxDiv = document.createElement('div')
-    boxDiv.classList.add('box')
+    const cardDiv = document.createElement('div')
+    cardDiv.classList.add('card')
 
     const _title = document.createElement('h2')
     _title.textContent = title
@@ -75,44 +75,43 @@ function createBox(box, index) {
     buttonsContainer.appendChild(editBtn)
     buttonsContainer.appendChild(deleteBtn)
 
-    boxDiv.appendChild(_title)
-    boxDiv.appendChild(_text)
-    boxDiv.appendChild(buttonsContainer)
+    cardDiv.appendChild(_title)
+    cardDiv.appendChild(_text)
+    cardDiv.appendChild(buttonsContainer)
 
-    return boxDiv
+    return cardDiv
 }
 
 
 document.addEventListener("click", (e) => {
-    if (popup.parentElement) {
-        if (!popup.contains(e.target) && !e.target.classList.contains('edit')) {
-            popup.parentElement.removeChild(popup)
+    if (cardPopup.closest('.card')) {
+        if (!cardPopup.contains(e.target) && !e.target.classList.contains('edit')) {
+            cardPopup.parentElement.removeChild(cardPopup)
         }
     }
 })
 
-containerBox.addEventListener("click", (e) => {
+containerCards.addEventListener("click", (e) => {
     const index = e.target.getAttribute("data")
-    const parent = e.target.parentElement.parentElement
+    const parent = e.target.closest('.card')
 
     if (e.target.classList.contains('delete')) {
-        boxes.splice(index, 1)
-        containerBox.removeChild(parent)
-        renderNotes()
+        cardList.splice(index, 1)
+        containerCards.removeChild(parent)
+        renderCards()
     }
 
     if (e.target.classList.contains('edit')) {
-        if (popup.parentElement == parent) {
-            popup.classList.add('hidden')
-            parent.removeChild(popup)
+        if (cardPopup.parentElement == parent) {
+            cardPopup.classList.add('hidden')
+            parent.removeChild(cardPopup)
         } else {
-            popup.classList.remove('hidden')
-            parent.append(popup)
-            popup.querySelector('#popup-word').focus()
+            cardPopup.classList.remove('hidden')
+            parent.append(cardPopup)
+            cardPopup.querySelector('#popup-word').focus()
             verifyCardHeight(parent)
         }
     }
-
 })
 
 
@@ -120,23 +119,54 @@ containerBox.addEventListener("click", (e) => {
 function verifyCardHeight(parent) {
     const elementHeigh = parent.offsetHeight
     if (elementHeigh > 180) {
-        popup.style.top = elementHeigh + 'px'
+        cardPopup.style.top = elementHeigh + 'px'
     } else {
-        popup.style.top = '180px'
+        cardPopup.style.top = '180px'
     }
 }
 
 
 // Preventing default popup-form behavior 
-document.querySelector('.popup-form').addEventListener('submit', (e) => {
-    e.preventDefault()
-})
+document.querySelector('.popup-form').addEventListener('submit', (e) => e.preventDefault())
 
 // Saves all the notes in the user's browser
-function updateAndSaveNotes(list) {
+function updateAndSaveCards(list) {
     localStorage.clear()
-    localStorage.setItem('notes', JSON.stringify(list))
+    localStorage.setItem('cards', JSON.stringify(list))
 }
 
+function returnCardIndex(element) {
+    const documentCards = document.getElementsByClassName('card')
+
+    for (let i = 0; i < documentCards.length; i++) {
+        if (documentCards[i] == element) {
+            return i
+        }
+    }
+    return -1
+}
+
+// Updates the information on the cards
+const confirmBtn = document.querySelector('.btn.confirm')
+confirmBtn.addEventListener('click', (e) => {
+    const parent = confirmBtn.closest('.card')
+    const newWord = document.querySelector('#popup-word')
+    const newMeaning = document.querySelector('#popup-meaning')
+    const index = returnCardIndex(parent)
+
+    if (newWord.value) {
+        cardList[index].title = newWord.value
+        parent.querySelector('h2').textContent = cardList[index].title
+    }
+
+    if (newMeaning.value) {
+        cardList[index].text = newMeaning.value
+        parent.querySelector('p').textContent = cardList[index].text
+    }
+
+    newWord.value = ''
+    newMeaning.value = ''
+})
+
 // Get every note which has been saved in the browser
-renderNotes(renderNotes(JSON.parse(localStorage.getItem('notes'))))
+renderCards(JSON.parse(localStorage.getItem('cards')))
