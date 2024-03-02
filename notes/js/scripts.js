@@ -37,6 +37,7 @@ closePopupBtn.addEventListener('click', (e) => {
     fieldsPopup.classList.add('hidden')
 })
 
+// Render all the cards on the screen and get saved cards
 function renderCards(saved) {
     containerCards.innerHTML = ''
 
@@ -52,7 +53,7 @@ function renderCards(saved) {
     updateAndSaveCards(cardList)
 }
 
-
+// Create and return the cards HTML
 function createCard(card, index) {
     const { title, text } = card
 
@@ -88,12 +89,16 @@ function createCard(card, index) {
     return cardDiv
 }
 
-
 document.addEventListener("click", (e) => {
+    // Close cards popup if clicked outside
     if (cardPopup.closest('.card')) {
         if (!cardPopup.contains(e.target) && !e.target.classList.contains('edit')) {
             cardPopup.parentElement.removeChild(cardPopup)
         }
+    }
+    // Close fields popup if clicked outside
+    if (!fieldsPopup.contains(e.target) && !e.target.classList.contains('formButton')) {
+        fieldsPopup.classList.add('hidden')
     }
 })
 
@@ -101,12 +106,14 @@ containerCards.addEventListener("click", (e) => {
     const index = e.target.getAttribute("data")
     const parent = e.target.closest('.card')
 
+    // Verify if the clocked was the delete button and delete the selected card
     if (e.target.classList.contains('delete')) {
         cardList.splice(index, 1)
         containerCards.removeChild(parent)
         renderCards()
     }
 
+    // Verify if the clocked was the edit button and open edit options
     if (e.target.classList.contains('edit')) {
         if (cardPopup.parentElement == parent) {
             cardPopup.classList.add('hidden')
@@ -121,7 +128,7 @@ containerCards.addEventListener("click", (e) => {
 })
 
 
-// Verify the height of the new card and if necessary, generate the popup further from the top
+// Verify the height of the new card and if necessary, generate the popup further from the card's top
 function verifyCardHeight(parent) {
     const elementHeigh = parent.offsetHeight
     if (elementHeigh > 180) {
@@ -130,7 +137,6 @@ function verifyCardHeight(parent) {
         cardPopup.style.top = '180px'
     }
 }
-
 
 // Preventing default popup-form behavior 
 document.querySelector('.popup-form').addEventListener('submit', (e) => e.preventDefault())

@@ -117,7 +117,8 @@ body {
 .container-invalid-data-popup {
   position: absolute;
   width: 60%;
-  top: 0;
+  max-width: 500px;
+  top: -20px;
   padding: 15px 0;
   background: #225577;
   border: 1px solid rgba(2, 17, 27, 0.8980392157);
@@ -128,13 +129,18 @@ body {
   flex-direction: column;
   left: 50%;
   right: 50%;
-  transform: translate(-50%, 50%);
+  transform: translate(-50%, 50%) scale(1);
   animation: popup-slide 1s linear infinite;
+  transition: 0.5s;
+  box-shadow: 0 0 10px #33A1FD;
 }
 .container-invalid-data-popup.hidden {
-  display: none;
+  transform: translate(-50%, -100%) scale(0.2);
 }
 
+.container {
+  margin-top: 150px;
+}
 .container-form {
   margin: 50px auto;
   width: 350px;
