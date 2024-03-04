@@ -139,11 +139,13 @@ body {
 }
 
 .container {
-  margin-top: 150px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }
 .container-form {
   margin: 50px auto;
-  width: 350px;
+  width: 300px;
+  height: 260px;
   background: #225577;
   padding: 40px 15px 25px 15px;
   border-radius: 20px;
@@ -201,8 +203,29 @@ body {
 .container-cards .card h2 {
   margin-top: 10px;
 }
-.container-cards .card p {
-  margin: 15px 0 40px 0;
+.container-cards .card .topics {
+  margin: 10px 0;
+  width: 60%;
+  text-align: center;
+  height: 30px;
+  font-weight: bold;
+  font-size: 1.6rem;
+  background: none;
+  border: 1px solid #33A1FD;
+  border-radius: 5px;
+  color: #ebe8e8;
+  appearance: none;
+  cursor: pointer;
+}
+.container-cards .card .topics:focus {
+  outline: none;
+}
+.container-cards .card .topics::-ms-expand {
+  display: none;
+}
+.container-cards .card .topics-option {
+  background: #26679c;
+  font-weight: bold;
 }
 .container-cards .card .buttons-container {
   position: absolute;

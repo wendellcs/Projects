@@ -20,33 +20,16 @@
                     <input type="text" id="word" class="form-box-word">
                 </div>
 
-                <div class="form-box">
-                    <label for="meaning">Insert its meaning:</label>
-                    <input type="text" id="meaning" class="form-box-meaning">
-                </div>
-
                 <button type="submit" class="btn formButton">Send</button>
             </form>
             <p class="qtd-cards">Cards: <span class="qtd"> 0</span></p>
+
+            <div class="container-form-results">
+                <h2 class="container-form-results-title">Title</h2>
+            </div>
         </div>
-
-
 
         <div class="container-cards">
-        </div>
-
-        <div class="container-popup hidden">
-            <form class="popup-form">
-                <div class="popup-form-inputWord">
-                    <label for="popup-word">Word:</label>
-                    <input type="text" id="popup-word">
-                </div>
-                <div class="popup-form-inputMeaning">
-                    <label for="popup-meaning">Meaning:</label>
-                    <input type="text" id="popup-meaning">
-                </div>
-                <button type="submit" class="btn confirm">Confirm</button>
-            </form>
         </div>
 
         <div class="container-invalid-data-popup hidden">
@@ -56,7 +39,8 @@
     </div>
 
 
-    <script src="js/scripts.js"></script>
+    <script src="./js/main.js" type='module'></script>
+    <script src="./js/meanings.js" type='module'></script>
     <script type="module" src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.esm.js"></script>
     <script nomodule src="https://unpkg.com/ionicons@7.1.0/dist/ionicons/ionicons.js"></script>
 </body>

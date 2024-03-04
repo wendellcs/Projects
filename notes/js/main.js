@@ -1,33 +1,36 @@
+import { Dictionary } from "./meanings.js"
+
+
+const cardList = []
+async function sendSearch(word) {
+    await Dictionary.getWordMeaning(word)
+        .then(data => {
+            cardList.push(data)
+
+            renderCards()
+        })
+        .catch(err => console.log(err.message))
+}
+
+
+// Criar opção de salvar palavras
+
 const sendBtn = document.querySelector('.btn.formButton')
 const form = document.getElementById('form')
 const containerCards = document.querySelector('.container-cards')
 const qtd = document.querySelector('.qtd')
 
 const word = document.querySelector('.form-box-word')
-const meaning = document.querySelector('.form-box-meaning')
 
-const cardPopup = document.querySelector('.container-popup')
 const fieldsPopup = document.querySelector('.container-invalid-data-popup')
 const closePopupBtn = document.querySelector('.close-popup')
 form.addEventListener('submit', (e) => { e.preventDefault() })
 
-const cardList = []
-
-class Card {
-    constructor(title, text) {
-        this.title = title
-        this.text = text
-    }
-}
 
 sendBtn.addEventListener('click', (e) => {
-    if (word.value && meaning.value) {
-        const card = new Card(word.value, meaning.value)
-        cardList.push(card)
-
-        renderCards()
+    if (word.value) {
+        sendSearch(word.value)
         word.value = ''
-        meaning.value = ''
     } else {
         fieldsPopup.classList.remove('hidden')
     }
@@ -55,47 +58,43 @@ function renderCards(saved) {
 
 // Create and return the cards HTML
 function createCard(card, index) {
-    const { title, text } = card
+    const { word, titles, definitions } = card
 
     const cardDiv = document.createElement('div')
     cardDiv.classList.add('card')
-
-    const _title = document.createElement('h2')
-    _title.textContent = title
-
-    const _text = document.createElement('p')
-    _text.textContent = text
-
     const buttonsContainer = document.createElement('div')
     buttonsContainer.classList.add('buttons-container')
-
-    const editBtn = document.createElement('button')
-    editBtn.innerHTML = 'Edit'
-    editBtn.setAttribute('data', index)
-    editBtn.classList.add('btn', 'edit')
-
     const deleteBtn = document.createElement('button')
     deleteBtn.innerHTML = 'Delete'
     deleteBtn.setAttribute('data', index)
     deleteBtn.classList.add('btn', 'delete')
 
-    buttonsContainer.appendChild(editBtn)
+
+    const _word = document.createElement('h2')
+    _word.textContent = word
+
+    const topics = document.createElement('select')
+    topics.className = 'topics'
+    titles.forEach(title => {
+        const option = document.createElement('option')
+        option.textContent = title
+        option.className = 'topics-option'
+        option.value = title
+        topics.appendChild(option)
+    })
+
     buttonsContainer.appendChild(deleteBtn)
 
-    cardDiv.appendChild(_title)
-    cardDiv.appendChild(_text)
+    cardDiv.appendChild(_word)
+    cardDiv.appendChild(topics)
     cardDiv.appendChild(buttonsContainer)
+
+    console.log(cardDiv)
 
     return cardDiv
 }
 
 document.addEventListener("click", (e) => {
-    // Close cards popup if clicked outside
-    if (cardPopup.closest('.card')) {
-        if (!cardPopup.contains(e.target) && !e.target.classList.contains('edit')) {
-            cardPopup.parentElement.removeChild(cardPopup)
-        }
-    }
     // Close fields popup if clicked outside
     if (!fieldsPopup.contains(e.target) && !e.target.classList.contains('formButton')) {
         fieldsPopup.classList.add('hidden')
@@ -112,19 +111,6 @@ containerCards.addEventListener("click", (e) => {
         containerCards.removeChild(parent)
         renderCards()
     }
-
-    // Verify if the clocked was the edit button and open edit options
-    if (e.target.classList.contains('edit')) {
-        if (cardPopup.parentElement == parent) {
-            cardPopup.classList.add('hidden')
-            parent.removeChild(cardPopup)
-        } else {
-            cardPopup.classList.remove('hidden')
-            parent.append(cardPopup)
-            cardPopup.querySelector('#popup-word').focus()
-            verifyCardHeight(parent)
-        }
-    }
 })
 
 
@@ -139,8 +125,6 @@ function verifyCardHeight(parent) {
 }
 
 // Preventing default popup-form behavior 
-document.querySelector('.popup-form').addEventListener('submit', (e) => e.preventDefault())
-
 // Saves all the notes in the user's browser
 function updateAndSaveCards(list) {
     localStorage.clear()
@@ -157,30 +141,6 @@ function returnCardIndex(element) {
     }
     return -1
 }
-
-// Updates the information on the cards
-const confirmBtn = document.querySelector('.btn.confirm')
-confirmBtn.addEventListener('click', (e) => {
-    const parent = confirmBtn.closest('.card')
-    const newWord = document.querySelector('#popup-word')
-    const newMeaning = document.querySelector('#popup-meaning')
-    const index = returnCardIndex(parent)
-
-    if (newWord.value) {
-        cardList[index].title = newWord.value
-        parent.querySelector('h2').textContent = cardList[index].title
-    }
-
-    if (newMeaning.value) {
-        cardList[index].text = newMeaning.value
-        parent.querySelector('p').textContent = cardList[index].text
-    }
-
-    renderCards()
-
-    newWord.value = ''
-    newMeaning.value = ''
-})
 
 // Get every note which has been saved in the browser
 renderCards(JSON.parse(localStorage.getItem('cards')))
