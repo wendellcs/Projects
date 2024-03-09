@@ -12,7 +12,6 @@ async function sendSearch(word) {
         .catch(err => console.log(err.message))
 }
 
-
 // Criar opção de salvar palavras
 
 const sendBtn = document.querySelector('.btn.formButton')
