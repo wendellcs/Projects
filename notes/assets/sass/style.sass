@@ -8,7 +8,6 @@
     display: flex
     justify-content: center
     height: 100%
-    gap: 50px
 
     &-left
         margin: 50px
@@ -53,8 +52,38 @@
             text-align: center
 
             .result-box
-                &-title
+                &-header
                     margin-bottom: 20px
+                    display: flex
+                    align-items: center
+
+                    &-word
+                        font-size: 1.6rem
+                        margin-left: 20px
+                        font-weight: bold
+                        font-style: italic
+                        letter-spacing: 1px
+
+                    &-title
+                        margin-left: 20%
+
+                .definition
+                    padding: 0 15px
+                    text-align: left
+                    letter-spacing: 1px
+                    line-height: 110%
+                    margin-bottom: 20px
+                    position: relative
+
+                    &:before
+                        content: ''
+                        width: 15px
+                        height: 15px
+                        border-radius: 50%
+                        background: variables.$primary-color
+                        position: absolute
+                        left: -7px
+                        top: 3px
 
     &-cards
         width: 100%
@@ -62,7 +91,7 @@
         max-height: 500px
         gap: 20px
         flex-wrap: wrap
-        margin: 50px
+        margin-top: 50px
         overflow: auto
         border: 1px solid variables.$primary-color
         padding: 10px

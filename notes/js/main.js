@@ -123,21 +123,33 @@ containerCards.addEventListener("click", (e) => {
 
         const cardInfos = cardList[index]
         const definitions = createDefinitionList(cardInfos, topicValue)
-        const cardDefinition = createCardDefinition(definitions, topicValue)
+        const cardDefinition = createCardDefinition(definitions, topicValue, cardInfos)
 
         containerResults.innerHTML = ''
         containerResults.append(cardDefinition)
     }
 })
 
-function createCardDefinition(definitions, topicValue) {
+function createCardDefinition(definitions, topicValue, cardInfos) {
     const resultBox = document.createElement('div')
     resultBox.className = 'result-box'
 
+    const resultHeader = document.createElement('div')
+    resultHeader.className = 'result-box-header'
+
+    const { word } = cardInfos
+    const resultWord = document.createElement('span')
+    resultWord.className = 'result-box-header-word'
+    resultWord.textContent = word
+
+
     const resultTitle = document.createElement('h2')
-    resultTitle.className = 'result-box-title'
+    resultTitle.className = 'result-box-header-title'
     resultTitle.textContent = topicValue
-    resultBox.appendChild(resultTitle)
+
+    resultHeader.appendChild(resultWord)
+    resultHeader.appendChild(resultTitle)
+    resultBox.appendChild(resultHeader)
 
     const containerDefinition = document.createElement('div')
     containerDefinition.className = 'result-box-container-definition'
@@ -166,18 +178,10 @@ function createCardDefinition(definitions, topicValue) {
 }
 
 function createDefinitionList(cardInfos, topicValue) {
-    const definitionsList = []
-    const { definitions, titles } = cardInfos
+    const { definitions, titles } = cardInfos;
+    const definitionsList = definitions.filter((_, i) => titles[i] === topicValue);
 
-    for (let i = 0; i < titles.length; i++) {
-        if (titles[i] === topicValue) {
-            definitionsList.push(definitions[i])
-        }
-    }
-
-    const defin = [...definitionsList]
-
-    return defin
+    return definitionsList;
 }
 
 // Saves all the notes in the user's browser

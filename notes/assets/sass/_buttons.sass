@@ -1,30 +1,30 @@
 @use 'variables'
+@use 'utilities'
 
 .btn
     cursor: pointer
     border: none
-    font-weight: bold
     transition: .3s
     color: variables.$text-color
+    border-radius: 10px
+    font-weight: bold
+    background: variables.$primary-color
+    font-size: 2rem
+
+    &:hover
+        background: variables.$secondary-color
 
     &.formButton
         display: block
         width: 80%
         margin: 20px auto
         height: 40px
-        background: variables.$primary-color
         border-radius: 15px
-        font-size: 2rem
-
-        &:hover
-            background: variables.$secondary-color
 
     &.view , &.delete
-        display: flex
-        align-items: center
-        justify-content: center
+        @include utilities.center-elements
+        border-radius: 0
         width: auto
-        font-size: 2rem
         padding: 5px
         background: none
         border-bottom: 2px solid variables.$primary-color
@@ -37,12 +37,6 @@
         width: 100%
         height: 30px
         margin-top: 15px
-        border-radius: 10px
-        background: variables.$primary-color
-        font-weight: bold
-
-        &:hover
-            background: variables.$secondary-color
 
     &.close-popup
         width: 30px
@@ -51,8 +45,13 @@
         border: 1px solid variables.$primary-color
         border-radius: 50%
         background: none
-        font-weight: bold
 
         &:hover
             background: variables.$primary-color
             transform: scale(1.1)
+
+    &.show-more
+        color: variables.$text-color
+        padding: 10px 20px
+        border-radius: 15px
+        font-size: 1.6rem
