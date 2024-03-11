@@ -53,7 +53,7 @@ body {
   height: 40px;
   border-radius: 15px;
 }
-.btn.view, .btn.delete {
+.btn.view, .btn.delete, .btn.show-more {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -64,7 +64,7 @@ body {
   border-bottom: 2px solid #33A1FD;
   border-top: 2px solid #33A1FD;
 }
-.btn.view:hover, .btn.delete:hover {
+.btn.view:hover, .btn.delete:hover, .btn.show-more:hover {
   color: #33A1FD;
 }
 .btn.confirm {
@@ -85,10 +85,17 @@ body {
   transform: scale(1.1);
 }
 .btn.show-more {
-  color: #ebe8e8;
-  padding: 10px 20px;
+  margin: 0 auto;
+  margin-top: 20px;
+  font-size: 1.3rem;
+  border: none;
   border-radius: 15px;
-  font-size: 1.6rem;
+  padding: 5px 10px;
+}
+.btn.show-more:hover {
+  color: #ebe8e8;
+  background: #26679c;
+  transform: scale(1.1);
 }
 
 .container-popup {
@@ -185,6 +192,10 @@ body {
   border-radius: 20px;
   margin-top: 50px;
 }
+.container-form h1 {
+  text-align: center;
+  margin-bottom: 40px;
+}
 .container-form .form {
   margin: 20px 0;
 }
@@ -222,40 +233,40 @@ body {
   background: #225577;
   padding: 40px 15px 25px 15px;
   border-radius: 20px;
-  text-align: center;
+  padding: 20px 0;
+  margin-bottom: 50px;
 }
-.container-results-box-header {
-  margin-bottom: 20px;
+.container-results-header {
   display: flex;
+  justify-content: center;
   align-items: center;
+  flex-direction: column-reverse;
+  width: 100%;
+  gap: 10px;
+  margin-bottom: 20px;
 }
-.container-results-box-word {
-  font-size: 1.6rem;
-  margin-left: 20px;
-  font-weight: bold;
-  font-style: italic;
-  letter-spacing: 1px;
+.container-results-header-word {
+  font-size: 1.4rem;
 }
-.container-results-box-word-title {
-  margin-left: 20%;
-}
-.container-results-box-word .definition {
+.container-results-box .definition {
   padding: 0 15px;
-  text-align: left;
+  text-align: center;
   letter-spacing: 1px;
   line-height: 110%;
-  margin-bottom: 20px;
+  margin-bottom: 30px;
   position: relative;
 }
-.container-results-box-word .definition:before {
+.container-results-box .definition:first-of-type {
+  margin-top: 50px;
+}
+.container-results-box .definition:after {
   content: "";
-  width: 15px;
-  height: 15px;
-  border-radius: 50%;
+  width: 80%;
+  height: 5px;
   background: #33A1FD;
   position: absolute;
-  left: -7px;
-  top: 3px;
+  transform: translateX(-50%);
+  bottom: -15px;
 }
 
 /*# sourceMappingURL=style.css.map */

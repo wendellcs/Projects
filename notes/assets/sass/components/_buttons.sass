@@ -21,7 +21,7 @@
         height: 40px
         border-radius: 15px
 
-    &.view , &.delete
+    &.view , &.delete, &.show-more
         @include utilities.center-elements
         border-radius: 0
         width: auto
@@ -51,7 +51,14 @@
             transform: scale(1.1)
 
     &.show-more
-        color: variables.$text-color
-        padding: 10px 20px
+        margin: 0 auto
+        margin-top: 20px
+        font-size: 1.3rem
+        border: none
         border-radius: 15px
-        font-size: 1.6rem
+        padding: 5px 10px
+
+        &:hover
+            color: variables.$text-color
+            background: variables.$secondary-color
+            transform: scale(1.1)

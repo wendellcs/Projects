@@ -134,25 +134,11 @@ function createCardDefinition(definitions, topicValue, cardInfos) {
     const resultBox = document.createElement('div')
     resultBox.className = 'result-box'
 
-    const resultHeader = document.createElement('div')
-    resultHeader.className = 'result-box-header'
-
     const { word } = cardInfos
     const resultWord = document.createElement('span')
     resultWord.className = 'result-box-header-word'
     resultWord.textContent = word
 
-
-    const resultTitle = document.createElement('h2')
-    resultTitle.className = 'result-box-header-title'
-    resultTitle.textContent = topicValue
-
-    resultHeader.appendChild(resultWord)
-    resultHeader.appendChild(resultTitle)
-    resultBox.appendChild(resultHeader)
-
-    const containerDefinition = document.createElement('div')
-    containerDefinition.className = 'result-box-container-definition'
 
     if (definitions.length > 1) {
         for (let i = 0; i < definitions.length; i++) {

@@ -3,38 +3,36 @@
 
 .container-results
     @include utilities.container-style
-    text-align: center
+    padding: 20px 0
+    margin-bottom: 50px
 
-    &-box
-        &-header
-            margin-bottom: 20px
-            display: flex
-            align-items: center
+    &-header
+        @include utilities.center-elements
+        flex-direction: column-reverse
+        width: 100%
+        gap: 10px
+        margin-bottom: 20px
 
         &-word
-            font-size: 1.6rem
-            margin-left: 20px
-            font-weight: bold
-            font-style: italic
+            font-size: 1.4rem
+
+    &-box
+        .definition
+            padding: 0 15px
+            text-align: center
             letter-spacing: 1px
+            line-height: 110%
+            margin-bottom: 30px
+            position: relative
 
-            &-title
-                margin-left: 20%
+            &:first-of-type
+                margin-top: 50px
 
-            .definition
-                padding: 0 15px
-                text-align: left
-                letter-spacing: 1px
-                line-height: 110%
-                margin-bottom: 20px
-                position: relative
-
-                &:before
-                    content: ''
-                    width: 15px
-                    height: 15px
-                    border-radius: 50%
-                    background: variables.$primary-color
-                    position: absolute
-                    left: -7px
-                    top: 3px
+            &:after
+                content: ''
+                width: 80%
+                height: 5px
+                background: variables.$primary-color
+                position: absolute
+                transform: translateX(-50%)
+                bottom: -15px
