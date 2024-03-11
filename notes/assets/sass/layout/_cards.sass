@@ -1,0 +1,63 @@
+@use '../base/_utilities'
+@use '../base/_variables'
+
+.container-cards
+    width: 100%
+    max-width: 600px
+    max-height: 500px
+    gap: 20px
+    flex-wrap: wrap
+    margin: 50px 0
+    border: 1px solid variables.$primary-color
+    padding: 10px
+    border-radius: 15px
+    @include utilities.center-elements
+    scrollbar-width: none
+    -ms-overflow-style: none
+
+    .card
+        width: 200px
+        height: 180px
+        background: variables.$secondary-bg-color
+        border: 1px solid #000
+        text-align: center
+        position: relative
+        padding: 30px 15px
+        border-radius: 20px
+
+        h2
+            margin-top: 10px
+
+        .topics
+            margin: 10px 0
+            width: 60%
+            text-align: center
+            height: 30px
+            font-weight: bold
+            font-size: 1.6rem
+            background: none
+            border: 1px solid variables.$primary-color
+            border-radius: 5px
+            color: variables.$text-color
+            appearance: none
+            cursor: pointer
+
+            &:focus
+                outline: none
+
+                &::-ms-expand
+                    display: none
+                    // Hide arrow on IE
+
+            &-option
+                background: variables.$secondary-color
+                font-weight: bold
+
+        .buttons-container
+            position: absolute
+            bottom: 10px
+            display: flex
+            justify-content: center
+            gap: 10px
+            width: 100%
+            left: 0
