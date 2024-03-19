@@ -4,7 +4,7 @@ export async function dictionary(word) {
     try {
         const response = await fetch(`https://api.dictionaryapi.dev/api/v2/entries/en/${word}`)
 
-        if (!response.ok) throw new Error('Palavra não encontrada')
+        if (!response.ok) throw new Error("We couldn't find the word in the dictionary...")
 
         const data = await response.json()
 
@@ -24,3 +24,6 @@ export async function dictionary(word) {
         return null
     }
 }
+
+/* Criar um texto escrito loading quando algo estiver carregando ( Ser mais criativo que isso) */
+
