@@ -55,48 +55,6 @@ function renderCards(saved) {
     updateAndSaveCards(cardList)
 }
 
-// Create and return the cards HTML
-function createCard(card, index) {
-    const { word, titles } = card
-
-    const cardDiv = document.createElement('div')
-    cardDiv.classList.add('card')
-    const buttonsContainer = document.createElement('div')
-    buttonsContainer.classList.add('buttons-container')
-    const deleteBtn = document.createElement('button')
-    deleteBtn.innerHTML = 'Delete'
-    deleteBtn.setAttribute('data', index)
-    deleteBtn.classList.add('btn', 'delete')
-    const viewBtn = document.createElement('button')
-    viewBtn.innerHTML = 'View'
-    viewBtn.classList.add('btn', 'view')
-    viewBtn.setAttribute('data', index)
-
-    const _word = document.createElement('h2')
-    _word.textContent = word
-
-    buttonsContainer.appendChild(deleteBtn)
-    buttonsContainer.appendChild(viewBtn)
-
-    cardDiv.appendChild(_word)
-
-    const topics = document.createElement('select')
-    topics.className = 'topics'
-    topics.setAttribute('data', index)
-    titles.forEach(title => {
-        const option = document.createElement('option')
-        option.textContent = title
-        option.className = 'topics-option'
-        option.value = title
-        topics.appendChild(option)
-    })
-
-    cardDiv.appendChild(topics)
-    cardDiv.appendChild(buttonsContainer)
-
-    return cardDiv
-}
-
 document.addEventListener("click", (e) => {
     // Close fields popup if clicked outside
     if (!popup.contains(e.target) && !e.target.classList.contains('formButton')) {

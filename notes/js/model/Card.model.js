@@ -1,13 +1,20 @@
-export class Card {
-    constructor(_word, _index) {
-        if (!_word || !_index) {
-            throw new Error('Word and index are required')
+class CardModel {
+    constructor({ word, wordClasses, definitions }) {
+        if (!word || !wordClasses || !definitions) {
+            throw new Error('These datas are required')
         }
-        this.word = _word
-        this.index = _index
+        this.word = word
+        // Tratar melhor esses abaixo:
+        this.wordClasses = wordClasses
+        this.definitions = definitions
+
     }
 
-    getIndex() {
-        return this.index
+    getWordClasses() {
+        return this.wordClasses
+    }
+
+    getDefinitions() {
+        return this.definitions
     }
 }

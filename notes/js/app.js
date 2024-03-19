@@ -1,18 +1,7 @@
-import { dictionary } from "./controller/Dictionary.controller"
-
-
-const definition = await dictionary(word)
-
 // HTML containers
 const containers = {
-    resultsContainer: document.querySelector('.container-results-box'),
+    definitionsContainer: document.querySelector('.container-results-box'),
     cardsContainer: document.querySelector('.container-cards'),
-}
-
-
-// Others html elements
-const htmlElements = {
-
 }
 
 // Form elements
@@ -22,6 +11,23 @@ const formElements = {
     send: document.querySelector('.btn.send'),
 }
 
-formElements.form.addEventListener('submit', (e) => {
+// Dictionary API instance
+const dictionary = new DictionaryAPI()
+// MVC instances
+const cardService = new CardService()
+const render = new Render(containers)
+const cardController = new CardController(cardService, render)
+
+formElements.form.addEventListener('submit', async (e) => {
     e.preventDefault()
+    const word = formElements.formInput.value
+
+    try {
+        const data = await dictionary.getWord(word)
+        const card = new CardModel(data)
+
+        cardController.addCard(card)
+    } catch (err) {
+        console.log(err)
+    }
 })
