@@ -53,18 +53,18 @@ body {
   height: 40px;
   border-radius: 15px;
 }
-.btn.view, .btn.delete, .btn.show-more {
+.btn.view, .btn.show-more {
   display: flex;
   justify-content: center;
   align-items: center;
   border-radius: 0;
-  width: auto;
   padding: 5px;
+  margin: 10px auto;
   background: none;
   border-bottom: 2px solid #33A1FD;
   border-top: 2px solid #33A1FD;
 }
-.btn.view:hover, .btn.delete:hover, .btn.show-more:hover {
+.btn.view:hover, .btn.show-more:hover {
   color: #33A1FD;
 }
 .btn.confirm {

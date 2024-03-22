@@ -7,4 +7,8 @@ class CardService {
         if (!card instanceof CardModel) throw TypeError('Card must be an instance of Card')
         this.cardList.push(card)
     }
+
+    getDefinitions(index) {
+        return this.cardList[index].definitions
+    }
 }

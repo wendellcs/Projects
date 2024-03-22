@@ -27,7 +27,19 @@ formElements.form.addEventListener('submit', async (e) => {
         const card = new CardModel(data)
 
         cardController.addCard(card)
+        formElements.formInput.value = ''
+
     } catch (err) {
         console.log(err)
+    }
+})
+
+
+document.addEventListener('click', (e) => {
+    const target = e.target
+    if (target.classList.contains('view')) {
+        const id = target.closest('.card').getAttribute('data')
+        const cardInfos = cardService.getDefinitions(id)
+
     }
 })

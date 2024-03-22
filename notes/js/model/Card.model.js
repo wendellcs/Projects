@@ -7,14 +7,5 @@ class CardModel {
         // Tratar melhor esses abaixo:
         this.wordClasses = wordClasses
         this.definitions = definitions
-
-    }
-
-    getWordClasses() {
-        return this.wordClasses
-    }
-
-    getDefinitions() {
-        return this.definitions
     }
 }
