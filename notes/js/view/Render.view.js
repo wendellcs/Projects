@@ -48,9 +48,7 @@ class Render {
 
         const { definitions, wordClasses } = data
 
-        console.log(wordClass, wordClasses)
         const index = wordClasses.findIndex(word => word.indexOf(wordClass) !== -1);
-        console.log(index)
 
         definitions[index].forEach(defi => {
             const definition = document.createElement('div')
