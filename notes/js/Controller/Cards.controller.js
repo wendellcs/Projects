@@ -12,4 +12,8 @@ class CardController {
         this.view.renderCards(this.service.cardList)
         this.view.updateCardsNumber(this.service.cardList.length)
     }
+
+    renderDefinitions(definitions, wordClass) {
+        this.view.renderDefinitions(definitions, wordClass)
+    }
 }

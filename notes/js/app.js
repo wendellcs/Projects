@@ -24,6 +24,7 @@ formElements.form.addEventListener('submit', async (e) => {
 
     try {
         const data = await dictionary.getWord(word)
+        console.log(data)
         const card = new CardModel(data)
 
         cardController.addCard(card)
@@ -39,7 +40,7 @@ document.addEventListener('click', (e) => {
     const target = e.target
     if (target.classList.contains('view')) {
         const id = target.closest('.card').getAttribute('data')
-        const cardInfos = cardService.getDefinitions(id)
-
+        const wordClass = document.querySelector(`[data="${id}"]`).querySelector('.topics').value
+        cardController.renderDefinitions(cardService.getCard(id), wordClass)
     }
 })

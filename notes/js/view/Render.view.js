@@ -40,18 +40,36 @@ class Render {
                 this.cardsContainer.appendChild(card);
             })
         }
-
-
     }
 
     // Render the definitions of the chosen word
-    renderDefinitions(definition) {
-        definition.forEach(defi => console.log(defi))
-        // definition.className = 'definition'
+    renderDefinitions(data, wordClass) {
+        this.definitionsContainer.innerHTML = '';
 
-        // const p = document.createElement('p')
-        // p.textContent = definition.definition
+        const { definitions, wordClasses } = data
 
+        console.log(wordClass, wordClasses)
+        const index = wordClasses.findIndex(word => word.indexOf(wordClass) !== -1);
+        console.log(index)
+
+        definitions[index].forEach(defi => {
+            const definition = document.createElement('div')
+            definition.classList.add('definition')
+
+            const p = document.createElement('p')
+            p.textContent = defi.definition
+
+            definition.append(p)
+            this.definitionsContainer.appendChild(definition)
+        })
+
+        this.updateTitles(data, wordClass)
+    }
+
+    // Update the word class and the word title
+    updateTitles({ word }, wordClass) {
+        document.querySelector('.container-results-header-wordClass').textContent = wordClass
+        document.querySelector('.container-results-header-word').textContent = word
     }
 
     // Update the number of created cards

@@ -8,7 +8,7 @@ class CardService {
         this.cardList.push(card)
     }
 
-    getDefinitions(index) {
-        return this.cardList[index].definitions
+    getCard(index) {
+        return this.cardList[index]
     }
 }
