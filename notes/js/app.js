@@ -24,7 +24,6 @@ formElements.form.addEventListener('submit', async (e) => {
 
     try {
         const data = await dictionary.getWord(word)
-        console.log(data)
         const card = new CardModel(data)
 
         cardController.addCard(card)
