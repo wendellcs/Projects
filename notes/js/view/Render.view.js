@@ -52,10 +52,8 @@ class Render {
         const { definitions, wordClasses } = data
 
         const index = wordClasses.findIndex(word => word.indexOf(wordClass) !== -1);
-<<<<<<< HEAD
+
         const length = definitions[index].length
-=======
->>>>>>> c7e8066c5edcf4e0d7eb91ee588e4f6bd1518b71
 
         const toBeRendered = definitions[index].slice(0, this.shownDefinitions)
 
@@ -87,7 +85,6 @@ class Render {
     updateCardsNumber(value) {
         document.querySelector('.qtd').textContent = value
     }
-<<<<<<< HEAD
 
     toggleBtnShowmoreVisibility(length) {
         const showmore = document.querySelector('.container-results-button')
@@ -99,6 +96,3 @@ class Render {
         }
     }
 }
-=======
-}
->>>>>>> c7e8066c5edcf4e0d7eb91ee588e4f6bd1518b71
