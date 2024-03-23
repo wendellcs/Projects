@@ -14,6 +14,6 @@ class CardController {
     }
 
     renderDefinitions(definitions, wordClass) {
-        this.view.renderDefinitions(definitions, wordClass)
+        this.view.loadDefinitions(definitions, wordClass)
     }
 }

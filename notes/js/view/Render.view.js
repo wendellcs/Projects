@@ -4,11 +4,14 @@ class Render {
 
         this.cardsContainer = cardsContainer;
         this.definitionsContainer = definitionsContainer;
+
+        this.shownDefinitions = 5
     }
 
     // Creates a new card with the given word and its classes.
     renderCards(cards) {
         this.cardsContainer.innerHTML = '';
+
         if (cards.length > 0) {
             cards.forEach((_card, i) => {
                 const card = document.createElement('div');
@@ -41,18 +44,25 @@ class Render {
             })
         }
     }
-
     // Render the definitions of the chosen word
-    renderDefinitions(data, wordClass) {
+    loadDefinitions(data, wordClass) {
         this.definitionsContainer.innerHTML = '';
+        console.log(data)
 
         const { definitions, wordClasses } = data
 
-        console.log(wordClass, wordClasses)
         const index = wordClasses.findIndex(word => word.indexOf(wordClass) !== -1);
-        console.log(index)
+        const length = definitions[index].length
 
-        definitions[index].forEach(defi => {
+        const toBeRendered = definitions[index].slice(0, this.shownDefinitions)
+
+        this.renderDefinitions(toBeRendered)
+        this.toggleBtnShowmoreVisibility(length)
+        this.updateTitles(data, wordClass)
+    }
+
+    renderDefinitions(toBeRendered) {
+        toBeRendered.forEach(defi => {
             const definition = document.createElement('div')
             definition.classList.add('definition')
 
@@ -62,8 +72,6 @@ class Render {
             definition.append(p)
             this.definitionsContainer.appendChild(definition)
         })
-
-        this.updateTitles(data, wordClass)
     }
 
     // Update the word class and the word title
@@ -75,5 +83,15 @@ class Render {
     // Update the number of created cards
     updateCardsNumber(value) {
         document.querySelector('.qtd').textContent = value
+    }
+
+    toggleBtnShowmoreVisibility(length) {
+        const showmore = document.querySelector('.container-results-button')
+
+        if (length > 5) {
+            showmore.classList.remove('hidden')
+        } else {
+            showmore.classList.add('hidden')
+        }
     }
 }

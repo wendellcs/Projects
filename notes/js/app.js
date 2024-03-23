@@ -24,11 +24,16 @@ formElements.form.addEventListener('submit', async (e) => {
 
     try {
         const data = await dictionary.getWord(word)
-        console.log(data)
         const card = new CardModel(data)
 
         cardController.addCard(card)
         formElements.formInput.value = ''
+
+        if (cardService.cardList.length > 0) {
+            containers.cardsContainer.classList.remove('hidden')
+        } else {
+            containers.cardsContainer.classList.add('hidden')
+        }
 
     } catch (err) {
         console.log(err)
@@ -42,5 +47,6 @@ document.addEventListener('click', (e) => {
         const id = target.closest('.card').getAttribute('data')
         const wordClass = document.querySelector(`[data="${id}"]`).querySelector('.topics').value
         cardController.renderDefinitions(cardService.getCard(id), wordClass)
+        console.log(cardService.getCard(id))
     }
 })
