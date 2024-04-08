@@ -1,98 +1,80 @@
-class Render {
-    constructor({ cardsContainer, definitionsContainer }) {
-        if (!cardsContainer || !definitionsContainer) throw new Error('Containers are required');
+class RenderView {
+    constructor(containerResults) {
+        if (!containerResults) {
+            throw new Error('A results container is needed');
+        }
 
-        this.cardsContainer = cardsContainer;
-        this.definitionsContainer = definitionsContainer;
-
-        this.shownDefinitions = 5
+        this.containerResults = containerResults;
     }
 
-    // Creates a new card with the given word and its classes.
-    renderCards(cards) {
-        this.cardsContainer.innerHTML = '';
+    renderWords(words) {
+        if (words.length > 0) {
+            const index = words.length - 1;
+            // this.containerResults.innerHTML = '';
 
-        if (cards.length > 0) {
-            cards.forEach((_card, i) => {
-                const card = document.createElement('div');
-                card.setAttribute('data', i)
-                card.classList.add('card');
+            const title = this.containerResults.querySelector('.title')
+            const select = this.containerResults.querySelector('.container-results-select')
+            const wordClass = this.containerResults.querySelector('.word-class')
+            const results = this.containerResults.querySelector('.select-results')
+            const btnLoadResults = this.containerResults.querySelector('load-results')
 
-                const title = document.createElement('h2')
-                title.textContent = _card.word;
+            select.textContent = ''
+            const classes = words[index].wordClasses.map((_class) => _class)
+            // Remove any repeated words
+            const toBeRenderedClasses = classes.filter((_class, i) => {
+                return classes.indexOf(_class) === i
+            })
 
-                const topics = document.createElement('select')
-                topics.className = 'topics'
+            // Creates the options based on the word classes of the chosen word.
+            toBeRenderedClasses.forEach((_class) => {
+                if (!select.querySelector(`option.${_class}`)) {
+                    const option = document.createElement('option');
+                    option.value = _class;
+                    option.innerText = _class;
+                    select.appendChild(option);
+                }
+            })
 
-                _card.wordClasses.forEach((wc) => {
-                    const option = document.createElement('option')
-                    option.textContent = wc;
-                    option.className = 'topics-option'
-                    option.value = wc
-                    topics.appendChild(option)
+            // Update the definitions based of the selected word
+            select.addEventListener('change', () => {
+                const _class = select.value
+                const wordClassIndex = []
+
+                words[index].wordClasses.forEach((_wordClass, i) => {
+                    if (_wordClass == _class) {
+                        wordClassIndex.push(i)
+                    }
                 })
 
-                const viewBtn = document.createElement('button')
-                viewBtn.textContent = 'view'
-                viewBtn.classList.add('btn', 'view')
+                // Verify if the is more than one definition for the same word
+                if (wordClassIndex.length > 1) {
+                    results.textContent = ''
+                    const multipleResults = []
 
-                card.appendChild(title);
-                card.appendChild(topics);
-                card.appendChild(viewBtn);
+                    wordClassIndex.forEach(i => {
+                        multipleResults.push(words[index].definitions[i])
+                    })
 
-                this.cardsContainer.appendChild(card);
+                    multipleResults.forEach(result => {
+                        result.forEach(def => {
+                            const p = document.createElement('p')
+                            p.className = 'definition'
+                            p.textContent = def.definition
+                            results.appendChild(p)
+                        })
+                    })
+                } else {
+                    results.textContent = ''
+                    const toBeRenderedDefinition = words[index].definitions[wordClassIndex]
+
+                    toBeRenderedDefinition.forEach(definition => {
+                        const p = document.createElement('p')
+                        p.className = 'definition'
+                        p.textContent = definition.definition
+                        results.appendChild(p)
+                    })
+                }
             })
-        }
-    }
-    // Render the definitions of the chosen word
-    loadDefinitions(data, wordClass) {
-        this.definitionsContainer.innerHTML = '';
-        console.log(data)
-
-        const { definitions, wordClasses } = data
-
-        const index = wordClasses.findIndex(word => word.indexOf(wordClass) !== -1);
-
-        const length = definitions[index].length
-
-        const toBeRendered = definitions[index].slice(0, this.shownDefinitions)
-
-        this.renderDefinitions(toBeRendered)
-        this.toggleBtnShowmoreVisibility(length)
-        this.updateTitles(data, wordClass)
-    }
-
-    renderDefinitions(toBeRendered) {
-        toBeRendered.forEach(defi => {
-            const definition = document.createElement('div')
-            definition.classList.add('definition')
-
-            const p = document.createElement('p')
-            p.textContent = defi.definition
-
-            definition.append(p)
-            this.definitionsContainer.appendChild(definition)
-        })
-    }
-
-    // Update the word class and the word title
-    updateTitles({ word }, wordClass) {
-        document.querySelector('.container-results-header-wordClass').textContent = wordClass
-        document.querySelector('.container-results-header-word').textContent = word
-    }
-
-    // Update the number of created cards
-    updateCardsNumber(value) {
-        document.querySelector('.qtd').textContent = value
-    }
-
-    toggleBtnShowmoreVisibility(length) {
-        const showmore = document.querySelector('.container-results-button')
-
-        if (length > 5) {
-            showmore.classList.remove('hidden')
-        } else {
-            showmore.classList.add('hidden')
         }
     }
 }

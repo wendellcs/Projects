@@ -24,24 +24,18 @@
 
                 <button type="submit" class="btn formButton">Send</button>
             </form>
-            <p class="qtd-cards">Cards: <span class="qtd"> 0</span></p>
+
+            <!-- All the results will be shown here -->
         </div>
-
-        <!-- All cards will be shown here -->
-        <div class="container-cards hidden"></div>
-
-        <!-- All results will be shown here -->
         <div class="container-results">
-            <div class="container-results-header">
-                <p class="container-results-header-word">Your word</p>
-                <h2 class="container-results-header-wordClass">Word Class</h2>
-            </div>
-            <div class="container-results-box">
-                <!-- The definitions will be shown here -->
-            </div>
-            <div class="container-results-button hidden">
-                <button class="btn show-more">Show More</button>
-            </div>
+            <h2 class="title">Word</h2>
+
+            <select class="container-results-select"></select>
+            <button class="btn load-results">GO</button>
+
+            <h2>Word Class: <span class="word-class">Noum</span></h2>
+
+            <div class="select-results"></div>
         </div>
     </div>
 
@@ -50,14 +44,16 @@
         <button type="button" class="btn close-popup">Ok</button>
     </div>
 
+    <!-- Axios -->
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
     <!-- Model Imports -->
-    <script src="js/Model/Card.model.js"></script>
+    <script src="js/Model/Word.model.js"></script>
     <!-- Services Imports -->
-    <script src="js/Services/Card.services.js"></script>
+    <script src="js/Services/Word.services.js"></script>
     <!-- View Imports -->
     <script src="js/View/Render.view.js"></script>
     <!-- Controller Imports -->
-    <script src="js/Controller/Cards.controller.js"></script>
+    <script src="js/Controller/Word.controller.js"></script>
     <!-- Controller Dictionary API Import -->
     <script src="js/Controller/DictionaryAPI.js"></script>
 

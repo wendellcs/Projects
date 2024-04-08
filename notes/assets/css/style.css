@@ -122,76 +122,14 @@ body {
   transform: translate(-50%, -100%) scale(0.2);
 }
 
-.container-cards {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 100%;
-  max-width: 600px;
-  max-height: 500px;
-  gap: 20px;
-  flex-wrap: wrap;
-  margin: 50px 0;
-  border: 1px solid #33A1FD;
-  padding: 10px;
-  border-radius: 15px;
-}
-.container-cards.hidden {
-  display: none;
-}
-.container-cards .card {
-  width: 200px;
-  height: 180px;
-  background: #225577;
-  border: 1px solid #000;
-  text-align: center;
-  position: relative;
-  padding: 30px 15px;
-  border-radius: 20px;
-}
-.container-cards .card h2 {
-  margin-top: 10px;
-}
-.container-cards .card .topics {
-  margin: 10px 0;
-  width: 60%;
-  text-align: center;
-  height: 30px;
-  font-weight: bold;
-  font-size: 1.6rem;
-  background: none;
-  border: 1px solid #33A1FD;
-  border-radius: 5px;
-  color: #ebe8e8;
-  appearance: none;
-  cursor: pointer;
-}
-.container-cards .card .topics:focus {
-  outline: none;
-}
-.container-cards .card .topics:focus::-ms-expand {
-  display: none;
-}
-.container-cards .card .topics-option {
-  background: #26679c;
-  font-weight: bold;
-}
-.container-cards .card .buttons-container {
-  position: absolute;
-  bottom: 10px;
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  width: 100%;
-  left: 0;
-}
-
 .container-form {
   width: 300px;
   background: #225577;
   padding: 40px 15px 25px 15px;
   border-radius: 20px;
   margin-top: 50px;
+  width: 80%;
+  max-width: 600px;
 }
 .container-form h1 {
   text-align: center;
@@ -230,47 +168,13 @@ body {
 }
 
 .container-results {
-  width: 300px;
-  background: #225577;
-  padding: 40px 15px 25px 15px;
-  border-radius: 20px;
-  padding: 20px 0;
-  margin: 50px 0;
-}
-.container-results-header {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  flex-direction: column-reverse;
-  width: 100%;
-  gap: 10px;
-  margin-bottom: 20px;
-}
-.container-results-header-word {
-  font-size: 1.4rem;
-}
-.container-results-box .definition {
-  padding: 0 15px;
-  text-align: center;
-  letter-spacing: 1px;
-  line-height: 110%;
-  margin-bottom: 30px;
-  position: relative;
-}
-.container-results-box .definition:first-of-type {
   margin-top: 50px;
-}
-.container-results-box .definition:after {
-  content: "";
   width: 80%;
-  height: 5px;
-  background: #33A1FD;
-  position: absolute;
-  transform: translateX(-50%);
-  bottom: -15px;
-}
-.container-results-button.hidden {
-  display: none;
+  max-width: 600px;
+  padding: 30px 10px;
+  border: 1px solid #000;
+  border-radius: 10px;
+  text-align: center;
 }
 
 /*# sourceMappingURL=style.css.map */

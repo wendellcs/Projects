@@ -1,9 +1,3 @@
-// HTML containers
-const containers = {
-    definitionsContainer: document.querySelector('.container-results-box'),
-    cardsContainer: document.querySelector('.container-cards'),
-}
-
 // Form elements
 const formElements = {
     form: document.querySelector('.form'),
@@ -11,42 +5,32 @@ const formElements = {
     send: document.querySelector('.btn.send'),
 }
 
-// Dictionary API instance
+const otherHTMLElements = {
+    containerResults: document.querySelector('.container-results')
+}
+
+
 const dictionary = new DictionaryAPI()
-// MVC instances
-const cardService = new CardService()
-const render = new Render(containers)
-const cardController = new CardController(cardService, render)
+
+const wordServices = new WordServices()
+const renderView = new RenderView(otherHTMLElements.containerResults)
+const wordController = new WordController(wordServices, renderView)
 
 formElements.form.addEventListener('submit', async (e) => {
     e.preventDefault()
-    const word = formElements.formInput.value
+    const _word = formElements.formInput.value
 
     try {
-        const data = await dictionary.getWord(word)
-        const card = new CardModel(data)
+        const data = await dictionary.getWord(_word)
 
-        cardController.addCard(card)
-        formElements.formInput.value = ''
-
-        if (cardService.cardList.length > 0) {
-            containers.cardsContainer.classList.remove('hidden')
-        } else {
-            containers.cardsContainer.classList.add('hidden')
-        }
+        console.log(data)
+        const word = new WordModel(data)
+        wordController.addWord(word)
 
     } catch (err) {
-        console.log(err)
+        alert(err.message)
     }
+
 })
 
 
-document.addEventListener('click', (e) => {
-    const target = e.target
-    if (target.classList.contains('view')) {
-        const id = target.closest('.card').getAttribute('data')
-        const wordClass = document.querySelector(`[data="${id}"]`).querySelector('.topics').value
-        cardController.renderDefinitions(cardService.getCard(id), wordClass)
-        console.log(cardService.getCard(id))
-    }
-})

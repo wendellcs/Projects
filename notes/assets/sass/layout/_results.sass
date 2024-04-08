@@ -1,42 +1,8 @@
-@use '../base/_utilities'
-@use '../base/_variables'
-
 .container-results
-    @include utilities.container-style
-    padding: 20px 0
-    margin: 50px 0
-
-    &-header
-        @include utilities.center-elements
-        flex-direction: column-reverse
-        width: 100%
-        gap: 10px
-        margin-bottom: 20px
-
-        &-word
-            font-size: 1.4rem
-
-    &-box
-        .definition
-            padding: 0 15px
-            text-align: center
-            letter-spacing: 1px
-            line-height: 110%
-            margin-bottom: 30px
-            position: relative
-
-            &:first-of-type
-                margin-top: 50px
-
-            &:after
-                content: ''
-                width: 80%
-                height: 5px
-                background: variables.$primary-color
-                position: absolute
-                transform: translateX(-50%)
-                bottom: -15px
-
-    &-button
-        &.hidden
-            display: none
+    margin-top: 50px
+    width: 80%
+    max-width: 600px
+    padding: 30px 10px
+    border: 1px solid #000
+    border-radius: 10px
+    text-align: center
