@@ -46,7 +46,7 @@ class RenderView {
                     }
                 })
 
-                // Verify if there is more than one definition for the same word
+                // Verify whether there are multiple definitions for the same word
                 if (wordClassIndex.length > 1) {
                     results.textContent = ''
                     const multipleResults = []
