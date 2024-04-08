@@ -25,7 +25,7 @@ class RenderView {
                 return classes.indexOf(_class) === i
             })
 
-            // Creates the options based on the word classes of the chosen word.
+            // Create the options based on the word classes of the chosen word.
             toBeRenderedClasses.forEach((_class) => {
                 if (!select.querySelector(`option.${_class}`)) {
                     const option = document.createElement('option');
