@@ -20,7 +20,7 @@ class RenderView {
 
             select.textContent = ''
             const classes = words[index].wordClasses.map((_class) => _class)
-            // Remove any repeated words
+            // Remove any repeated word
             const toBeRenderedClasses = classes.filter((_class, i) => {
                 return classes.indexOf(_class) === i
             })
