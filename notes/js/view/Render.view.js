@@ -35,7 +35,7 @@ class RenderView {
                 }
             })
 
-            // Update the definitions based of the selected word
+            // Update the definitions based on the selected word
             select.addEventListener('change', () => {
                 const _class = select.value
                 const wordClassIndex = []
